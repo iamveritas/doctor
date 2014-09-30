@@ -1,0 +1,27 @@
+.nav-btn {
+    margin: 5px 15px 0px 15px;
+}
+.color-scheme-grey {
+    background-color: #f1f2f2;
+    color: #666;
+}
+.color-scheme-white {
+    background-color: #fff;
+    color: #666;
+}
+.home-title {
+    margin-top: 40px;
+    padding: 12px 21px;
+}
+.search {
+    padding-bottom: 30px;
+}
+.sf-va {
+    padding-top: 45px;
+}
+.red {
+    color: #d9230f;
+}
+.city {
+    font-size: 1.2em;
+}
