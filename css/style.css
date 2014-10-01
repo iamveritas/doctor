@@ -9,8 +9,15 @@
     background-color: #fff;
     color: #666;
 }
-.home-title {
+.likar-map {
+
+    height: 250px;
+}
+.home1-title {
     margin-top: 40px;
+    padding: 12px 21px;
+}
+.home2-title {
     padding: 12px 21px;
 }
 .search {
@@ -24,4 +31,16 @@
 }
 .city {
     font-size: 1.2em;
+}
+.card.card-link {
+    cursor: pointer;
+    position: relative;
+}
+.likar-info {
+    height: 100px;
+    margin-bottom: 10px;
+}
+.color-scheme-dark-grey {
+    background-color: #e6e7e8;
+    height: 100px;
 }
