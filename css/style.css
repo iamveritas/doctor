@@ -9,10 +9,6 @@
     background-color: #fff;
     color: #666;
 }
-.likar-map {
-
-    height: 250px;
-}
 .home1-title {
     margin-top: 40px;
     padding: 12px 21px;
@@ -40,7 +36,22 @@
     height: 100px;
     margin-bottom: 10px;
 }
-.color-scheme-dark-grey {
-    background-color: #e6e7e8;
-    height: 100px;
+.float-left {
+    float: left;
+}
+.social_line {
+    list-style: none outside none;
+    padding: 0;
+}
+.social_line li {
+    display: inline;
+}
+.social_line li a {
+    margin: 0 5px;
+}
+.log-soc {
+    margin: 20px 0 20px;
+}
+.log-em {
+    margin: 40px 0 20px;
 }
