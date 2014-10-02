@@ -55,3 +55,11 @@
 .log-em {
     margin: 40px 0 20px;
 }
+
+/*______FOOTER_____*/
+footer hr.lykar-separator{
+    margin-top:0;
+}
+span.lykar-copyright{
+    font-size: 0.8em;
+}
