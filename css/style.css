@@ -63,3 +63,9 @@ footer hr.lykar-separator{
 span.lykar-copyright{
     font-size: 0.8em;
 }
+
+/*______PROFILE_____*/
+div.lykar-btn-add-fb {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
