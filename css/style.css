@@ -74,3 +74,9 @@ div.lykar-btn-add-fb {
 div.lykar-top-padding{
     padding-top: 60px;
 }
+div.lykar-separator-vertical-right   {
+    border-right: 1px solid rgba( 100, 110, 100, 0.5);
+}
+div.lykar-separator-vertical-left   {
+    border-left: 1px solid rgba( 100, 110, 100, 0.5);
+}
