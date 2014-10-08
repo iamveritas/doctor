@@ -1,67 +1,120 @@
+/* --- щодок кросбраузерності (в мене підвіндовсом є стаття, глянути!!! --- */
+section {
+    display: block;
+}
+/* --- nav block --- */
 .nav-btn {
     margin: 5px 15px 0px 15px;
 }
+/* --- end nav block --- */
+
+/* --- modal block ---*/
+.float-left {
+    float: left;
+}
+.modal-soc {
+    margin: 20px 0 20px;
+}
+.line {
+    list-style: none outside none;
+    padding: 0;
+}
+.line li {
+    display: inline;
+}
+.line li a {
+    margin: 0 5px;
+}
+.modal-em {
+    margin: 40px 0 20px;
+}
+/* --- end modal block --- */
+
+/* --- grey block --- */
 .color-scheme-grey {
-    background-color: #f1f2f2;
+    background: none repeat scroll 0 0 #f9f9f9;
     color: #666;
 }
+/* --- white block --- */
 .color-scheme-white {
-    background-color: #fff;
+    background: none repeat scroll 0 0 #fff;
     color: #666;
 }
-.home1-title {
-    margin-top: 40px;
-    padding: 12px 21px;
+
+/* --- section: search --- */
+.first-section {
+    display: block;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    position: relative;
+    z-index: 120;
 }
-.home2-title {
-    padding: 12px 21px;
+.home-search-city {
+    padding: 30px 15px 15px;
 }
-.search {
-    padding-bottom: 30px;
-}
-.sf-va {
-    padding-top: 45px;
+.home-city {
+    font-size: 1.2em;
 }
 .red {
     color: #d9230f;
 }
-.city {
-    font-size: 1.2em;
+/* --- end section: search --- */
+
+/* --- section: city clinics --- */
+.city.boxed-white {
+    margin-bottom: 30px;
 }
-.card.card-link {
-    cursor: pointer;
-    position: relative;
+.boxed-white {
+    background: none repeat scroll 0 0 #fff;
+    padding: 20px;
 }
-.likar-info {
-    height: 100px;
-    margin-bottom: 10px;
-}
-.float-left {
-    float: left;
-}
-.social_line {
+.line-clinics {
     list-style: none outside none;
     padding: 0;
 }
-.social_line li {
-    display: inline;
+.city h5 {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
 }
-.social_line li a {
-    margin: 0 5px;
-}
-.log-soc {
-    margin: 20px 0 20px;
-}
-.log-em {
-    margin: 40px 0 20px;
-}
+/* --- end section: city clinics --- */
 
-/*______FOOTER_____*/
+/* --- section: popular doctor --- */
+.home-section {
+    display: block;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    position: relative;
+    z-index: 120;
+}
+.team.boxed-grey {
+    margin-bottom: 30px;
+}
+.boxed-grey {
+    background: none repeat scroll 0 0 #f9f9f9;
+    padding: 20px;
+}
+.team h5 {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+p {
+    line-height: 1.6em;
+    margin: 0 0 20px;
+}
+.team p.subtitle {
+    margin-bottom: 10px;
+}
+/* --- end section: popular doctor --- */
+
+/* --- section: footer --- */
 footer hr.lykar-separator{
     margin-top:0;
 }
-span.lykar-copyright{
+p.lykar-copyright{
     font-size: 0.8em;
+<<<<<<< HEAD
 }
 
 /*______PROFILE_____*/
@@ -80,3 +133,14 @@ div.lykar-separator-vertical-right   {
 div.lykar-separator-vertical-left   {
     border-left: 1px solid rgba( 100, 110, 100, 0.5);
 }
+=======
+    line-height: 1.5;
+}
+.padding {
+    padding: 10px 15px;
+}
+.padding-top {
+    padding-top: 10px;
+}
+/* --- end section: footer --- */
+>>>>>>> origin/new_index
