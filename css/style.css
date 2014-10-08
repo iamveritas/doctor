@@ -114,6 +114,26 @@ footer hr.lykar-separator{
 }
 p.lykar-copyright{
     font-size: 0.8em;
+<<<<<<< HEAD
+}
+
+/*______PROFILE_____*/
+div.lykar-btn-add-fb {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+/*______REVIEW_____*/
+div.lykar-top-padding{
+    padding-top: 60px;
+}
+div.lykar-separator-vertical-right   {
+    border-right: 1px solid rgba( 100, 110, 100, 0.5);
+}
+div.lykar-separator-vertical-left   {
+    border-left: 1px solid rgba( 100, 110, 100, 0.5);
+}
+=======
     line-height: 1.5;
 }
 .padding {
@@ -123,3 +143,4 @@ p.lykar-copyright{
     padding-top: 10px;
 }
 /* --- end section: footer --- */
+>>>>>>> origin/new_index
