@@ -72,7 +72,7 @@ section {
     list-style: none outside none;
     padding: 0;
 }
-.city h5 {
+.city h5,.team h5 {
     margin-bottom: 10px;
     text-transform: uppercase;
     font-weight: 600;
@@ -94,10 +94,8 @@ section {
     background: none repeat scroll 0 0 #f9f9f9;
     padding: 20px;
 }
-.team h5 {
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font-weight: 600;
+.forgot h5 {
+    margin-bottom: 15px;
 }
 p {
     line-height: 1.6em;
