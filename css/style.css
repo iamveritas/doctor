@@ -127,12 +127,15 @@ div.lykar-btn-add-fb {
     margin-top: 50px;
     margin-bottom: 25px;
 }
+div.lykar-boxed-comment {
+    border-radius: 20px;
+    background: none repeat scroll 0 0 #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px
+}    
 
 /*______REVIEW_____*/
-div.lykar-top-padding{
-    padding-top: 60px;
-    padding-bottom: 20px;
-}
+
 div.lykar-separator-vertical-right   {
     border-right: 1px solid rgba( 100, 110, 100, 0.5);
 }
