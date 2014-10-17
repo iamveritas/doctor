@@ -131,6 +131,7 @@ div.lykar-btn-add-fb {
 /*______REVIEW_____*/
 div.lykar-top-padding{
     padding-top: 60px;
+    padding-bottom: 20px;
 }
 div.lykar-separator-vertical-right   {
     border-right: 1px solid rgba( 100, 110, 100, 0.5);
@@ -138,3 +139,10 @@ div.lykar-separator-vertical-right   {
 div.lykar-separator-vertical-left   {
     border-left: 1px solid rgba( 100, 110, 100, 0.5);
 }
+
+/* --- user profile --- */
+.user {
+    padding: 11px 15px;
+    font-weight: 600;
+}
+/* --- end user profile --- */
