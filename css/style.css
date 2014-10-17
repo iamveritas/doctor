@@ -149,6 +149,11 @@ div.lykar-separator-vertical-left   {
 
 /* --- SIDEBAR --- */
 div.lykar-sidebar{
+    padding: 15px;
+    padding-right: 35px;
+    background: none repeat scroll 0 0 #fff;
+}
+div.lykar-sidebar-block{
     margin: 0px 10px 15px 10px;
     padding: 15px;
     background: none repeat scroll 0 0 #f9f9f9;
