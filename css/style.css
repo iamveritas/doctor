@@ -106,6 +106,23 @@ p {
 }
 /* --- end section: popular doctor --- */
 
+/* --- section: signup and login --- */
+.block-grey {
+    background: none repeat scroll 0 0 #f9f9f9;
+    margin: 10px;
+    padding: 20px 3px;
+}
+.block-white {
+    background: none repeat scroll 0 0 #fff;
+    margin: 0 10px;
+    padding: 20px 10px;
+}
+.bottom-line {
+    border-bottom: 1px solid #eeeeee;
+}
+
+/* --- end section: signup and login --- */
+
 /* --- section: footer --- */
 footer hr.lykar-separator{
     margin-top:0;

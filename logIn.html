@@ -98,8 +98,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <div class="float-left text-left">РЕЄСТРАЦІЯ</div>
-                        <div class="text-right">Вже є обліковий запис?
-                            <a href="logIn.html"> Ввійти</a></div>
+                        <div class="text-right">Ще немає облікового запису?
+                            <a href="signUp.html"> Зареєструватися</a></div>
                     </div>
                     <div class="modal-body color-scheme-grey">
                         <div class="text-center text-uppercase modal-soc">Зареєструватися через:</div>
@@ -140,57 +140,69 @@
             </div>
         </div> <!--- end MODAL SIGNUP --->
 
+
         <!-- ------------- SECTION: LOGIN ------------- -->
-        <div class="first-section">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="float-left text-left">РЕЄСТРАЦІЯ</div>
-                        <div class="text-right">Ще немає облікового запису?
-                            <a href="signUp.html"> Зареєструватися</a>
+        <section class="first-section color-scheme-grey">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="row block-white bottom-line">
+                            <div class="col-md-offset-1 col-md-2">
+                                <div class="float-left text-left">ВХІД</div>
+                            </div>
+                            <div class="col-md-offset-1 col-md-7">
+                                <div class="text-right">Ще немає облікового запису?<a href="signUp.html"> Зареєструватися</a></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-body color-scheme-grey">
-                        <div class="text-center text-uppercase modal-soc">Ввійти через:</div>
-                        <ul class="line text-center">
-                            <li><a href="#" class="facebook"><img src="img/facebook.png"></a></li>
-                            <li><a href="#" class="vkontakte"><img src="img/vkontakte.png"></a></li>
-                            <li><a href="#" class="google_plus"><img src="img/google_plus.png"></a></li>
-                            <li><a href="#" class="odnoklassniki"><img src="img/odnoklassniki.png"></a></li>
-                        </ul>
-                        <div class="text-center text-uppercase modal-em">Ввійти через email:</div>
-                        <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">email:</label>
-                                <div class="col-sm-6">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">пароль:</label>
-                                <div class="col-sm-6">
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-9">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> Запам'ятати мене
-                                        </label>
+                        <div class="row block-white">
+                            <div class="text-center text-uppercase modal-soc">Ввійти через:</div>
+                            <ul class="line text-center">
+                                <li><a href="#" class="facebook"><img src="img/facebook.png"></a></li>
+                                <li><a href="#" class="vkontakte"><img src="img/vkontakte.png"></a></li>
+                                <li><a href="#" class="google_plus"><img src="img/google_plus.png"></a></li>
+                                <li><a href="#" class="odnoklassniki"><img src="img/odnoklassniki.png"></a></li>
+                            </ul>
+                            <div class="text-center text-uppercase modal-em">або ввійти через email:</div>
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">email:</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-6">
-                                    <button type="submit" class="btn btn-primary btn-block text-uppercase">Ввійти</button>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">пароль:</label>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> Запам'ятати мене
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-6">
+                                        <button type="submit" class="btn btn-primary btn-block text-uppercase">Ввійти</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <div class="text-left">
+                                            <a href="forgot_password.html">Забули пароль?</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> <!--- end SECTION: LOGIN --->
+        </section> <!--- end SECTION: LOGIN --->
 
         <!-- ------------- BLOCK FOOTER ------------- -->
         <footer id="footer" class = "color-scheme-grey text-center">

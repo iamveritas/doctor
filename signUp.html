@@ -141,52 +141,87 @@
         </div> <!--- end MODAL SIGNUP --->
 
         <!-- ------------- SECTION: SIGNUP ------------- -->
-        <div class="first-section">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="float-left text-left">ВХІД</div>
-                        <div class="text-right">Вже є обліковий запис?
-                            <a href="logIn.html"> Ввійти</a></div>
-                    </div>
-                    <div class="modal-body color-scheme-grey">
-                        <div class="text-center text-uppercase modal-soc">Зареєструватися через:</div>
-                        <ul class="line text-center">
-                            <li><a href="#" class="facebook"><img src="img/facebook.png"></a></li>
-                            <li><a href="#" class="vkontakte"><img src="img/vkontakte.png"></a></li>
-                            <li><a href="#" class="google_plus"><img src="img/google_plus.png"></a></li>
-                            <li><a href="#" class="odnoklassniki"><img src="img/odnoklassniki.png"></a></li>
-                        </ul>
-                        <div class="text-center text-uppercase modal-em">Зареєструватися через email:</div>
-                        <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">ім'я:</label>
-                                <div class="col-sm-6">
-                                    <input type="email" class="form-control" id="inputUserName" placeholder="Username">
-                                </div>
+        <section class="first-section color-scheme-grey">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="row block-white bottom-line">
+                            <div class="col-md-offset-1 col-md-2">
+                                <div class="float-left text-left">РЕЄСТРАЦІЯ</div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">email:</label>
-                                <div class="col-sm-6">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                </div>
+                            <div class="col-md-offset-1 col-md-7">
+                                <div class="text-right">Вже є обліковий запис?<a href="logIn.html"> Ввійти</a></div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">пароль:</label>
-                                <div class="col-sm-6">
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        </div>
+                        <div class="row block-white">
+                            <div class="text-center text-uppercase modal-soc">Ввійти через:</div>
+                            <ul class="line text-center">
+                                <li><a href="#" class="facebook"><img src="img/facebook.png"></a></li>
+                                <li><a href="#" class="vkontakte"><img src="img/vkontakte.png"></a></li>
+                                <li><a href="#" class="google_plus"><img src="img/google_plus.png"></a></li>
+                                <li><a href="#" class="odnoklassniki"><img src="img/odnoklassniki.png"></a></li>
+                            </ul>
+                            <div class="text-center text-uppercase modal-em">або зареєструватися через email:</div>
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">ім'я:</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control" id="inputUserName" placeholder="Name">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-6">
-                                    <button type="submit" class="btn btn-primary btn-block text-uppercase">Зареєструватися</button>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">email:</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">пароль:</label>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">стать:</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" id="select">
+                                            <option>не вказано</option>
+                                            <option>чоловік</option>
+                                            <option>жінка</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">вік:</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" id="select">
+                                            <option>не вказано</option>
+                                            <option>до 18 років</option>
+                                            <option>19 - 30 років</option>
+                                            <option>31 - 45 років</option>
+                                            <option>46 - 60 років</option>
+                                            <option>більше 60</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-6">
+                                        <button type="submit" class="btn btn-primary btn-block text-uppercase">Зареєструватися</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="text-center">
+                                            Зареєструвавшись, ви погоджуєтеся з нашими <a href="#">Умови використання</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> <!--- end SECTION: SIGNUP --->
+        </section> <!--- end SECTION: SIGNUP --->
 
         <!-- ------------- BLOCK FOOTER ------------- -->
         <footer id="footer" class = "color-scheme-grey text-center">
