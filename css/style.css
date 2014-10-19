@@ -157,10 +157,10 @@ div.lykar-top-padding{
     padding-bottom: 20px;
 }
 div.lykar-separator-vertical-right   {
-    border-right: 1px solid rgba( 100, 110, 100, 0.5);
+    border-right: 1px solid #eeeeee;
 }
 div.lykar-separator-vertical-left   {
-    border-left: 1px solid rgba( 100, 110, 100, 0.5);
+    border-left: 1px solid #eeeeee;
 }
 
 /* --- user profile --- */
