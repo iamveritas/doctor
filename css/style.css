@@ -139,17 +139,25 @@ p.lykar-copyright{
 }
 /* --- end section: footer --- */
 
-/*______PROFILE_____*/
+/*______DOCTOR PROFILE_____*/
+div.lykar-doctor-avatar {
+    padding-top: 15px;
+}
 div.lykar-btn-add-fb {
     margin-top: 50px;
     margin-bottom: 25px;
 }
 div.lykar-boxed-comment {
-    border-radius: 20px;
     background: none repeat scroll 0 0 #f9f9f9;
     padding: 20px;
     margin-bottom: 20px
-}    
+
+}
+a.lykar-comment-like:hover {
+    text-decoration: none;
+   } 
+/*______end DOCTOR PROFILE_____*/
+
 
 /*______REVIEW_____*/
 div.lykar-top-padding{
