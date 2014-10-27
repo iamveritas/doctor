@@ -1,0 +1,205 @@
+﻿/* --- щодок кросбраузерності (в мене підвіндовсом є стаття, глянути!! --- */
+section {
+    display: block;
+}
+/* --- nav block --- */
+.nav-btn {
+    margin: 5px 15px 0px 15px;
+}
+/* --- end nav block --- */
+
+/* --- modal block ---*/
+.float-left {
+    float: left;
+}
+.modal-soc {
+    margin: 20px 0 20px;
+}
+.line {
+    list-style: none outside none;
+    padding: 0;
+}
+.line li {
+    display: inline;
+}
+.line li a {
+    margin: 0 5px;
+}
+.modal-em {
+    margin: 40px 0 20px;
+}
+/* --- end modal block --- */
+
+/* --- grey block --- */
+.color-scheme-grey {
+    background: none repeat scroll 0 0 #f9f9f9;
+    color: #666;
+}
+/* --- white block --- */
+.color-scheme-white {
+    background: none repeat scroll 0 0 #fff;
+    color: #666;
+}
+
+/* --- section: search --- */
+.first-section {
+    display: block;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    position: relative;
+    z-index: 120;
+}
+.home-search-city {
+    padding: 5px 0px 20px;
+}
+.home-city {
+    font-size: 1.2em;
+}
+.red {
+    color: #d9230f;
+}
+/* --- end section: search --- */
+
+/* --- section: city clinics --- */
+.city.boxed-white {
+    margin-bottom: 30px;
+}
+.boxed-white {
+    background: none repeat scroll 0 0 #fff;
+    padding: 20px;
+}
+.line-clinics {
+    list-style: none outside none;
+    padding: 0;
+}
+.city h5,.team h5 {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+/* --- end section: city clinics --- */
+
+/* --- section: popular doctor --- */
+.home-section {
+    display: block;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    position: relative;
+    z-index: 120;
+}
+.team.boxed-grey {
+    margin-bottom: 30px;
+}
+.boxed-grey {
+    background: none repeat scroll 0 0 #f9f9f9;
+    padding: 20px;
+}
+.forgot h5 {
+    margin-bottom: 15px;
+}
+p {
+    line-height: 1.6em;
+    margin: 0 0 20px;
+}
+.team p.subtitle {
+    margin-bottom: 10px;
+}
+/* --- end section: popular doctor --- */
+
+/* --- section: signup and login --- */
+.block-grey {
+    background: none repeat scroll 0 0 #f9f9f9;
+    margin: 10px;
+    padding: 20px 3px;
+}
+.block-white {
+    background: none repeat scroll 0 0 #fff;
+    margin: 0 10px;
+    padding: 20px 10px;
+}
+.bottom-line {
+    border-bottom: 1px solid #eeeeee;
+}
+
+/* --- end section: signup and login --- */
+
+/* --- section: footer --- */
+footer hr.lykar-separator{
+    margin-top:0;
+}
+p.lykar-copyright{
+    font-size: 0.8em;
+    line-height: 1.5;
+}
+.padding {
+    padding: 10px 15px;
+}
+.padding-top {
+    padding-top: 10px;
+}
+/* --- end section: footer --- */
+
+/*______DOCTOR PROFILE_____*/
+div.lykar-doctor-avatar {
+    padding-top: 15px;
+}
+div.lykar-btn-add-fb {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+div.lykar-boxed-comment {
+    background: none repeat scroll 0 0 #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px
+
+}
+a.lykar-comment-like:hover, a.facebook:hover, a.vkontakte:hover {
+    text-decoration: none;
+   } 
+/*______end DOCTOR PROFILE_____*/
+
+
+/*______REVIEW_____*/
+div.lykar-top-padding{
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+div.lykar-separator-vertical-right   {
+    border-right: 1px solid #eeeeee;
+}
+div.lykar-separator-vertical-left   {
+    border-left: 1px solid #eeeeee;
+}
+
+/* --- user profile --- */
+.user {
+    padding: 11px 15px;
+    font-weight: 600;
+}
+/* --- end user profile --- */
+
+/* --- SIDEBAR --- */
+div.lykar-sidebar{
+    padding: 15px;
+    padding-right: 35px;
+    background: none repeat scroll 0 0 #fff;
+}
+div.lykar-sidebar-block{
+    margin: 0px 10px 15px 10px;
+    padding: 15px;
+    background: none repeat scroll 0 0 #f9f9f9;
+}
+
+div.lykar-sidebar-team {
+    margin: 5px 0px;
+    background: none repeat scroll 0 0 #fff;
+    padding: 1.5px;
+    width: 100%;
+}
+div.lykar-sidebar-block-padding{
+    padding-right : 15px;
+}
+div.lykar-sidebar-team-padding{
+    padding-right : 0px;
+}
+/* --- end SIDEBAR --- */

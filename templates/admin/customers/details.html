@@ -1,0 +1,50 @@
+{% extends "admin/base_admin.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Customer details" %}{% endblock %}
+
+{% block content %}
+    <h3>{% trans "Customer details" %}</h3>
+    <div class="row">
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+                <dt>{% trans "Customer's Full Name:" %}</dt>
+                <dd>{{ customer.full_name }}</dd>
+                <dt>{% trans "Email:" %}</dt>
+                <dd>{{ customer.email }}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>{% trans "Company:" %}</dt>
+                <dd>{{ customer.company }}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>{% trans "Phone:" %}</dt>
+                <dd>{{ customer.phone }}</dd>
+                <dt>{% trans "Skype:" %}</dt>
+                <dd>{{ customer.skype }}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>{% trans "Address:" %}</dt>
+                <dd>{{ customer.address }}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>{% trans "Web Site:" %}</dt>
+                <dd>{{ customer.web_site }}</dd>
+            </dl>
+            <p>
+                <a href="{% url 'admin:customers:update-customer' customer.id %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+                    {% trans "edit" %}
+                </a>
+                <a href="{% url 'admin:customers:delete-customer' customer.id %}" role="button" class="btn btn-primary btn-sm">
+                    {% trans "delete" %}
+                </a>
+            </p>
+        </div>
+        <div class="col-md-5">
+            <dl>
+                <dt>{% trans "Short Description:" %}</dt>
+                <dd>{{ customer.description }}</dd>
+            </dl>
+        </div>
+    </div>
+{% endblock %}

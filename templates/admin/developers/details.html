@@ -1,0 +1,52 @@
+{% extends "admin/base_admin.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Developer details" %}{% endblock %}
+
+{% block content %}
+    <h3>{% trans "Developer details" %}</h3>
+    <div class="row">
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+                <dt>{% trans "Name:" %}</dt>
+                <dd>{{ developer }}</dd>
+                <dt>{% trans "Email:" %}</dt>
+                <dd>{{ developer.email }}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>{% trans "Phone:" %}</dt>
+                <dd>{{ developer.phone }}</dd>
+                <dt>{% trans "Skype:" %}</dt>
+                <dd>{{ developer.skype }}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>{% trans "LinkedIn URL:" %}</dt>
+                <dd>{{ developer.linkedin_profile }}</dd>
+                <dt>{% trans "GitHub User Name:" %}</dt>
+                <dd>{{ developer.github_username }}</dd>
+            </dl>
+            {% if developer.resume_file %}
+                <dl class="dl-horizontal">
+                    <dt>{% trans "Resume:" %}</dt>
+                        <dd>
+                            <a targt="_blank" href="{{ developer.resume_file.url }}">{% trans "Download resume" %}</a>
+                        </dd>
+                </dl>
+            {% endif %}
+            <p>
+                <a href="{% url 'admin:developers:update-developer' developer.id %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+                    {% trans "edit" %}
+                </a>
+                <a href="{% url 'admin:developers:delete-developer' developer.id %}" role="button" class="btn btn-primary btn-sm">
+                    {% trans "delete" %}
+                </a>
+            </p>
+        </div>
+        <div class="col-md-5">
+            <dl>
+                <dt>{% trans "Developer's Summary Profile Info:" %}</dt>
+                <dd>{{ developer.summary }}</dd>
+            </dl>
+        </div>
+    </div>
+{% endblock %}

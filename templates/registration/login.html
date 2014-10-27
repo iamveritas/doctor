@@ -1,0 +1,50 @@
+<!DOCTYPE>
+{% load i18n %}
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Ettera Consulting LLC - Login</title>
+        <!-- Bootstrap core CSS -->
+        <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+        <!-- Add custom CSS here -->
+        <link href="{{ STATIC_URL }}css/admin.css" rel="stylesheet">
+    </head>
+<body>
+<div class="form-login">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <form action="" method="post" class="form-horizontal" role="form">
+                {% csrf_token %}
+                <h3 class="text-center">{% trans "Login to Ettera Consulting LLC" %}</h3>
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        {{ form.username.label }}
+                    </div>
+                    <div class="col-sm-9">
+                        {{ form.username }}
+                        <div class="text-warning">{{ form.username.errors }}</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        {{ form.password.label }}
+                    </div>
+                    <div class="col-sm-9">
+                        {{ form.password }}
+                        <div class="text-warning">{{ form.password.errors }}</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <input type="submit" class="btn btn-primary"  value="{% trans 'Login' %}" />
+                    </div>
+                    <div class="col-sm-9">
+                        <a href="{% url 'home' %}"><small>{% trans '' %}</small></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

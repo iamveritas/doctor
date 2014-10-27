@@ -1,0 +1,78 @@
+{% extends "admin/base_admin.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Customer form" %}{% endblock %}
+
+{% block content %}
+    <h3>{% trans "Customer form" %}</h3>
+    <form action="" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <input type="hidden" name="next" value="{{request.GET.next}}" />
+        <div class="row">
+            <div class="col-md-7">
+                <dl class="dl-horizontal">
+                    <dt>{{ form.full_name.label }}*</dt>
+                    <dd>{{ form.full_name }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.full_name.errors }}</dd>
+                    <dt>{{ form.email.label }}*</dt>
+                    <dd>{{ form.email }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.email.errors }}</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt>{{ form.company.label }}</dt>
+                    <dd>{{ form.company }}</dd>
+                    <dt></dt>
+                    <dd>
+                        <a href="{% url 'admin:customers:add-company' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+                            {% trans "Add company" %}
+                        </a>
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt>{{ form.phone.label }}</dt>
+                    <dd>{{ form.phone }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.phone.errors }}</dd>
+                    <dt>{{ form.skype.label }}</dt>
+                    <dd>{{ form.skype }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.skype.errors }}</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt>{{ form.address.label }}</dt>
+                    <dd>{{ form.address }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.address.errors }}</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt>{{ form.web_site.label }}</dt>
+                    <dd>{{ form.web_site }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.web_site.errors }}</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt>{{ form.photo.label }}</dt>
+                    <dd>{{ form.photo }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.photo.errors }}</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt></dt>
+                    <dd><small>* Required Fields</small></dd>
+                </dl>
+            </div>
+            <div class="col-md-5">
+                <dl>
+                    <dt>{{ form.description.label }}</dt>
+                    <dd>{{ form.description }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.description.errors }}</dd>
+                </dl>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Save" />
+    </form>
+{% endblock %}
