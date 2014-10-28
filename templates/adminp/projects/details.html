@@ -1,4 +1,4 @@
-{% extends "admin/base_admin.html" %}
+{% extends "adminp/base_admin.html" %}
 {% load i18n %}
 
 {% block title %}{% trans "Project details" %}{% endblock %}
@@ -37,10 +37,10 @@
             {% endfor %}
             </dl>
             <p>
-                <a href="{% url 'admin:projects:update-project' project.id %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+                <a href="{% url 'adminp:projects:update-project' project.id %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
                     {% trans "edit" %}
                 </a>
-                <a href="{% url 'admin:projects:delete-project' project.id %}" role="button" class="btn btn-primary btn-sm">
+                <a href="{% url 'adminp:projects:delete-project' project.id %}" role="button" class="btn btn-primary btn-sm">
                     {% trans "delete" %}
                 </a>
             </p>

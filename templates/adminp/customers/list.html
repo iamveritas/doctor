@@ -1,4 +1,4 @@
-{% extends "admin/base_admin.html" %}
+{% extends "adminp/base_admin.html" %}
 {% load i18n %}
 
 {% block title %}{% trans "Customers" %}{% endblock %}
@@ -6,7 +6,7 @@
 {% block content %}
     <h3>{% trans "Customers" %}</h3>
     <p>
-        <a href="{% url 'admin:customers:add-customer' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+        <a href="{% url 'adminp:customers:add-customer' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
             {% trans "Add customer" %}
         </a>
     </p>
@@ -22,14 +22,14 @@
 
     {% for customer in customers %}
         <tr>
-            <td><a href="{% url 'admin:customers:details' customer.id %}">{{ customer }}</a></td>
+            <td><a href="{% url 'adminp:customers:details' customer.id %}">{{ customer }}</a></td>
             <td>{{ customer.email }}</td>
             <td>{{ customer.phone }}</td>
             <td>{{ customer.skype }}</td>
             <td>{{ customer.web_site }}</td>
             <td>
-                <a href="{% url 'admin:customers:update-customer' customer.id %}?next={{ request.get_full_path }}">{% trans "edit" %}</a>
-                <a href="{% url 'admin:customers:delete-customer' customer.id %}">{% trans "delete" %}</a>
+                <a href="{% url 'adminp:customers:update-customer' customer.id %}?next={{ request.get_full_path }}">{% trans "edit" %}</a>
+                <a href="{% url 'adminp:customers:delete-customer' customer.id %}">{% trans "delete" %}</a>
             </td>
         </tr>
     {% empty %}

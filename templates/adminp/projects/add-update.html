@@ -1,4 +1,4 @@
-{% extends "admin/base_admin.html" %}
+{% extends "adminp/base_admin.html" %}
 {% load i18n %}
 
 {% block title %}{% trans "Project form" %}{% endblock %}
@@ -46,7 +46,7 @@
                     <dd class="text-warning">{{ form.customer.errors }}</dd>
                     <dt></dt>
                     <dd>
-                        <a href="{% url 'admin:customers:add-customer' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+                        <a href="{% url 'adminp:customers:add-customer' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
                             {% trans "Add customer" %}
                         </a>
                     </dd>
@@ -58,7 +58,7 @@
                     <dd class="text-warning">{{ form.developers.errors }}</dd>
                     <dt></dt>
                     <dd>
-                        <a href="{% url 'admin:developers:add-developer' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+                        <a href="{% url 'adminp:developers:add-developer' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
                             {% trans "Add developer" %}
                         </a>
                     </dd>

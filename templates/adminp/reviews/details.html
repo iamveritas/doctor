@@ -1,4 +1,4 @@
-{% extends "admin/base_admin.html" %}
+{% extends "adminp/base_admin.html" %}
 {% load i18n %}
 
 {% block title %}{% trans "Review details" %}{% endblock %}
@@ -16,10 +16,10 @@
                 <dd>{{ review.time_stamp }}</dd>
             </dl>
             <p>
-                <a href="{% url 'admin:reviews:update-review' review.id %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+                <a href="{% url 'adminp:reviews:update-review' review.id %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
                     {% trans "edit" %}
                 </a>
-                <a href="{% url 'admin:reviews:delete-review' review.id %}" role="button" class="btn btn-primary btn-sm">
+                <a href="{% url 'adminp:reviews:delete-review' review.id %}" role="button" class="btn btn-primary btn-sm">
                     {% trans "delete" %}
                 </a>
             </p>

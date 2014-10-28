@@ -47,11 +47,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+
     'apps.home',
     'apps.rules',
     'apps.advertisement',
     'apps.faq',
     'apps.contacts',
+    'apps.adminp',
 )
 
 MIDDLEWARE_CLASSES = (

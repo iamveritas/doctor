@@ -1,4 +1,4 @@
-{% extends "admin/base_admin.html" %}
+{% extends "adminp/base_admin.html" %}
 {% load i18n %}
 
 {% block title %}{% trans "Projects" %}{% endblock %}
@@ -6,7 +6,7 @@
 {% block content %}
     <h3>{% trans "Projects" %}</h3>
     <p>
-        <a href="{% url 'admin:projects:add-project' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+        <a href="{% url 'adminp:projects:add-project' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
             {% trans "Add project" %}
         </a>
     </p>
@@ -22,14 +22,14 @@
 
     {% for project in projects %}
         <tr>
-            <td><a href="{% url 'admin:projects:details' project.id %}">{{ project }}</a></td>
+            <td><a href="{% url 'adminp:projects:details' project.id %}">{{ project }}</a></td>
             <td>{{ project.billable }}</td>
             <td>{{ project.project_url }}</td>
             <td>{{ project.date_started }}</td>
             <td>{{ project.date_finished }}</td>
             <td>
-                <a href="{% url 'admin:projects:update-project' project.id %}?next={{ request.get_full_path }}">{% trans "edit" %}</a>
-                <a href="{% url 'admin:projects:delete-project' project.id %}">{% trans "delete" %}</a>
+                <a href="{% url 'adminp:projects:update-project' project.id %}?next={{ request.get_full_path }}">{% trans "edit" %}</a>
+                <a href="{% url 'adminp:projects:delete-project' project.id %}">{% trans "delete" %}</a>
             </td>
         </tr>
     {% empty %}
