@@ -1,4 +1,4 @@
-{% extends "adminp/base_admin.html" %}
+{% extends "adminpanel/base_admin.html" %}
 {% load i18n %}
 
 {% block title %}{% trans "Developer details" %}{% endblock %}
@@ -34,10 +34,10 @@
                 </dl>
             {% endif %}
             <p>
-                <a href="{% url 'adminp:developers:update-developer' developer.id %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+                <a href="{% url 'adminpanel:developers:update-developer' developer.id %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
                     {% trans "edit" %}
                 </a>
-                <a href="{% url 'adminp:developers:delete-developer' developer.id %}" role="button" class="btn btn-primary btn-sm">
+                <a href="{% url 'adminpanel:developers:delete-developer' developer.id %}" role="button" class="btn btn-primary btn-sm">
                     {% trans "delete" %}
                 </a>
             </p>

@@ -14,8 +14,8 @@ urlpatterns = patterns('',
                        url(r"^contacts/", include("apps.contacts.urls", namespace="contacts")),
                        # url(r'^blog/', include('blog.urls')),
 
-                       #url(r'^adminp/', include(adminp.site.urls)),
-                       url(r"^site_admin/", include("apps.adminp.urls", namespace="adminp")),
+                       #url(r'^adminpanel/', include(adminpanel.site.urls)),
+                       url(r"^site_admin/", include("apps.adminpanel.urls", namespace="adminpanel")),
                        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
                            'document_root': settings.MEDIA_ROOT})
 )

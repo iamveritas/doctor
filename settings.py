@@ -9,19 +9,21 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 import os
+
 BASE_DIR = os.path.dirname(__file__)
 
 FEEDBACK_EMAIL_RECEIVERS = (
     'geo.savchuk@gmail.com',
-    'm.hyral@gmail.com',
+    'hyralmisha@gmail.com',
 )
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fyr4^5ciw&#chl)cxm3@(qzp%-7yru)#1vfp3__dcw(rpa^ofd_ryt'
+SECRET_KEY = 'fyr4^5ciw&#chl)cxm3@(qzp%-7yru)#1vfp3_dcw(rpa^of_yt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,13 +49,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
     'apps.home',
     'apps.rules',
     'apps.advertisement',
     'apps.faq',
     'apps.contacts',
-    'apps.adminp',
+    'apps.adminpanel',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,7 +88,7 @@ WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     "default": {
-        'ENGINE':'django.db.backends.',
+        'ENGINE': 'django.db.backends.',
         'NAME': '',
         'USER': '',
         'PASSWORD': '',
@@ -99,9 +100,9 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uk-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
@@ -116,17 +117,17 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static-collect/')
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '../doctor/static/'),
+    os.path.join(BASE_DIR, 'static/'),
 )
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '../doctor/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 MEDIA_URL = '/media/'
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, '../doctor/templates/'),
+    os.path.join(BASE_DIR, 'templates/'),
 )
 
 try:

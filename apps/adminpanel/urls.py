@@ -1,21 +1,21 @@
 from django.conf.urls import *
 from django.contrib.auth.decorators import login_required
 
-from apps.adminp.doctors import views
+from apps.adminpanel.doctors import views
 
 urlpatterns = patterns("",
     url(r"^$", view=login_required(views.DoctorList.as_view()),
         name="index"),
 
-    #url(r"^developers/", include("apps.adminp.developers.urls",
+    #url(r"^developers/", include("apps.adminpanel.developers.urls",
     #                             namespace="developers")),
 
-    #url(r"^customers/", include("apps.adminp.customers.urls",
+    #url(r"^customers/", include("apps.adminpanel.customers.urls",
     #                            namespace="customers")),
 
-    #url(r"^projects/", include("apps.adminp.projects.urls",
+    #url(r"^projects/", include("apps.adminpanel.projects.urls",
     #                           namespace="projects")),
 
-    #url(r"^reviews/", include("apps.adminp.reviews.urls",
+    #url(r"^reviews/", include("apps.adminpanel.reviews.urls",
     #                          namespace="reviews")),
 )
