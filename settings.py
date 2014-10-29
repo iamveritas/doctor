@@ -52,6 +52,7 @@ INSTALLED_APPS = (
 
     'apps.home',
     'apps.adminpanel',
+    'apps.internal',
 
 )
 
@@ -97,17 +98,11 @@ DATABASES = {
 }
 
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'uk-ru'
+LANGUAGE_CODE = 'uk-ua'
 
 TIME_ZONE = 'Europe/Kiev'
 

@@ -42,7 +42,7 @@ class Speciality(models.Model):
 
 class Doctor(models.Model):
 
-    first_name = models.CharField(_("Прізвище"), blank=False, max_length=30)
+    first_name = models.CharField("Прізвище", blank=False, max_length=30)
     last_name = models.CharField(_("Ім'я"), blank=False, max_length=25)
     patronymic = models.CharField("По батькові", blank=False, max_length=30)
     speciality = models.ForeignKey(Speciality, verbose_name=_("Спеціальність"))
