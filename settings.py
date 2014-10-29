@@ -9,9 +9,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-
 import os
-
 BASE_DIR = os.path.dirname(__file__)
 
 FEEDBACK_EMAIL_RECEIVERS = (
@@ -19,11 +17,13 @@ FEEDBACK_EMAIL_RECEIVERS = (
     'hyralmisha@gmail.com',
 )
 
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fyr4^5ciw&#chl)cxm3@(qzp%-7yru)#1vfp3_dcw(rpa^of_yt'
+SECRET_KEY = '^c)!y#yitssh7b%4gyge-_l!5py*cc8&tin0$%jx^x1%$36ji='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,6 +39,7 @@ EMAIL_PORT = ''
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -50,12 +51,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'apps.home',
-    'apps.rules',
-    'apps.advertisement',
-    'apps.faq',
-    'apps.contacts',
     'apps.adminpanel',
-    'apps.internal',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,6 +76,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 )
 
+
 ROOT_URLCONF = 'urls'
 
 WSGI_APPLICATION = 'wsgi.application'
@@ -97,6 +95,14 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
