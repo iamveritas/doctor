@@ -60,7 +60,7 @@ section {
 }
 /* --- end section: search --- */
 
-/* --- section: city clinics --- */
+/* --- section: city hospitals --- */
 .city.boxed-white {
     margin-bottom: 30px;
 }
@@ -77,7 +77,7 @@ section {
     text-transform: uppercase;
     font-weight: 600;
 }
-/* --- end section: city clinics --- */
+/* --- end section: city hospitals --- */
 
 /* --- section: popular doctor --- */
 .home-section {

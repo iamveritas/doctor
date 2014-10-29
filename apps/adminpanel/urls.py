@@ -7,15 +7,21 @@ urlpatterns = patterns("",
     url(r"^$", view=login_required(views.DoctorList.as_view()),
         name="index"),
 
-    #url(r"^developers/", include("apps.adminpanel.developers.urls",
-    #                             namespace="developers")),
+    url(r"^doctors/", include("apps.adminpanel.doctors.urls",
+                                 namespace="doctors")),
 
-    #url(r"^customers/", include("apps.adminpanel.customers.urls",
-    #                            namespace="customers")),
+    url(r"^regions/", include("apps.adminpanel.regions.urls",
+                                namespace="regions")),
 
-    #url(r"^projects/", include("apps.adminpanel.projects.urls",
-    #                           namespace="projects")),
+    url(r"^cities/", include("apps.adminpanel.cities.urls",
+                               namespace="cities")),
 
-    #url(r"^reviews/", include("apps.adminpanel.reviews.urls",
-    #                          namespace="reviews")),
+    url(r"^hospitals/", include("apps.adminpanel.hospitals.urls",
+                              namespace="hospitals")),
+
+    url(r"^specialities/", include("apps.adminpanel.specialities.urls",
+                              namespace="specialities")),
+
+    url(r"^doctor_reviews/", include("apps.adminpanel.doctor_reviews.urls",
+                              namespace="doctor_reviews")),
 )

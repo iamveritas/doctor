@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'apps.faq',
     'apps.contacts',
     'apps.adminpanel',
+    'apps.internal',
 )
 
 MIDDLEWARE_CLASSES = (
