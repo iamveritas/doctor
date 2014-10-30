@@ -19,14 +19,15 @@
                     <dd class="text-warning">{{ form.name.errors }}</dd>
                 </dl>
                 <dl class="dl-horizontal">
-                    <dt>{{ form.region.label }}</dt>
+                    <dt>{{ form.region.label }}*</dt>
                     <dd>{{ form.region }}</dd>
                     <dt></dt>
-                    <dd>
+                    <dd class="add-button">
                         <a href="{% url 'adminpanel:regions:add-region' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
                             {% trans "Додати область" %}
                         </a>
                     </dd>
+                    <dt></dt>
                     <dd class="text-warning">{{ form.region.errors }}</dd>
                 </dl>
             </div>
