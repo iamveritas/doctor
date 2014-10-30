@@ -1,0 +1,25 @@
+{% extends "adminpanel/base_admin.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Форма область" %}{% endblock %}
+
+{% block menu_name %}{% trans "Форма область" %}{% endblock %}
+
+{% block content %}
+    <form action="" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <input type="hidden" name="next" value="{{request.GET.next}}" />
+        <div class="row">
+            <div class="col-md-12">
+                <dl class="dl-horizontal">
+                    <dt>{{ form.name.label }}*</dt>
+                    <dd>{{ form.name }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.name.errors }}</dd>
+                </dl>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Зберегти" />
+    </form>
+{% endblock %}

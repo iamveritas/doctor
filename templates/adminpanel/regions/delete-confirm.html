@@ -1,0 +1,14 @@
+{% extends "adminpanel/base_admin.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Видалити область" %}{% endblock %}
+
+{% block menu_name %}{% trans "Видалити область" %}{% endblock %}
+
+{% block content %}
+    <form action="" method="post" class="form-horizontal" role="form">
+        {% csrf_token %}
+        <p>{% trans "Ви впевнені що хочете видалити область " %}<strong>{{ region }}</strong>?</p>
+        <button class="btn btn-danger">{% trans "Видалити" %}</button>
+    </form>
+{% endblock %}

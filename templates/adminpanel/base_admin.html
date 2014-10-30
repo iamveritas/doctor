@@ -56,10 +56,10 @@
                         <a href="#">Спеціальності</a>
                     </li>
                     <li>
-                        <a href="#">Міста</a>
+                        <a href="{% url 'adminpanel:cities:list' %}">Міста</a>
                     </li>
                     <li>
-                        <a href="#">Області</a>
+                        <a href="{% url 'adminpanel:regions:list' %}">Області</a>
                     </li>
                 </ul>
             </div> <!-- /.navbar-collapse -->
@@ -72,15 +72,8 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3 class="page-header">
-                            Пункт меню
-                        </h3>
-                    </div>
-                </div> <!-- /.row -->
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p>flksdjlk jdsk jlkdsj fl kjsdfk jadslk fjlkdjs flkjldak jkladfj kljlkfj lsdakjflkadsklfjdslkfjldsjf lkjf jlkf ajdlfjljskd flj fjlk dsjlaf jlsdkfl jkasdj fklajfklj klsjdf kljskfj ksfj 111111111111111111 111111111111 11111111111</p>
+                        <h3>{% block menu_name %}{% endblock %}</h3>
+                        {% block content %}{% endblock %}
                     </div>
                 </div> <!-- /.row -->
 

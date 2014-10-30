@@ -4,15 +4,15 @@ from django.db import models
 
 
 SEX_CHOICES = (
-    ("0", "Оберіть стать"),
-    ("1", "чоловіча"),
-    ("2", "жіноча"),
+    (None, "Оберіть стать"),
+    ("M", "чоловіча"),
+    ("F", "жіноча"),
 )
 
 IS_STATE_CHOICES = (
-    ("0", "Обрати"),
-    ("1", "так"),
-    ("2", "ні"),
+    (None, "Обрати"),
+    ("Y", "так"),
+    ("N", "ні"),
 )
 
 
@@ -56,7 +56,7 @@ class HospitalType(models.Model):
 class Hospital(models.Model):
 
     name = models.CharField("Назва клініки", blank=False, max_length=75)
-    is_state = models.CharField("Державна", default="", blank=False, max_length=1, choices=IS_STATE_CHOICES)
+    is_state = models.CharField("Державна", blank=False, max_length=1, choices=IS_STATE_CHOICES)
     type = models.ForeignKey(HospitalType, blank=False, verbose_name="Тип клініки")
     city = models.ForeignKey(City, verbose_name="Місто")
     address = models.CharField("Адреса (без назви міста)", blank=False, max_length=150)
@@ -90,7 +90,7 @@ class Doctor(models.Model):
     last_name = models.CharField("Прізвище", blank=False, max_length=30)
     first_name = models.CharField("Ім'я", blank=False, max_length=25)
     patronymic = models.CharField("По батькові", blank=False, max_length=30)
-    sex = models.CharField("Стать", default="", blank=False, max_length=1, choices=SEX_CHOICES)
+    sex = models.CharField("Стать", blank=False, max_length=1, choices=SEX_CHOICES)
     speciality = models.ForeignKey(Speciality, verbose_name="Спеціальність")
     hospitals = models.ManyToManyField(Hospital, blank=False, verbose_name="Клініка")
     image = models.ImageField("Зображення", upload_to="doctor_photos/",
