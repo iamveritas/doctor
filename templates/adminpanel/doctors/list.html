@@ -1,0 +1,105 @@
+{% extends "adminpanel/base_admin.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Лікарі" %}{% endblock %}
+
+{% block menu_name %}{% trans "Лікарі" %}{% endblock %}
+
+{% block content %}
+    <div class="add">
+        <a href="{% url 'adminpanel:doctors:add-doctor' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+            {% trans "Додати лікаря" %}
+        </a>
+    </div>
+    <table class="table table-striped">
+        <tr class="red">
+            <th>{% trans "№" %}</th>
+            <th>{% trans "Прізвище" %}</th>
+            <th>{% trans "Ім’я" %}</th>
+            <th>{% trans "Спеціальність" %}</th>
+            <th>{% trans "Місце роботи" %}</th>
+            <th>{% trans "Статус" %}</th>
+            <th>{% trans "Операції" %}</th>
+        </tr>
+
+    {% for doctor in doctors %}
+        <tr>
+            <td>{{ doctor.id }}</td>
+            <td>{{ doctor.first_name }}</td>
+            <td>{{ doctor.last_name }}</td>
+            <td>{{ doctor.speciality }}</td>
+            <td>
+                {% for hospital in doctor_hospitals %}
+                    {{ hospital }}
+                {% endfor %}
+            </td>
+            <td>{{ doctor.is_active }}</td>
+            <td>
+                <a href="{% url 'adminpanel:doctors:update-doctor' doctor.id %}?next={{ request.get_full_path }}">
+                    {% trans "редагувати" %}
+                </a> |
+                <a href="{% url 'adminpanel:doctors:delete-doctor' doctor.id %}">
+                    {% trans "видалити" %}
+                </a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="12" class="text-center text-uppercase">{% trans "таблиця порожня" %}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">   
+                {% if page_obj.has_previous %}
+                    <a href="{% url 'adminpanel:doctors:list' %}?page={{ page_obj.previous_page_number }}">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                    </a>
+                {% else %}
+                    <span class="glyphicon glyphicon-arrow-left"></span>
+                {% endif %}
+                <span class="page-current">
+                    {% if page_obj.number > 2 %}
+                        <a href="{% url 'adminpanel:doctors:list' %}?page=1"> 1 </a>
+                    {% endif %}
+                    
+                    {% if page_obj.number > 3 %}
+                         ... 
+                    {% endif %}
+
+                    {% if page_obj.has_previous %}
+                        <a href="{% url 'adminpanel:doctors:list' %}?page={{ page_obj.previous_page_number }}">
+                            {{ page_obj.previous_page_number }}
+                        </a>
+                    {% endif %}
+
+                    {{ page_obj.number }} 
+
+                    {% if page_obj.has_next %}
+                        <a href="{% url 'adminpanel:doctors:list' %}?page={{ page_obj.next_page_number }}"> {{ page_obj.next_page_number }} </a> 
+                    {% endif %}
+
+                    {% if page_obj.next_page_number < page_obj.paginator.num_pages %}
+                         ... 
+                        <a href="{% url 'adminpanel:doctors:list' %}?page={{ page_obj.paginator.num_pages }}">
+                            {{ page_obj.paginator.num_pages }}
+                        </a>
+                    {% endif %}
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{% url 'adminpanel:doctors:list' %}?page={{ page_obj.next_page_number }}">
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </a>
+                {% else %}
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                {% endif %}
+
+            </span>
+        </div>
+    {% endif %}
+
+    
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "adminpanel/base_admin.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Видалити клініку" %}{% endblock %}
+
+{% block menu_name %}{% trans "Видалити клініку" %}{% endblock %}
+
+{% block content %}
+    <form action="" method="post" class="form-horizontal" role="form">
+        {% csrf_token %}
+        <p>{% trans "Ви впевнені що хочете видалити клініку " %}<strong>{{ hospital }}</strong>?</p>
+        <div class="delete">
+            <button class="btn btn-danger">{% trans "Видалити" %}</button>
+        </div>
+    </form>
+{% endblock %}

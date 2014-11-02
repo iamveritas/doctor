@@ -54,8 +54,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="#">
+                        <a href="{% url 'adminpanel:doctors:list' %}">
                             <span class="glyphicon glyphicon-user"></span>{% trans " Лікарі" %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'adminpanel:specialities:list' %}">
+                            <span class="glyphicon glyphicon-list-alt"></span>{% trans " Спеціалізації лікарів" %}
                         </a>
                     </li>
                     <li>
@@ -64,23 +69,18 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{% url 'adminpanel:hospitals:list' %}">
                             <span class="glyphicon glyphicon-plus-sign"></span>{% trans " Клініки" %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'adminpanel:hospital_types:list' %}">
+                            <span class="glyphicon glyphicon-th-list"></span>{% trans " Тип клініки" %}
                         </a>
                     </li>
                     <li>
                         <a href="#">
                             <span class="glyphicon glyphicon-envelope"></span>{% trans " Відгуки про клініки" %}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-list-alt"></span>{% trans " Спеціалізації лікарів" %}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-th-list"></span>{% trans " Тип клініки" %}
                         </a>
                     </li>
                     <li>
@@ -91,6 +91,21 @@
                     <li>
                         <a href="{% url 'adminpanel:regions:list' %}">
                             <span class="glyphicon glyphicon-map-marker"></span>{% trans " Області" %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'adminpanel:users:list' %}">
+                            <span class="glyphicon glyphicon-user"></span>{% trans " Користувачі" %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'adminpanel:groups:list' %}">
+                            <span class="glyphicon glyphicon-asterisk"></span>{% trans " Групи" %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'adminpanel:permissions:list' %}">
+                            <span class="glyphicon glyphicon-eye-open"></span>{% trans " Дозволи" %}
                         </a>
                     </li>
                 </ul>

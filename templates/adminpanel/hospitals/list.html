@@ -1,0 +1,99 @@
+{% extends "adminpanel/base_admin.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Клініки" %}{% endblock %}
+
+{% block menu_name %}{% trans "Клініки" %}{% endblock %}
+
+{% block content %}
+    <div class="add">
+        <a href="{% url 'adminpanel:hospitals:add-hospital' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+            {% trans "Додати клініку" %}
+        </a>
+    </div>
+    <table class="table table-striped">
+        <tr class="red">
+            <th>{% trans "№" %}</th>
+            <th>{% trans "Клініка" %}</th>
+            <th>{% trans "Тип клініки" %}</th>
+            <th>{% trans "Державна" %}</th>
+            <th>{% trans "Телефон" %}</th>
+            <th>{% trans "Email" %}</th>
+            <th>{% trans "Операції" %}</th>
+        </tr>
+
+    {% for hospital in hospitals %}
+        <tr>
+            <td>{{ hospital.id }}</td>
+            <td>{{ hospital.name }}</td>
+            <td>{{ hospital.type }}</td>
+            <td>{{ hospital.is_state }}</td>
+            <td>{{ hospital.phone }}</td>
+            <td>{{ hospital.email }}</td>
+            <td>
+                <a href="{% url 'adminpanel:hospitals:update-hospital' hospital.id %}?next={{ request.get_full_path }}">
+                    {% trans "редагувати" %}
+                </a> |
+                <a href="{% url 'adminpanel:hospitals:delete-hospital' hospital.id %}">
+                    {% trans "видалити" %}
+                </a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="4" class="text-center text-uppercase">{% trans "таблиця порожня" %}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">   
+                {% if page_obj.has_previous %}
+                    <a href="{% url 'adminpanel:hospitals:list' %}?page={{ page_obj.previous_page_number }}">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                    </a>
+                {% else %}
+                    <span class="glyphicon glyphicon-arrow-left"></span>
+                {% endif %}
+                <span class="page-current">
+                    {% if page_obj.number > 2 %}
+                        <a href="{% url 'adminpanel:hospitals:list' %}?page=1"> 1 </a>
+                    {% endif %}
+                    
+                    {% if page_obj.number > 3 %}
+                         ... 
+                    {% endif %}
+
+                    {% if page_obj.has_previous %}
+                        <a href="{% url 'adminpanel:hospitals:list' %}?page={{ page_obj.previous_page_number }}">
+                            {{ page_obj.previous_page_number }}
+                        </a>
+                    {% endif %}
+
+                    {{ page_obj.number }} 
+
+                    {% if page_obj.has_next %}
+                        <a href="{% url 'adminpanel:hospitals:list' %}?page={{ page_obj.next_page_number }}"> {{ page_obj.next_page_number }} </a> 
+                    {% endif %}
+
+                    {% if page_obj.next_page_number < page_obj.paginator.num_pages %}
+                         ... 
+                        <a href="{% url 'adminpanel:hospitals:list' %}?page={{ page_obj.paginator.num_pages }}">
+                            {{ page_obj.paginator.num_pages }}
+                        </a>
+                    {% endif %}
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{% url 'adminpanel:hospitals:list' %}?page={{ page_obj.next_page_number }}">
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </a>
+                {% else %}
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+
+{% endblock %}

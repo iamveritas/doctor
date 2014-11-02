@@ -1,0 +1,43 @@
+{% extends "adminpanel/base_admin.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Групи" %}{% endblock %}
+
+{% block menu_name %}{% trans "Групи" %}{% endblock %}
+
+{% block content %}
+    <div class="add">
+        <a href="{% url 'adminpanel:groups:add-group' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
+            {% trans "Додати групу" %}
+        </a>
+    </div>
+    <table class="table table-striped">
+        <tr class="red">
+            <th>{% trans "№" %}</th>
+            <th>{% trans "Група" %}</th>
+            <th>{% trans "Права" %}</th>
+            <th>{% trans "Операції" %}</th>
+        </tr>
+
+    {% for group in groups %}
+        <tr>
+            <td>{{ group.id }}</td>
+            <td>{{ group.name }}</td>
+            <td>Дозволи</td>
+            <td>
+                <a href="{% url 'adminpanel:groups:update-group' group.id %}?next={{ request.get_full_path }}">
+                    {% trans "редагувати" %}
+                </a> |
+                <a href="{% url 'adminpanel:groups:delete-group' group.id %}">
+                    {% trans "видалити" %}
+                </a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="4" class="text-center text-uppercase">{% trans "таблиця порожня" %}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+{% endblock %}

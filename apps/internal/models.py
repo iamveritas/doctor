@@ -9,6 +9,12 @@ SEX_CHOICES = (
     ("F", "жіноча"),
 )
 
+STATUS_CHOICES = (
+    ("False", "неактивний"),
+    ("True", "активний"),
+)
+
+
 IS_STATE_CHOICES = (
     (None, "Обрати"),
     ("Y", "так"),
@@ -93,6 +99,7 @@ class Doctor(models.Model):
     sex = models.CharField("Стать", blank=False, max_length=1, choices=SEX_CHOICES)
     speciality = models.ForeignKey(Speciality, verbose_name="Спеціальність")
     hospitals = models.ManyToManyField(Hospital, blank=False, verbose_name="Клініка")
+    is_active = models.CharField("Статус", blank=False, default=False, max_length=5, choices=STATUS_CHOICES)
     image = models.ImageField("Зображення", upload_to="doctor_photos/",
                               null=True, blank=True)
 

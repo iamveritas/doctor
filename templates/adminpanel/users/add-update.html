@@ -1,0 +1,55 @@
+{% extends "adminpanel/base_admin.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Форма користувач" %}{% endblock %}
+
+{% block menu_name %}{% trans "Форма користувач" %}{% endblock %}
+
+{% block content %}
+    <form action="" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <input type="hidden" name="next" value="{{request.GET.next}}" />
+        <div class="row">
+            <div class="col-md-12">
+                <dl class="dl-horizontal">
+                    <dt>{{ form.first_name.label }}*</dt>
+                    <dd>{{ form.first_name }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.first_name.errors }}</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt>{{ form.last_name.label }}*</dt>
+                    <dd>{{ form.last_name }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.last_name.errors }}</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt>{{ form.username.label }}*</dt>
+                    <dd>{{ form.username }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.username.errors }}</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt>{{ form.email.label }}*</dt>
+                    <dd>{{ form.email }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.email.errors }}</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt>{{ form.is_staff.label }}*</dt>
+                    <dd>{{ form.is_staff }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.is_staff.errors }}</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt>{{ form.is_active.label }}*</dt>
+                    <dd>{{ form.is_active }}</dd>
+                    <dt></dt>
+                    <dd class="text-warning">{{ form.is_active.errors }}</dd>
+                </dl>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Зберегти" />
+    </form>
+{% endblock %}
