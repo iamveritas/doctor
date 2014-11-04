@@ -53,7 +53,7 @@
 
     {% if is_paginated %}
         <div class="pagination">
-            <span class="page-links">   
+            <span class="page-links">
                 {% if page_obj.has_previous %}
                     <a href="{% url 'adminpanel:doctors:list' %}?page={{ page_obj.previous_page_number }}">
                         <span class="glyphicon glyphicon-arrow-left"></span>
@@ -65,9 +65,9 @@
                     {% if page_obj.number > 2 %}
                         <a href="{% url 'adminpanel:doctors:list' %}?page=1"> 1 </a>
                     {% endif %}
-                    
+
                     {% if page_obj.number > 3 %}
-                         ... 
+                         ...
                     {% endif %}
 
                     {% if page_obj.has_previous %}
@@ -76,14 +76,14 @@
                         </a>
                     {% endif %}
 
-                    {{ page_obj.number }} 
+                    {{ page_obj.number }}
 
                     {% if page_obj.has_next %}
-                        <a href="{% url 'adminpanel:doctors:list' %}?page={{ page_obj.next_page_number }}"> {{ page_obj.next_page_number }} </a> 
+                        <a href="{% url 'adminpanel:doctors:list' %}?page={{ page_obj.next_page_number }}"> {{ page_obj.next_page_number }} </a>
                     {% endif %}
 
                     {% if page_obj.next_page_number < page_obj.paginator.num_pages %}
-                         ... 
+                         ...
                         <a href="{% url 'adminpanel:doctors:list' %}?page={{ page_obj.paginator.num_pages }}">
                             {{ page_obj.paginator.num_pages }}
                         </a>
@@ -101,5 +101,5 @@
         </div>
     {% endif %}
 
-    
+
 {% endblock %}

@@ -7,3 +7,4 @@ class HospitalForm(forms.ModelForm):
 
     class Meta:
         model = Hospital
+        exclude = ()

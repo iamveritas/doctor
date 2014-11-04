@@ -7,3 +7,4 @@ class SpecialityForm(forms.ModelForm):
 
     class Meta:
         model = Speciality
+        fields = ()

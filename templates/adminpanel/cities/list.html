@@ -1,6 +1,6 @@
 {% extends "adminpanel/base_admin.html" %}
 {% load i18n %}
-
+{% load firstof from future %}
 {% block title %}{% trans "Міста" %}{% endblock %}
 
 {% block menu_name %}{% trans "Міста" %}{% endblock %}
@@ -18,7 +18,6 @@
             <th>{% trans "Область" %}</th>
             <th>{% trans "Операції" %}</th>
         </tr>
-
     {% for city in cities %}
         <tr>
             <td>{{ city.id }}</td>

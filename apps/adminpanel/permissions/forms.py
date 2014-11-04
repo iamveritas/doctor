@@ -7,3 +7,4 @@ class PermissionForm(forms.ModelForm):
 
     class Meta:
         model = Permission
+        fields = ()

@@ -14,7 +14,7 @@ class DoctorsList(generic.ListView):
     context_object_name = "doctors"
     model = Doctor
     template_name = "adminpanel/doctors/list.html"
-    paginate_by = 2
+    #paginate_by = 2
 
 
 class AddDoctor(generic.CreateView):

@@ -53,6 +53,9 @@ INSTALLED_APPS = (
     'apps.home',
     'apps.adminpanel',
     'apps.internal',
+    'apps.thirdauth',
+
+    'social.apps.django_app.default',
 
 )
 
@@ -75,10 +78,23 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     'django.core.context_processors.request',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 ROOT_URLCONF = 'urls'
+
+LOGIN_REDIRECT_URL = '/'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '794744153918111'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'f9eae78ca2a90f2e9de78cef5c1735fc'
 
 WSGI_APPLICATION = 'wsgi.application'
 

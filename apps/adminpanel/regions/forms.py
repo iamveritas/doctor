@@ -7,3 +7,4 @@ class RegionForm(forms.ModelForm):
 
     class Meta:
         model = Region
+        fields = ()
