@@ -52,6 +52,7 @@ INSTALLED_APPS = (
 
     'apps.home',
     'apps.adminpanel',
+    'apps.accounts',
     'apps.internal',
 
 )

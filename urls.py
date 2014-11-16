@@ -12,9 +12,10 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r"^$", "apps.home.views.index", name="home"),
-    url(r"^adminpanel/", include("apps.adminpanel.urls", namespace="adminpanel")),
-    url(r"^accounts/", include("django.contrib.auth.urls")),
-    url(r"^adminpanel/", include("apps.adminpanel.urls", namespace="adminpanel")),
+    url(r"^accounts/", include("apps.accounts.urls")),
+#    url(r"^adminpanel/", include("apps.adminpanel.urls", namespace="adminpanel")),
+#    url(r"^accounts/", include("django.contrib.auth.urls")),
+#    url(r"^adminpanel/", include("apps.adminpanel.urls", namespace="adminpanel")),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT})
 )

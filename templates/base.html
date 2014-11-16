@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,14 +10,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Library css -->
-        <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
-        <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
+        <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+        <link href="{% static "css/style.css" %}" rel="stylesheet">
         <!-- Favicons -->
-        <link rel="shortcut icon" href="{{ STATIC_URL }}img/ico/favicon.ico">
-        <link rel="apple-touch-icon" href="{{ STATIC_URL }}img/ico/apple-touch-icon.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="{{ STATIC_URL }}img/ico/apple-touch-icon-72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="{{ STATIC_URL }}img/ico/apple-touch-icon-114.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="{{ STATIC_URL }}img/ico/apple-touch-icon-144.png">
+        <link rel="shortcut icon" href="{% static "img/ico/favicon.ico" %}">
+        <link rel="apple-touch-icon" href="{% static "img/ico/apple-touch-icon.png" %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static "img/ico/apple-touch-icon-72.png" %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static "img/ico/apple-touch-icon-114.png" %}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{% static "img/ico/apple-touch-icon-144.png" %}">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -35,13 +36,13 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{% url 'home' %}">
-                        <img src="{{ STATIC_URL }}img/lykar.png" alt="lykar logo" />
+                        <img src="{% static "img/lykar.png" alt="lykar logo" %}" />
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right text-uppercase">
                         <li><a href="#" data-toggle="modal" data-target="#logIn">{% trans "Вхід" %}</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#signUp">{% trans "Реєстрація" %}</a></li>
+                        <li><a href="accounts/registration/" data-toggle="modal" data-target="#signUp">{% trans "Реєстрація" %}</a></li>
                     </ul>
                 </div>
             </div>
@@ -66,6 +67,9 @@
                             <li><a href="#" class="odnoklassniki"><img src="{{ STATIC_URL }}img/odnoklassniki.png" alt="odnoklassniki" /></a></li>
                         </ul>
                         <div class="text-center text-uppercase modal-em">{% trans "Або ввійти через email:" %}</div>
+
+
+
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">{% trans "email:" %}</label>
@@ -110,76 +114,7 @@
         <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="float-left text-left">{% trans "РЕЄСТРАЦІЯ" %}</div>
-                        <div class="text-right">{%  trans "Вже є обліковий запис?" %}
-                            <a href="#">{%  trans " Ввійти" %}</a></div>
-                    </div>
-                    <div class="modal-body color-scheme-grey">
-                        <div class="text-center text-uppercase modal-soc">{% trans "Ввійти через:" %}</div>
-                        <ul class="line text-center">
-                            <li><a href="#" class="facebook"><img src="{{ STATIC_URL }}img/facebook.png" alt="facebook" /></a></li>
-                            <li><a href="#" class="vkontakte"><img src="{{ STATIC_URL }}img/vkontakte.png" alt="vkontakte" /></a></li>
-                            <li><a href="#" class="google_plus"><img src="{{ STATIC_URL }}img/google_plus.png" alt="google_plus" /></a></li>
-                            <li><a href="#" class="odnoklassniki"><img src="{{ STATIC_URL }}img/odnoklassniki.png" alt="odnoklassniki" /></a></li>
-                        </ul>
-                        <div class="text-center text-uppercase modal-em">{% trans "Або зареєструватися через email:" %}</div>
-                        <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">{% trans "ім'я:" %}</label>
-                                <div class="col-sm-6">
-                                    <input type="email" class="form-control" id="inputUserName" placeholder="Username">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">{% trans "email:" %}</label>
-                                <div class="col-sm-6">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">{% trans "пароль:" %}</label>
-                                <div class="col-sm-6">
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">{% trans "стать:" %}</label>
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="select">
-                                        <option>{% trans "не вказано" %}</option>
-                                        <option>{% trans "чоловік" %}</option>
-                                        <option>{%  trans "жінка" %}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">{% trans "вік:" %}</label>
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="select">
-                                        <option>{% trans "не вказано" %}</option>
-                                        <option>{% trans "до 18 років" %}</option>
-                                        <option>{% trans "19 - 30 років" %}</option>
-                                        <option>{% trans "31 - 45 років" %}</option>
-                                        <option>{% trans "46 - 60 років" %}</option>
-                                        <option>{% trans "більше 60 років" %}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-6">
-                                    <button type="submit" class="btn btn-primary btn-block text-uppercase">{% trans "Зареєструватися" %}</button>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <div class="text-center">
-                                        {% trans "Зареєструвавшись, ви погоджуєтеся з нашими " %}<a href="#">{% trans "Умовами використання" %}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+
                 </div>
             </div>
         </div> <!-- End Modal SignUp -->
@@ -193,7 +128,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2 padding">
-                        <img src="{{ STATIC_URL }}img/lykar.png" alt="lykar logo" />
+                        <img src="{% static "img/lykar.png" alt="lykar logo" %}" />
                         <p>{% trans "Відгуки про лікарів" %}</p>
                     </div>
                     <div class="col-md-8">
@@ -209,12 +144,12 @@
                         <ul class="line">
                             <li>
                                 <a href="#" class="facebook">
-                                    <img src="{{ STATIC_URL }}img/facebook.png" alt="facebook" />
+                                    <img src="{% static "img/facebook.png" alt="facebook" %}" />
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="vkontakte">
-                                    <img src="{{ STATIC_URL }}img/vkontakte.png" alt="vkontakte" />
+                                    <img src="{% static "img/vkontakte.png" alt="vkontakte" %}" />
                                 </a>
                             </li>
                         </ul>
@@ -237,7 +172,7 @@
         </footer> <!-- End Block Footer -->
         <!-- The Scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
         {% block js %}{% endblock %}
     </body>
 </html>
