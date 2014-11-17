@@ -41,8 +41,13 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right text-uppercase">
-                        <li><a href="#" data-toggle="modal" data-target="#logIn">{% trans "Вхід" %}</a></li>
-                        <li><a href="accounts/registration/" data-toggle="modal" data-target="#signUp">{% trans "Реєстрація" %}</a></li>
+                        {%if user.is_authenticated%}
+                            <li><a href="/accounts/login/">Привіт {{user.username}}</a></li>
+                            <li><a href="/accounts/logout/">Exit</a></li>
+                        {%else%}
+                            <li><a href="#" data-toggle="modal" data-target="#logIn">{% trans "Вхід" %}</a></li>
+                            <li><a href="accounts/registration/" data-toggle="modal" data-target="#signUp">{% trans "Реєстрація" %}</a></li>
+                        {%endif%}
                     </ul>
                 </div>
             </div>
@@ -61,8 +66,8 @@
                     <div class="modal-body color-scheme-grey">
                         <div class="text-center text-uppercase modal-soc">{% trans "Ввійти через:" %}</div>
                         <ul class="line text-center">
-                            <li><a href="#" class="facebook"><img src="{{ STATIC_URL }}img/facebook.png" alt="facebook" /></a></li>
-                            <li><a href="#" class="vkontakte"><img src="{{ STATIC_URL }}img/vkontakte.png" alt="vkontakte" /></a></li>
+                            <li><a href="{% url 'social:begin' 'facebook' %}" class="facebook"><img src="{{ STATIC_URL }}img/facebook.png" alt="facebook" /></a></li>
+                            <li><a href="{% url 'social:begin' 'vk-oauth2' %}" class="vkontakte"><img src="{{ STATIC_URL }}img/vkontakte.png" alt="vkontakte" /></a></li>
                             <li><a href="#" class="google_plus"><img src="{{ STATIC_URL }}img/google_plus.png" alt="google_plus" /></a></li>
                             <li><a href="#" class="odnoklassniki"><img src="{{ STATIC_URL }}img/odnoklassniki.png" alt="odnoklassniki" /></a></li>
                         </ul>

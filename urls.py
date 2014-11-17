@@ -17,5 +17,6 @@ urlpatterns = patterns('',
 #    url(r"^accounts/", include("django.contrib.auth.urls")),
 #    url(r"^adminpanel/", include("apps.adminpanel.urls", namespace="adminpanel")),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-        'document_root': settings.MEDIA_ROOT})
+        'document_root': settings.MEDIA_ROOT}),
+    url('', include('social.apps.django_app.urls', namespace='social')),
 )

@@ -9,6 +9,8 @@ from apps.accounts import views
 
 
 urlpatterns = patterns("",
+    url(r'^logout/$',views.logout),
+    url(r'login/$',views.login),
     url(r"registration/$", views.registration,
         name="registration"),
 )

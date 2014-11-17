@@ -50,6 +50,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'social.apps.django_app.default',
+
     'apps.home',
     'apps.adminpanel',
     'apps.accounts',
@@ -132,6 +134,58 @@ MEDIA_URL = '/media/'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates/'),
 )
+
+
+AUTH_PROFILE_MODULE = 'apps.accounts.UserProfile'
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.vk.VKOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+#social settings
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/accounts/login/'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error/'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '794744153918111'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'f9eae78ca2a90f2e9de78cef5c1735fc'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', ]
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    # pattern is (source key, destination key)
+    ('email', 'email'),
+]
+
+#SOCIAL_AUTH_TWITTER_KEY = 'qPa17vMyGZk0MpnjLeFK474pP'
+#SOCIAL_AUTH_TWITTER_SECRET = 'owWb9CFbwoHKU6zc9KWKiPemfSIlfwDs8pwoUFGVwNrXsbJgPk'
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '4619476'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = '55n826lBeD3FLcyBazD8'
+SOCIAL_AUTH_VK_APP_USER_MODE = 0
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email', 'photos', ]
+SOCIAL_AUTH_VK_EXTRA_DATA = [  # configure how the data is labelled on SocialAuth.extra_data
+    # pattern is (source key, destination key)
+    ('email', 'email'), ('photos', 'photos'),
+]
+
+
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.mail.mail_validation',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'apps.accounts.pipeline.get_profile_picture',
+)
+
+
 
 try:
     from local_settings import *
