@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response, redirect, render
 from apps.accounts.forms import UserForm
 from django.contrib import auth
