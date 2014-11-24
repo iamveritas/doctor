@@ -16,7 +16,7 @@ def get_profile_picture(
     img_url = None
 #    if strategy.backend.name == 'facebook':
     if "facebook" in kwargs['backend'].redirect_uri:
-        img_url = 'http://graph.facebook.com/%s/picture?type=square' \
+        img_url = 'http://graph.facebook.com/%s/picture?width=200&height=200' \
             % response['id']
     if "vk" in kwargs['backend'].redirect_uri:
         img_url = "https://api.vk.com/method/users.get?user_id=%s&v=5.26&fields=photo_100" % response['user_id']
@@ -27,8 +27,9 @@ def get_profile_picture(
 #        img_url = "https://api.vk.com/method/users.get?access_token=ТОКЕН&uids=ID%s&fields=photo_big" \
 #            % response['id']
     if "google" in kwargs['backend'].redirect_uri:
-        img_url = ''
-
+        if response.get('image') and response['image'].get('url'):
+            img_url = response['image'].get('url')
+            img_url = img_url.replace('sz=50', 'sz=200')
 
 
 #    elif strategy.backend.name == 'twitter':
