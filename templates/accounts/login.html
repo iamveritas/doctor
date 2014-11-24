@@ -1,33 +1,57 @@
 {%extends 'base.html'%}
+
 {%block content%}
 	<section class="first-section color-scheme-white">
 	{%if user.is_authenticated%}
 		<div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h1>Ваш особистий кабінет</h1>
-                </div>
-		    </div>
+            <div class="row ">
+                <div class="col-md-8 col-md-offset-2 lykar-user-main">
+                    <div class="row ">
+                        <div class="col-md-3 ">
+                            <img src="{{ photo }}" width=100% class="img-account img-rounded lykar-user-photo" >
+                            <a href="#" class="btn btn-md active lykar-user-btn" role="button">Редагувати фото</a>
+                            <a href="#" class="btn btn-md active lykar-user-btn" role="button">Мої налаштуваня</a>
+                            <a href="#" class="btn btn-md active lykar-user-btn" role="button">Мої коментарі</a>
+                        </div>
 
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <img src="{{ photo }}" width=20% class="img-account" >
+                        <div class="col-md-9">
+                            <h2>{{ user.get_full_name }}</h2>
+                            <hr class="lykar-user-line" />
+
+                            <div class="row ">
+                                <div class="col-md-3 ">
+                                    Ваш логін:
+                                </div>
+                                <div class="col-md-9">
+                                    {{ user.username }}
+                                </div>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-md-3 ">
+                                    Ваш email:
+                                </div>
+                                <div class="col-md-9">
+                                    {{ user.email }}
+                                </div>
+                            </div>
+
+                            <hr class="lykar-user-line" />
+
+                        </div>
+                    </div>
                 </div>
-		    </div>
+            </div>
 
         </div>
 	{%else%}
-		<div class="container">
+        {% load i18n %}
+        <div class="container">
+            <div class="text-center text-uppercase modal-soc">{% trans "Введіть логін і пароль:" %}</div>
+            {% include 'accounts/login_form.html' %}
 
-            {% load i18n %}
-            {% load staticfiles %}
-            <div class="text-center text-uppercase modal-soc">{% trans "Увійти через:" %}</div>
-            <ul class="line text-center">
-                <li><a href="{% url 'social:begin' 'facebook' %}" class="facebook"><img src="{% static "img/facebook.png" %}" alt="facebook" /></a></li>
-                <li><a href="{% url 'social:begin' 'vk-oauth2' %}" class="vkontakte"><img src="{% static "img/vkontakte.png" %}" alt="vkontakte" /></a></li>
-                <li><a href="#" class="google_plus"><img src="{% static "img/google_plus.png" %}" alt="google_plus" /></a></li>
-                <li><a href="#" class="odnoklassniki"><img src="{% static "img/odnoklassniki.png" %}" alt="odnoklassniki" /></a></li>
-            </ul>
+            <div class="text-center text-uppercase modal-soc">{% trans "Або ввійдіть через:" %}</div>
+            {% include 'accounts/social.html' %}
         </div>
 	{%endif%}
     </section>

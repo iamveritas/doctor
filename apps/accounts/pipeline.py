@@ -26,6 +26,8 @@ def get_profile_picture(
 #        img_url = img_url['response']
 #        img_url = "https://api.vk.com/method/users.get?access_token=ТОКЕН&uids=ID%s&fields=photo_big" \
 #            % response['id']
+    if "google" in kwargs['backend'].redirect_uri:
+        img_url = ''
 
 
 

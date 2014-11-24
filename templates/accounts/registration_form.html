@@ -1,0 +1,37 @@
+{% load i18n %}
+
+<form action="/accounts/registration/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="row">
+        <div class="col-md-12">
+            <dl class="dl-horizontal">
+                <dt>Логін*</dt>
+                <dd>{{ form.username }}</dd>
+                <dt></dt>
+                <dd class="text-warning">{{ form.username.errors }}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>{{ form.email.label }}*</dt>
+                <dd>{{ form.email }}</dd>
+                <dt></dt>
+                <dd class="text-warning">{{ form.email.errors }}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>{{ form.password1.label }}*</dt>
+                <dd>{{ form.password1 }}</dd>
+                <dt></dt>
+                <dd class="text-warning">{{ form.password1.errors }}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>{{ form.password1.label }}*<br/>(ще раз)</dt>
+                <dd>{{ form.password2 }}</dd>
+                <dt></dt>
+                <dd class="text-warning">{{ form.password2.errors }}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                 <dd><input type="submit" class="btn btn-primary" value="Зареєструватися" /> </dd>
+            </dl>
+        </div>
+    </div>
+</form>

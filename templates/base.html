@@ -42,80 +42,31 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right text-uppercase">
                         {%if user.is_authenticated%}
-                            <li><a href="/accounts/login/">Привіт {{user.username}}</a></li>
-                            <li><a href="/accounts/logout/">Exit</a></li>
+                            <li><a href="/accounts/login/">Моя сторінка</a></li>
+                            <li><a href="/accounts/logout/">Вийти</a></li>
                         {%else%}
-                            <li><a href="#" data-toggle="modal" data-target="#logIn">{% trans "Вхід" %}</a></li>
-                            <li><a href="accounts/registration/" data-toggle="modal" data-target="#signUp">{% trans "Реєстрація" %}</a></li>
+                            <li><a href="/accounts/login/" >{% trans "Вхід" %}</a></li>
+                            <li><a href="/accounts/registration/">{% trans "Реєстрація" %}</a></li>
+<!--
+                            <li><a href="/accounts/login/" data-toggle="modal" data-target="#logIn">{% trans "Вхід" %}</a></li>
+                            <li><a href="/accounts/registration/" data-toggle="modal" data-target="#signUp">{% trans "Реєстрація" %}</a></li>
+-->
                         {%endif%}
                     </ul>
                 </div>
             </div>
         </header> <!-- End Header -->
 
-        <!-- Modal LogIn -->
+        <!-- Modal LogIn
         <div class="modal fade" id="logIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="float-left text-left text-uppercase">{% trans "Вхід" %}</div>
-                        <div class="text-right">{% trans "Ще немає облікового запису?" %}
-                            <a href="#">{% trans " Зареєструватися" %}</a>
-                        </div>
-                    </div>
-                    <div class="modal-body color-scheme-grey">
-                        <div class="text-center text-uppercase modal-soc">{% trans "Ввійти через:" %}</div>
-                        <ul class="line text-center">
-                            <li><a href="{% url 'social:begin' 'facebook' %}" class="facebook"><img src="{{ STATIC_URL }}img/facebook.png" alt="facebook" /></a></li>
-                            <li><a href="{% url 'social:begin' 'vk-oauth2' %}" class="vkontakte"><img src="{{ STATIC_URL }}img/vkontakte.png" alt="vkontakte" /></a></li>
-                            <li><a href="#" class="google_plus"><img src="{{ STATIC_URL }}img/google_plus.png" alt="google_plus" /></a></li>
-                            <li><a href="#" class="odnoklassniki"><img src="{{ STATIC_URL }}img/odnoklassniki.png" alt="odnoklassniki" /></a></li>
-                        </ul>
-                        <div class="text-center text-uppercase modal-em">{% trans "Або ввійти через email:" %}</div>
 
-
-
-                        <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">{% trans "email:" %}</label>
-                                <div class="col-sm-6">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">{% trans "пароль:" %}</label>
-                                <div class="col-sm-6">
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-9">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">{% trans " Запам'ятати мене" %}
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-6">
-                                    <button type="submit" class="btn btn-primary btn-block text-uppercase">{% trans "Ввійти" %}</button>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-9">
-                                    <div class="text-left">
-                                        <a href="#">{% trans "Забули пароль?" %}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div> <!-- End Modal LogIn -->
 
-        <!-- Modal SignUp -->
+        <!-- Modal SignUp
         <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

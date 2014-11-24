@@ -1,0 +1,43 @@
+{% load i18n %}
+
+<form class="form-horizontal" role="form" method="post" action="/accounts/login/">
+    {% csrf_token %}
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{% trans "Логін:" %}</label>
+        <div class="col-sm-6">
+            <input type="text" name="username" class="form-control" id="inputEmail" placeholder="Логін">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{% trans "Пароль:" %}</label>
+        <div class="col-sm-6">
+            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+    </div>
+    {%  comment %}
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">{% trans " Запам'ятати мене" %}
+                </label>
+            </div>
+        </div>
+    </div>
+    {%  endcomment %}
+
+     <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            <div class="text-left">
+                <a href="#">{{ login_error }}</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-6">
+            <p class = "red"></p>
+            <button type="submit" class="btn btn-primary btn-block text-uppercase">{% trans "Ввійти" %}</button>
+        </div>
+    </div>
+</form>

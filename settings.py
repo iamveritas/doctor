@@ -140,7 +140,8 @@ AUTH_PROFILE_MODULE = 'apps.accounts.UserProfile'
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
-    'social.backends.twitter.TwitterOAuth',
+    'social.backends.google.GoogleOAuth2',
+#    'social.backends.twitter.TwitterOAuth',
     'social.backends.vk.VKOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -153,6 +154,14 @@ SOCIAL_AUTH_FACEBOOK_KEY = '794744153918111'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'f9eae78ca2a90f2e9de78cef5c1735fc'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', ]
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    # pattern is (source key, destination key)
+    ('email', 'email'),
+]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '662075687340-5tibn1gh9tiu00road2s9uf7rltml4js.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Zd-LZGPavPa2tdMoCMWVt2el'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['email', ]
+SOCIAL_AUTH_GOOGLE_EXTRA_DATA = [
     # pattern is (source key, destination key)
     ('email', 'email'),
 ]
