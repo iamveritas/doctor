@@ -1,0 +1,43 @@
+{%extends 'base.html' %}
+{% load i18n %}
+
+{%block content%}
+	        <!-- Popular Doctor -->
+        <section class="home-section color-scheme-white text-center">
+            <h2 class="text-uppercase">{% trans "Популярні лікарі" %}</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-5"><hr /></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3 col-md-3">
+                        <div class="team boxed-grey">
+                            <div class="inner">
+                                <h5><a href="#">{{ doctor }}</a></h5>
+                                <p class="subtitle">{% trans "терапевт" %}</p>
+                                <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" alt="doctor name" class="img-responsive img-circle center-block" /></div>
+
+                                <div>
+                                    <p class="text-center">
+                                        <a href="/doctors/{{ doctor.id }}/yes/" class="lykar-comment-like">
+                                            <i class = "glyphicon glyphicon-thumbs-up"></i>
+                                        </a>
+                                        <span class="badge">{{ doctor.recommend_yes }}</span>
+
+                                        <a href="/doctors/{{ doctor.id }}/no/" class="lykar-comment-like">
+                                            <i class = "glyphicon glyphicon-thumbs-down"></i>
+                                        </a>
+                                        <span class="badge">{{ doctor.recommend_no }}</span>
+                                    </p>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section> <!-- End Popular Doctor -->
+
+{%endblock%}

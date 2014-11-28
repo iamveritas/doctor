@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{%block content%}
+    <section class="first-section color-scheme-white">
+        {%if user.is_authenticated%}
+            {% load i18n %}
+            <div class="container">
+                <div class="text-center text-uppercase modal-soc">{% trans "Введіть дані лікаря:" %}</div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form action="/doctors/add/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.non_field_errors }}
+                            <input type="hidden" name="next" value="{{request.GET.next}}" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.last_name.label }}*</dt>
+                                        <dd>{{ form.last_name }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.last_name.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.first_name.label }}*</dt>
+                                        <dd>{{ form.first_name }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.first_name.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.patronymic.label }}*</dt>
+                                        <dd>{{ form.patronymic }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.patronymic.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.sex.label }}*</dt>
+                                        <dd>{{ form.sex }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.sex.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.speciality.label }}*</dt>
+                                        <dd>{{ form.speciality }}</dd>
+                                        <dt></dt>
+                                        <dd class="add-button">
+                                            <a href="#" role="button" class="btn btn-primary btn-sm">
+                                                {% trans "Додати спеціалізацію" %}
+                                            </a>
+                                        </dd>
+                                        <dd class="text-warning">{{ form.speciality.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.hospitals.label }}*</dt>
+                                        <dd>{{ form.hospitals }}</dd>
+                                        <dt></dt>
+                                        <dd class="add-button">
+                                            <a href="#" role="button" class="btn btn-primary btn-sm">
+                                                {% trans "Додати клініку" %}
+                                            </a>
+                                        </dd>
+                                        <dd class="text-warning">{{ form.hospitals.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.image.label }}*</dt>
+                                        <dd>{{ form.image }}</dd>
+                                        <dt></dt>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dd><input type="submit" class="btn btn-primary" value="Зберегти" /></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="text-center text-uppercase modal-soc">{% trans "Або ввійдіть через:" %}</div>
+                {% include 'accounts/social.html' %}
+
+                <div class="form-group">
+                    <div class="col-sm-12 text-center">
+                        {% trans "Реєструючись на сайті, ви автоматично погоджуєтеся з " %}<a href="#">{% trans "Умовами використання" %}</a>
+                    </div>
+                </div>
+
+            </div>
+    	{%endif%}
+    </section>
+{%endblock%}

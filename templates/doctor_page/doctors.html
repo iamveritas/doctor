@@ -1,0 +1,45 @@
+{%extends 'base.html' %}
+{% load i18n %}
+
+{%block content%}
+	        <!-- Popular Doctor -->
+        <section class="home-section color-scheme-white text-center">
+            <h2 class="text-uppercase">{% trans "Популярні лікарі" %}</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-5"><hr /></div>
+                </div>
+                <div class="row">
+                    {% for doctor in doctors %}
+                        <div class="col-xs-6 col-sm-3 col-md-3">
+                            <div class="team boxed-grey">
+                                <div class="inner">
+                                    <h5><a href="/doctors/{{ doctor.id }}/">{{ doctor }}</a></h5>
+                                    <p class="subtitle">{% trans "терапевт" %}</p>
+                                    <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" alt="doctor name" class="img-responsive img-circle center-block" /></div>
+
+                                    <div>
+                                        <p class="text-center">
+                                            <a href="/doctors/recommend/yes/" class="lykar-comment-like">
+                                                <i class = "glyphicon glyphicon-thumbs-down"></i>
+                                            </a>
+                                            <span class="badge">2</span>
+
+                                            <a href="/doctors/recommend/no/" class="lykar-comment-like">
+                                                <i class = "glyphicon glyphicon-thumbs-up"></i>
+                                            </a>
+                                            <span class="badge">8</span>
+                                        </p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section> <!-- End Popular Doctor -->
+
+{%endblock%}

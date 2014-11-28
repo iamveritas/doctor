@@ -6,6 +6,7 @@ from django.core.context_processors import csrf
 from apps.accounts.models import UserProfile
 from django.http import HttpResponseRedirect
 
+
 def registration(request):
     args = {}
     args.update(csrf(request))
@@ -51,7 +52,8 @@ def login(request):
             args['login_error'] = 'Користувач не знайдений! Можливо Ви забули пароль?'
 
     args['user'] = user
-    args['use'] = dir(user)
+
+
     return render_to_response("accounts/login.html", args)
 
 

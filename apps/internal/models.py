@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
-
+from django.contrib.auth.models import User
 
 SEX_CHOICES = (
     (None, "Оберіть стать"),
@@ -102,6 +102,9 @@ class Doctor(models.Model):
     is_active = models.CharField("Статус", blank=False, default=False, max_length=5, choices=STATUS_CHOICES)
     image = models.ImageField("Зображення", upload_to="doctor_photos/",
                               null=True, blank=True)
+    recommend_yes = models.IntegerField("Рекомендують", blank=True, default=0)
+    recommend_no = models.IntegerField("Не рекомендують", blank=True, default=0)
+
 
     class Meta:
         verbose_name = "Лікар"
@@ -188,3 +191,22 @@ class Like(models.Model):
     class Meta:
         verbose_name = "К-сть лайків"
         verbose_name_plural = "К-сть лайків"
+
+
+class Recommendation(models.Model):
+
+    user = models.ForeignKey(User, verbose_name="Користувач")
+    doctor = models.ForeignKey(Doctor, verbose_name="Лікар")
+    recommendation = models.NullBooleanField()
+
+    class Meta:
+        verbose_name = "Рекомендації пацієнтів"
+        verbose_name_plural = "Рекомендації пацієнтів"
+
+    def __unicode__(self):
+        recommend = ''
+        if self.recommendation == 1:
+            recommend = ' recommended '
+        elif self.recommendation == 0:
+            recommend = ' not recommended '
+        return unicode(self.user) + unicode(recommend) + unicode(self.doctor)
