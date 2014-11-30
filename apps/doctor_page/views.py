@@ -8,6 +8,10 @@ from django.views import generic
 from apps.adminpanel.doctors.forms import DoctorForm
 
 
+def _get_redirect_url(request):
+    return admin_lib.get_redirect_url(request, reverse("doctors"))
+
+
 class AddDoctor(generic.CreateView):
 
     form = DoctorForm
