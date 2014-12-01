@@ -7,3 +7,4 @@ class DoctorForm(forms.ModelForm):
 
     class Meta:
         model = Doctor
+        fields = ['last_name', 'first_name', 'patronymic', 'sex', 'speciality', 'hospitals', 'image']

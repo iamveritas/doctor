@@ -98,13 +98,13 @@ class Doctor(models.Model):
     patronymic = models.CharField("По батькові", blank=False, max_length=30)
     sex = models.CharField("Стать", blank=False, max_length=1, choices=SEX_CHOICES)
     speciality = models.ForeignKey(Speciality, verbose_name="Спеціальність")
+    user = models.ForeignKey(User, verbose_name="Хто створив")
     hospitals = models.ManyToManyField(Hospital, blank=False, verbose_name="Клініка")
-    is_active = models.CharField("Статус", blank=False, default=False, max_length=5, choices=STATUS_CHOICES)
+    is_active = models.CharField("Статус", default=False, max_length=5, choices=STATUS_CHOICES)
     image = models.ImageField("Зображення", upload_to="doctor_photos/",
                               null=True, blank=True)
     recommend_yes = models.IntegerField("Рекомендують", blank=True, default=0)
     recommend_no = models.IntegerField("Не рекомендують", blank=True, default=0)
-
 
     class Meta:
         verbose_name = "Лікар"

@@ -13,7 +13,8 @@
                         <form action="/doctors/add/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.non_field_errors }}
-                            <input type="hidden" name="next" value="{{request.GET.next}}" />
+                            {{ f }}
+                                <input type="hidden" name="next" value="{{request.GET.next}}" />
                             <div class="row">
                                 <div class="col-md-12">
                                     <dl class="dl-horizontal">
@@ -44,11 +45,6 @@
                                         <dt>{{ form.speciality.label }}*</dt>
                                         <dd>{{ form.speciality }}</dd>
                                         <dt></dt>
-                                        <dd class="add-button">
-                                            <a href="#" role="button" class="btn btn-primary btn-sm">
-                                                {% trans "Додати спеціалізацію" %}
-                                            </a>
-                                        </dd>
                                         <dd class="text-warning">{{ form.speciality.errors }}</dd>
                                     </dl>
                                     <dl class="dl-horizontal">
@@ -63,7 +59,7 @@
                                         <dd class="text-warning">{{ form.hospitals.errors }}</dd>
                                     </dl>
                                     <dl class="dl-horizontal">
-                                        <dt>{{ form.image.label }}*</dt>
+                                        <dt>{{ form.image.label }}</dt>
                                         <dd>{{ form.image }}</dd>
                                         <dt></dt>
                                     </dl>

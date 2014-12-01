@@ -1,26 +1,33 @@
 # -*-coding:utf8-*-
-from django.shortcuts import render_to_response, redirect, RequestContext
+from django.shortcuts import render_to_response, RequestContext
 from apps.internal.models import Doctor, Recommendation
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from django.http.response import Http404
-from django.views import generic
+from django.http import HttpResponse
 from apps.adminpanel.doctors.forms import DoctorForm
+from django.contrib.auth.models import User
 
 
-def _get_redirect_url(request):
-    return admin_lib.get_redirect_url(request, reverse("doctors"))
+def add_doctor(request):
+    args = {}
+    if request.method == 'POST':
+        request.POST['user'] = request.user.id
+        request.POST['is_active'] = False
+        form = DoctorForm(request.POST)
 
-
-class AddDoctor(generic.CreateView):
-
-    form = DoctorForm
-    model = Doctor
-    template_name = "doctor_page/add-update.html"
-
-    def get_success_url(self):
-        return _get_redirect_url(self.request)
-
+        if form.is_valid():
+            doctor = form.save(commit=False)
+            doctor.recommend_no = 0
+            doctor.recommend_yes = 0
+            doctor.save()
+            return HttpResponse('Thank you %s!<br/>'
+                                '<a href="/">Повернутися на головну</a>' % request.user)
+    else:
+        form = DoctorForm()
+    args['form'] = form
+    return render_to_response("doctor_page/add_update.html", args,
+                              context_instance=RequestContext(request))
 
 def doctors(request):
     args = {}

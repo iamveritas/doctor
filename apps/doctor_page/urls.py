@@ -11,6 +11,6 @@ urlpatterns = patterns("",
         name="doctor_profile"),
     url(r'^(?P<doctor_id>\d{1})/$', views.doctor_profile,
         name="doctor_profile"),
-    url(r'^add/$', view=login_required(views.AddDoctor.as_view()),
+    url(r'^add/$', views.add_doctor,
         name="add-doctor"),
 )
