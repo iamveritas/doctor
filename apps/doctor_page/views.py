@@ -5,8 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from django.http.response import Http404
 from django.http import HttpResponse
-from apps.adminpanel.doctors.forms import DoctorForm
-from django.contrib.auth.models import User
+from apps.doctor_page.forms import DoctorForm, DoctorUserForm
 
 
 def add_doctor(request):
@@ -72,4 +71,24 @@ def recommendation(request, doctor_id, recommend):
         raise Http404
 
     return render_to_response("doctor_page/doctor_profile.html", args,
+                              context_instance=RequestContext(request))
+
+
+def doctor_user(request):
+    args = {}
+    form = DoctorUserForm()
+
+    if request.method == 'POST':
+        request.POST['user'] = request.user.id
+        request.POST['status'] = False
+        form = DoctorUserForm(request.POST)
+
+        if form.is_valid():
+#            doctor = form.save(commit=False)
+            form.save()
+            return HttpResponse('Thank you %s!<br/>'
+                                '<a href="/">Повернутися на головну</a>' % request.user)
+    args['form'] = form
+
+    return render_to_response("doctor_page/doctor_user.html", args,
                               context_instance=RequestContext(request))

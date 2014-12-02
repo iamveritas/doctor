@@ -13,4 +13,6 @@ urlpatterns = patterns("",
         name="doctor_profile"),
     url(r'^add/$', views.add_doctor,
         name="add-doctor"),
+    url(r'^doctor_user/$', views.doctor_user,
+        name="doctor_user"),
 )
