@@ -30,6 +30,16 @@
                 <dd class="text-warning">{{ form.password2.errors }}</dd>
             </dl>
             <dl class="dl-horizontal">
+                <dt></dt>
+                <dd>{{form.captcha}}</dd>
+                <dt></dt>
+                <dd class="text-warning">{{form.captcha.errors}}</dd>
+                <dt></dt>
+                <dd>
+                    <button class='js-captcha-refresh'>оновити каптчу</button>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
                  <dd><input type="submit" class="btn btn-primary" value="Зареєструватися" /> </dd>
             </dl>
         </div>

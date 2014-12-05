@@ -19,4 +19,5 @@ urlpatterns = patterns('',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT}),
     url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^captcha/', include('captcha.urls')),
 )

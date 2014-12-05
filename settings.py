@@ -57,6 +57,8 @@ INSTALLED_APPS = (
     'apps.accounts',
     'apps.internal',
 
+    'captcha',
+
 )
 
 MIDDLEWARE_CLASSES = (

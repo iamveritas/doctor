@@ -15,7 +15,6 @@ def registration(request):
 
     if request.POST:
         newuser_form = UserForm(request.POST)
-
         if newuser_form.is_valid():
             newuser_form.save()
 #            newuser = auth.authenticate(username=newuser_form.cleaned_data['username'],
