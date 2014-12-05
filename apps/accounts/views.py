@@ -5,6 +5,7 @@ from django.contrib import auth
 from django.core.context_processors import csrf
 from apps.accounts.models import UserProfile
 from django.http import HttpResponseRedirect
+from apps.internal.models import DoctorUser
 
 
 def registration(request):
@@ -52,6 +53,11 @@ def login(request):
             args['login_error'] = 'Користувач не знайдений! Можливо Ви забули пароль?'
 
     args['user'] = user
+
+    if DoctorUser.objects.filter(user=request.user.id):
+        args['status'] = 'doctor'
+    else:
+        args['status'] = 'user'
 
 
     return render_to_response("accounts/login.html", args)

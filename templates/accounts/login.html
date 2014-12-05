@@ -15,7 +15,14 @@
                         </div>
 
                         <div class="col-md-9">
-                            <h2>{{ user.get_full_name }}</h2>
+                            <h2>
+                                {% if status == 'doctor' %}
+                                    Я лікар  {{ user.get_full_name }}
+                                {% elif status == 'user' %}
+                                    {{ user.get_full_name }}
+                                    <a href="/doctors/doctor_user/">Ідентифікувати себе, як лікаря.</a>
+                                {% endif %}
+                            </h2>
                             <hr class="lykar-user-line" />
 
                             <div class="row ">

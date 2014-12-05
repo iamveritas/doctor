@@ -1,10 +1,12 @@
 from django.contrib import admin
 from apps.internal.models import (Doctor, Region, City,
                                   Hospital, HospitalType, Speciality, Efficiency,
-                                  Quality, Respect, Bribery, Comment, Like, Recommendation)
+                                  Quality, Respect, Bribery, Comment, Like, Recommendation,
+                                  DoctorUser,)
 
 
 admin.site.register(Doctor)
+admin.site.register(DoctorUser)
 admin.site.register(Comment)
 admin.site.register(Hospital)
 admin.site.register(HospitalType)

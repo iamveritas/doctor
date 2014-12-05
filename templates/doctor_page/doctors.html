@@ -4,11 +4,7 @@
 {%block content%}
 	        <!-- Popular Doctor -->
         <section class="home-section color-scheme-white text-center">
-            <h2 class="text-uppercase">{% trans "Популярні лікарі" %}</h2>
             <div class="container">
-                <div class="row">
-                    <div class="col-md-2 col-md-offset-5"><hr /></div>
-                </div>
                 <div class="row">
                     {% for doctor in doctors %}
                         <div class="col-xs-6 col-sm-3 col-md-3">
@@ -20,15 +16,11 @@
 
                                     <div>
                                         <p class="text-center">
-                                            <a href="/doctors/recommend/yes/" class="lykar-comment-like">
-                                                <i class = "glyphicon glyphicon-thumbs-down"></i>
-                                            </a>
-                                            <span class="badge">2</span>
+                                            <i class = "glyphicon glyphicon-thumbs-up"></i>
+                                            <span class="badge">{{ doctor.recommend_yes }}</span>
 
-                                            <a href="/doctors/recommend/no/" class="lykar-comment-like">
-                                                <i class = "glyphicon glyphicon-thumbs-up"></i>
-                                            </a>
-                                            <span class="badge">8</span>
+                                            <i class = "glyphicon glyphicon-thumbs-down"></i>
+                                            <span class="badge">{{ doctor.recommend_no }}</span>
                                         </p>
                                     </div>
 

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{%block content%}
+    <section class="first-section color-scheme-white">
+        {%if user.is_authenticated%}
+            <div class="container">
+                <div class="text-center text-uppercase modal-soc">{% trans "Виберіть лікаря:" %}</div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form action="/doctors/doctor_user/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.non_field_errors }}
+                            <input type="hidden" name="next" value="{{request.GET.next}}" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.doctor.label }}*</dt>
+                                        <dd>{{ form.doctor }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.doctor.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dd><input type="submit" class="btn btn-primary" value="Зберегти" /></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    	{%endif%}
+    </section>
+{%endblock%}
