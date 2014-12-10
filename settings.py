@@ -72,10 +72,14 @@ INSTALLED_APPS = (
     'apps.adminpanel',
     'apps.accounts',
     'apps.internal',
+
     'apps.contacts',
 
     'captcha',
 #    'contact_form',
+
+    'apps.polls',
+
 
 )
 

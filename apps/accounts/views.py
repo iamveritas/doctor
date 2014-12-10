@@ -5,7 +5,7 @@ from django.contrib import auth
 from django.core.context_processors import csrf
 from apps.accounts.models import UserProfile
 from django.http import HttpResponseRedirect
-from apps.internal.models import DoctorUser
+from apps.internal.models import DoctorUser, Comment
 
 
 def registration(request):
@@ -58,6 +58,10 @@ def login(request):
         args['status'] = 'doctor'
     else:
         args['status'] = 'user'
+    try:
+        args['comments'] = Comment.objects.filter(user_id=user.id)
+    except:
+        args['comments'] = {}
 
 
     return render_to_response("accounts/login.html", args)

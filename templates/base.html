@@ -42,11 +42,14 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right text-uppercase">
                         {%if user.is_authenticated%}
+                            <li><a href="/polls/">Голосування</a></li>
                             <li><a href="/doctors/">Лікарі</a></li>
                             <li><a href="/doctors/add/">Додати лікаря</a></li>
                             <li><a href="/accounts/login/">Моя сторінка</a></li>
                             <li><a href="/accounts/logout/">Вийти</a></li>
                         {%else%}
+                            <li><a href="/polls/">Голосування</a></li>
+                            <li><a href="/doctors/">Лікарі</a></li>
                             <li><a href="/accounts/login/" >{% trans "Вхід" %}</a></li>
                             <li><a href="/accounts/registration/">{% trans "Реєстрація" %}</a></li>
 <!--
