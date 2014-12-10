@@ -13,8 +13,7 @@ import os
 BASE_DIR = os.path.dirname(__file__)
 
 FEEDBACK_EMAIL_RECEIVERS = (
-    'geo.savchuk@gmail.com',
-    'hyralmisha@gmail.com',
+    'yuras007@ukr.net',
 )
 
 
@@ -32,12 +31,29 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #Email settings
 EMAIL_USE_TLS = True
-EMAIL_HOST = ''
-EMAIL_PORT = ''
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '1025'
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
+
+#Email settings
+#EMAIL_USE_TLS = True
+#EMAIL_HOST = 'localhost'
+#EMAIL_PORT = 1025
+#EMAIL_HOST_USER = ''
+#EMAIL_HOST_PASSWORD = ''
+#ADMINS = (
+#    ('admin', 'yuras007@ukr.net'),   # email will be sent to your_email
+#)
+#MANAGERS = ADMINS
+#DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+#MANAGERS = (
+#    'geo.savchuk@gmail.com',
+#    'hyralmisha@gmail.com',
+#)
 
 
 # Application definition
@@ -56,6 +72,10 @@ INSTALLED_APPS = (
     'apps.adminpanel',
     'apps.accounts',
     'apps.internal',
+    'apps.contacts',
+
+    'captcha',
+#    'contact_form',
 
 )
 

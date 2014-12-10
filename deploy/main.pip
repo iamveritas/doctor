@@ -1,4 +1,6 @@
 django==1.7.1
 pillow==2.6.1
 fabric==1.10.0
-south==1.0.1
+python-social-auth
+django-simple-captcha
+django-contact-form
