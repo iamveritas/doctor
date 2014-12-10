@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{%block content%}
+    <section class="first-section color-scheme-white">
+        {% load i18n %}
+        <div class="container">
+            <div class="text-center text-uppercase modal-soc">
+                 {{ question.question_text }}
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+
+                {% for choice in question.choice_set.all %}
+                    <dl class="dl-horizontal">
+                        <dd>{{ choice.choice_text }} ---- {{ choice.votes }} голосів</dd>
+                        <dt></dt>
+                    </dl>
+                {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+{%endblock%}

@@ -1,6 +1,6 @@
 # -*-coding:utf8-*-
 from django import forms
-from apps.internal.models import Doctor, DoctorUser
+from apps.internal.models import Doctor, DoctorUser, Hospital, Comment
 
 
 class DoctorForm(forms.ModelForm):
@@ -16,3 +16,16 @@ class DoctorUserForm(forms.ModelForm):
 #        fields = ['doctor']
 
 
+class HospitalForm(forms.ModelForm):
+    class Meta:
+        model = Hospital
+#        fields = ['name', 'is_state', 'type', 'city', 'address', 'email', phone', 'image']
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        widgets = {
+            'content': forms.Textarea(),
+        }
+#        fields = ['content']

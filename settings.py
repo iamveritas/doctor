@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'apps.adminpanel',
     'apps.accounts',
     'apps.internal',
+    'apps.polls',
 
 )
 

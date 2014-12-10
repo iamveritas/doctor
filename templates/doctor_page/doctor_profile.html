@@ -32,8 +32,40 @@
                                 </div>
 
 
+                                <div>
+                                    <p class="text-center">
+                                        <a href="/doctors/{{ doctor.id }}/newcomment/" >
+                                            Додати коментар
+                                        </a>
+                                    </p>
+                                </div>
+
+
                             </div>
                         </div>
+
+                        <div>
+                            {% if comments %}
+                                    <hr/>
+                                {% for comment in comments %}
+                                    <hr/>
+                                    <p>{{ comment }}</p>
+                                    <p>{{ user.id }} -- {{ comment.user.id  }}</p>
+
+                                    {% if user.id == comment.user.id %}
+                                    <hr/>
+                                    <p>
+                                        <a href="/doctors/comment/{{ comment.id }}/" >
+                                            Редагувати
+                                        </a>
+                                    </p>
+                                    {% endif %}
+                                    <hr/>
+                                {% endfor %}
+                                <hr/>
+                            {% endif %}
+                        </div>
+
                     </div>
 
                 </div>

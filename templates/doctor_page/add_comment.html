@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{%block content%}
+    <section class="first-section color-scheme-white">
+        {%if user.is_authenticated%}
+            {% load i18n %}
+            <div class="container">
+                <div class="text-center text-uppercase modal-soc">
+                    {% trans "Напишіть свої враження про лікаря "  %} {{ doctor.first_name }}
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form
+                                {% if action == 'add' %}
+                                    action="/doctors/{{ doctor.id }}/newcomment/"
+                                {% elif action == 'update' %}
+                                    action="/doctors/comment/{{ comment }}/"
+                                {% endif %}
+                                    method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.non_field_errors }}
+                            <input type="hidden" name="next" value="{{request.GET.next}}" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{ f }}
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.content.label }}*</dt>
+                                        <dd>{{ form.content }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.content.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dd><input type="submit" class="btn btn-primary" value="Відправити" /></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    	{%endif%}
+    </section>
+{%endblock%}

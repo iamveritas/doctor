@@ -168,18 +168,19 @@ class Bribery(models.Model):
 class Comment(models.Model):
 
     content = models.TextField("Коментар", blank=False, max_length=1000)
-    plus = models.TextField("Позитивні якості", blank=True, max_length=300)
-    minus = models.TextField("Негативні якості", blank=True, max_length=300)
+    user = models.ForeignKey(User, verbose_name="Користувач")
+    doctor = models.ForeignKey(Doctor, verbose_name="Лікар")
+    is_active = models.CharField("Статус", default=False, max_length=5, choices=STATUS_CHOICES)
     created = models.DateTimeField("Дата створення", auto_now=False, auto_now_add=True)
     edited = models.DateTimeField("Дата редагування", auto_now=True, auto_now_add=False)
-    doctor = models.ForeignKey(Doctor, verbose_name="Лікар")
+
 
     class Meta:
         verbose_name = "Коментар"
         verbose_name_plural = "Коментарі"
 
     def __unicode__(self):
-        return unicode(self.doctor)
+        return unicode(self.content)
 
 
 class Like(models.Model):

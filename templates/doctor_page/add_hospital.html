@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{%block content%}
+    <section class="first-section color-scheme-white">
+        {%if user.is_authenticated%}
+            {% load i18n %}
+            <div class="container">
+                <div class="text-center text-uppercase modal-soc">{% trans "Введіть дані про клініку:" %}</div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form action="" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.non_field_errors }}
+                            <input type="hidden" name="next" value="{{request.GET.next}}" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.name.label }}*</dt>
+                                        <dd>{{ form.name }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.name.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.is_state.label }}*</dt>
+                                        <dd>{{ form.is_state }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.is_state.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.type.label }}*</dt>
+                                        <dd>{{ form.type }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.type.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.city.label }}*</dt>
+                                        <dd>{{ form.city }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.city.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.address.label }}</dt>
+                                        <dd>{{ form.address }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.address.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.email.label }}</dt>
+                                        <dd>{{ form.email }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.email.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.phone.label }}</dt>
+                                        <dd>{{ form.phone }}</dd>
+                                        <dt></dt>
+                                        <dd class="text-warning">{{ form.phone.errors }}</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>{{ form.image.label }}</dt>
+                                        <dd>{{ form.image }}</dd>
+                                        <dt></dt>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dd><input type="submit" class="btn btn-primary" value="Зберегти" /></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    	{%endif%}
+    </section>
+{%endblock%}
