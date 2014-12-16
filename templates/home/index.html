@@ -1,71 +1,101 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% block menu %}
+    {%if user.is_authenticated%}
+        <li><a href="{% url 'accounts:login' %}">Привіт {{user.username}}</a></li>
+        <li><a href="{% url 'accounts:logout' %}">Exit</a></li>
+    {%else%}
+        {{ block.super }}
+    {%endif%}
+{% endblock menu %}
 {% block content %}
-        <!-- Search -->
-        <section class="first-section color-scheme-white">
-            <h1 class="text-center text-uppercase">{% trans "Відгуки про лікарів" %}</h1>
+    <!-- Search -->
+    <section class="top-section color-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 text-center">
+                    <h1 class="text-uppercase top-padding">{% trans "Відгуки про лікарів" %}</h1>
+                    <h2 class="text-uppercase c-red">{% trans "місто Івано-Франківськ" %}</h2>
+                </div>
+                <div class="col-md-6">
+                    <div class="search">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <strong class="text-uppercase c-red">{% trans "Лікар" %}</strong>
+                                <form action="/search/" method="get" class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-xs-8">
+                                                <input type="text" class="form-control" placeholder="Прізвище">
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <button class="btn btn-default" type="button">
+                                                    <span class="glyphicon glyphicon-search"></span>{% trans " Пошук" %}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <strong class="text-uppercase c-red">{% trans "Спеціальність" %}</strong>
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-xs-8">
+                                                <select class="form-control" id="select">
+                                                    <option>{% trans "-------------------" %}</option>
+                                                    <option>{% trans "сексопатолог" %}</option>
+                                                    <option>{% trans "невролог" %}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <button class="btn btn-default" type="button">
+                                                    <span class="glyphicon glyphicon-search"></span></span>{% trans " Пошук" %}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
             <div class="container">
                 <div class="row">
-			        <div class="col-md-2 col-md-offset-5"><hr /></div>
-		        </div>
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-4 home-search-city text-center">
-                        <strong><span class="text-uppercase red">{% trans "Місто " %}</span></strong>
-                        <span class="text-uppercase home-city">{% trans "Івано-Франківськ" %}</span>
+                    <div class="col-md-12">
+                        <div class="top-spacer"></div>
                     </div>
                 </div>
+            </div>
+
+        </section> <!--End Search -->
+
+        <section class="main color-grey">
+
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-md-offset-1">
-                        <strong><a href="#" class="text-uppercase">{% trans "Спеціальність" %}</a></strong>
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <select class="form-control" id="select">
-                                        <option>{% trans "терапевт" %}</option>
-                                        <option>{% trans "сексопатолог" %}</option>
-                                        <option>{% trans "невролог" %}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-3 col-md-offset-1">
-                        <strong><a href="#" class="text-uppercase search-subtitle">{% trans "Клініки" %}</a></strong>
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <select class="form-control" id="select">
-                                        <option>{% trans "Поліклініка №1" %}</option>
-                                        <option>{% trans "Поліклініка №2" %}</option>
-                                        <option>{% trans "Кардіодиспансер" %}</option>
-                                        <option>{% trans "Шкірдиспансер" %}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-3 col-md-offset-1">
-                        <strong><a href="#" class="text-uppercase">{% trans "Лікарі" %}</a></strong>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Прізвище ім'я">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
+                    <div class="col-md-12">
+                        <div class="color-white">
+                            111111111111
                         </div>
                     </div>
                 </div>
             </div>
-        </section> <!--End Search -->
+
+        </section>
 
         <!-- City Clinics -->
-        <section class="home-section color-scheme-grey text-center">
-           <h2 class="text-uppercase">Клініки Івано-Франківська</h2>
+        <section class="co">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-2 col-md-offset-5"><hr /></div>
-                </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-4">
                         <div class="city boxed-white">
@@ -161,3 +191,6 @@
             </div>
         </section> <!-- End Popular Doctor -->
 {% endblock %}
+
+{% block js %}
+{% endblock js %}
