@@ -76,7 +76,6 @@ INSTALLED_APPS = (
     'apps.contacts',
 
     'captcha',
-#    'contact_form',
 
     'apps.polls',
 

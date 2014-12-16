@@ -1,7 +1,65 @@
-﻿/* --- щодок кросбраузерності (в мене підвіндовсом є стаття, глянути!! --- */
-section {
+﻿section {
     display: block;
 }
+
+/** base.html **/
+.navbar-default .navbar-brand {
+    padding-top: 8px;
+}
+.navbar-brand {
+    height: 68px;
+}
+.navbar {
+    min-height: 70px;
+    margin-bottom: 0px;
+}
+.navbar-nav.navbar-right:last-child {
+    margin: 12px -15px 0 0;
+}
+.color-grey {
+    background: #f7f7f7;
+}
+.color-white {
+    background: #ffffff;
+}
+.top-padding {
+    padding-top: 60px;
+}
+.line {
+    list-style: none outside none;
+    padding: 0;
+}
+.line li {
+    display: inline;
+}
+.line li a {
+    margin: 0 5px;
+}
+.top-section {
+    display: block;
+    padding-top: 10px;
+    min-height: 290px;
+}
+.top-section .search{
+    margin-top: 30px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 40px;
+}
+h1, .h1 {
+    font-size: 2.35em;
+}
+.c-red {
+    color: #e66528;
+}
+
+.top-spacer {
+    height: 40px;
+    background: #ffffff;
+}
+/**  END new design: base.html **/
+
 /* --- nav block --- */
 .nav-btn {
     margin: 5px 15px 0px 15px;
@@ -15,16 +73,7 @@ section {
 .modal-soc {
     margin: 20px 0 20px;
 }
-.line {
-    list-style: none outside none;
-    padding: 0;
-}
-.line li {
-    display: inline;
-}
-.line li a {
-    margin: 0 5px;
-}
+
 .modal-em {
     margin: 40px 0 20px;
 }
