@@ -14,11 +14,11 @@ urlpatterns = patterns('',
     url(r"^$", "apps.home.views.index", name="home"),
     url(r"^accounts/", include("apps.accounts.urls")),
 
-#    url(r"^doctors/", include("apps.doctor_page.urls")),
+#    url(r"^doctors/", include("apps.doctors.urls")),
     url(r"^contacts/", include("apps.contacts.urls", namespace="contacts")),
 #    url(r"^contacts/", include('contact_form.urls')),
 
-    url(r"^doctors/", include("apps.doctor_page.urls",  namespace="doctors")),
+    url(r"^doctors/", include("apps.doctors.urls",  namespace="doctors")),
     url(r"^polls/", include("apps.polls.urls",  namespace="polls")),
 
 #    url(r"^adminpanel/", include("apps.adminpanel.urls", namespace="adminpanel")),

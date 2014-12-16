@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from django.http.response import Http404
 from django.http import HttpResponse, HttpResponseRedirect
-from apps.doctor_page.forms import DoctorForm, DoctorUserForm, HospitalForm, CommentForm
+from apps.doctors.forms import DoctorForm, DoctorUserForm, HospitalForm, CommentForm
 
 
 def add_doctor(request):
@@ -25,7 +25,7 @@ def add_doctor(request):
     else:
         form = DoctorForm()
     args['form'] = form
-    return render_to_response("doctor_page/add_update.html", args,
+    return render_to_response("doctors/add_update.html", args,
                               context_instance=RequestContext(request))
 
 
@@ -45,7 +45,7 @@ def add_hospital(request):
     else:
         form = HospitalForm()
     args['form'] = form
-    return render_to_response("doctor_page/add_hospital.html", args,
+    return render_to_response("doctors/add_hospital.html", args,
                               context_instance=RequestContext(request))
 
 
@@ -54,7 +54,7 @@ def doctors(request):
     args['doctors'] = Doctor.objects.all()
     if not args['doctors']:
         args['doctors'] = 'Немає лікарів'
-    return render_to_response("doctor_page/doctors.html", args,
+    return render_to_response("doctors/doctors.html", args,
                               context_instance=RequestContext(request))
 
 
@@ -65,7 +65,7 @@ def doctor_profile(request, doctor_id):
         args['comments'] = Comment.objects.filter(doctor_id=doctor_id, is_active=True)
     except ObjectDoesNotExist:
         raise Http404
-    return render_to_response("doctor_page/doctor_profile.html", args,
+    return render_to_response("doctors/doctor_profile.html", args,
                               context_instance=RequestContext(request))
 
 
@@ -92,7 +92,7 @@ def recommendation(request, doctor_id, recommend):
     except (ObjectDoesNotExist, IntegrityError):
         raise Http404
 
-    return render_to_response("doctor_page/doctor_profile.html", args,
+    return render_to_response("doctors/doctor_profile.html", args,
                               context_instance=RequestContext(request))
 
 
@@ -112,7 +112,7 @@ def doctor_user(request):
                                 '<a href="/">Повернутися на головну</a>' % request.user)
     args['form'] = form
 
-    return render_to_response("doctor_page/doctor_user.html", args,
+    return render_to_response("doctors/doctor_user.html", args,
                               context_instance=RequestContext(request))
 
 
@@ -137,7 +137,7 @@ def add_comment(request, doctor_id):
         form = CommentForm()
     args['form'] = form
 
-    return render_to_response("doctor_page/add_comment.html", args,
+    return render_to_response("doctors/add_comment.html", args,
                               context_instance=RequestContext(request))
 
 
@@ -164,7 +164,7 @@ def edit_comment(request, comment_id):
         form = CommentForm(initial=data)
     args['form'] = form
     args['f'] = form.errors
-    return render_to_response("doctor_page/add_comment.html", args,
+    return render_to_response("doctors/add_comment.html", args,
                               context_instance=RequestContext(request))
 
 

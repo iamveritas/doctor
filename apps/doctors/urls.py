@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 import settings
 from django.contrib.auth.decorators import login_required
-from apps.doctor_page import views
+from apps.doctors import views
 
 
 urlpatterns = patterns("",
