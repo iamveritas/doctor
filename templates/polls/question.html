@@ -1,42 +1,20 @@
-{% extends "base.html" %}
-{% load i18n %}
+<div class="red text-uppercase modal-soc">
+     {{ question.question_text }}
+</div>
 
+<form action="{% url 'polls:poll' question.id %}" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ message_errors }}
+    {% comment %}    <input type="hidden" name="next" value="{{request.GET.next}}" /> {% endcomment %}
 
-{%block content%}
-    <section class="first-section color-scheme-white">
+    {% for choice in question.choice_set.all %}
+        <ul class="dl-horizontal text-left line-clinics">
+            <li><input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label></li>
+        </ul>
+    {% endfor %}
 
-        {% load i18n %}
-        <div class="container">
-            <div class="text-center text-uppercase modal-soc">
-                 {{ question.question_text }}
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <form action="{% url 'polls:poll' question.id %}" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ message_errors }}
-                        <input type="hidden" name="next" value="{{request.GET.next}}" />
-                        <div class="row">
-                            <div class="col-md-12">
-                                {{ f }}
-
-                                {% for choice in question.choice_set.all %}
-                                    <dl class="dl-horizontal">
-                                        <dt><input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" /></dt>
-                                        <dd><label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label></dd>
-                                        <dt></dt>
-                                        <dd class="text-warning">{{ form.content.errors }}</dd>
-                                    </dl>
-                                {% endfor %}
-
-                                <dl class="dl-horizontal">
-                                    <dd><input type="submit" class="btn btn-primary" value="Голосувати" /></dd>
-                                </dl>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-{%endblock%}
+    <ul class="dl-horizontal line-clinics">
+        <li><input type="submit" class="btn btn-primary" value="Відповісти" /></li>
+    </ul>
+</form>

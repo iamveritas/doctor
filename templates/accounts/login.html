@@ -1,9 +1,9 @@
 {%extends 'base.html'%}
 
 {%block content%}
-	<section class="first-section color-scheme-white">
-	{%if user.is_authenticated%}
-		<div class="container">
+    <section class="top-section color-grey">
+        <div class="container">
+    	{%if user.is_authenticated%}
             <div class="row ">
                 <div class="col-md-8 col-md-offset-2 lykar-user-main">
                     <div class="row ">
@@ -64,7 +64,6 @@
                 </div>
             </div>
 
-        </div>
 	{%else%}
         {% load i18n %}
         <div class="container">
@@ -75,5 +74,6 @@
             {% include 'accounts/social.html' %}
         </div>
 	{%endif%}
+        </div>
     </section>
 {%endblock%}

@@ -1,0 +1,52 @@
+{% load i18n %}
+{% load staticfiles %}
+
+        <footer class="color-grey text-center">
+            <hr class="lykar-separator" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="line padding-top text-uppercase red">
+                            <li><a href="#">{% trans "Правила" %}</a></li>
+                            <li><a href="#">{% trans "Контакти" %}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>
+                            <span class="glyphicon glyphicon-copyright-mark"></span> 2014
+                            <a href="{% url 'home' %}">{% trans "lykar.com.ua" %}</a><br />
+                            <span>Відгуки про лікарів</span>
+                        </p>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="lykar-copyright">
+                            {% blocktrans %}Інформація, розміщена на сайті, отримана з відкритих джерел і відповідальність за її достовірність lykar.com.ua не несе. Відгуки є об’єктивними судженнями їх авторів і не мають відношення до редакції сайту. Відповідальність за достовірність відгуку несе його автор. Заборонено будь-яке використання матеріалів сайту без письмового дозволу адміністрації.{% endblocktrans %}
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="text-uppercase">{% trans "Приєднуйся: " %}</span>
+                        <ul class="line">
+                            <li>
+                                <a href="#" class="facebook">
+                                    <img src="{% static "img/facebook.png" %}" alt="facebook" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="vkontakte">
+                                    <img src="{% static "img/vkontakte.png"%}" alt="vkontakte" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+        {% block js %}{% endblock js %}
+
+    </body>
+</html>

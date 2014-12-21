@@ -1,6 +1,7 @@
 # -*-coding:utf8-*-
 from django.shortcuts import render, render_to_response, get_object_or_404, RequestContext
 from django.http.response import Http404
+from django.http import HttpResponseRedirect
 from apps.polls.models import Question, Choice
 
 
@@ -26,8 +27,7 @@ def poll(request, question_id='1'):
         else:
             selected_choice.votes += 1
             selected_choice.save()
-            response = render_to_response("polls/results.html", args,
-                              context_instance=RequestContext(request))
+            response = HttpResponseRedirect("/")
             response.set_cookie(question_id, selected_choice.id, max_age=1209600)
             return response
 

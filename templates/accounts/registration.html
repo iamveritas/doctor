@@ -1,29 +1,26 @@
 {%extends 'base.html'%}
+{% load i18n %}
 
 {%block content%}
-    <section class="first-section color-scheme-white">
-        {%if user.is_authenticated%}
-        {%else%}
-            {% load i18n %}
-            <div class="container">
-                <div class="text-center text-uppercase modal-soc">{% trans "Заповніть реєстраційну форму:" %}</div>
+<section class="top-section color-grey">
+    <div class="container">
 
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        {% include 'accounts/registration_form.html' %}
-                    </div>
+    {%if not user.is_authenticated%}
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="text-center text-uppercase modal-soc">
+                    <h2 class=""> {% trans "Ви можете увійти через:" %}</h2>
                 </div>
-
-                <div class="text-center text-uppercase modal-soc">{% trans "Або ввійдіть через:" %}</div>
                 {% include 'accounts/social.html' %}
-
-                <div class="form-group">
-                    <div class="col-sm-12 text-center">
-                        {% trans "Реєструючись на сайті, ви автоматично погоджуєтеся з " %}<a href="#">{% trans "Умовами використання" %}</a>
-                    </div>
+                <br />
+                <div class="text-center text-uppercase modal-soc">
+                    <h1 class = "red"> {% trans "Або зареєструватися:" %}</h1>
                 </div>
+                {% include 'accounts/registration_form.html' %}
 
             </div>
-    	{%endif%}
-    </section>
+        </div>
+    {%endif%}
+    </div>
+</section>
 {%endblock%}

@@ -6,12 +6,9 @@ admin.autodiscover()
 
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
 
+    url(r"^$", include("apps.home.urls")),
     url(r'^admin/', include(admin.site.urls)),
-    url(r"^$", "apps.home.views.index", name="home"),
     url(r"^accounts/", include("apps.accounts.urls", namespace="accounts")),
 
 #    url(r"^doctors/", include("apps.doctors.urls")),

@@ -105,10 +105,12 @@ class Doctor(models.Model):
                               null=True, blank=True)
     recommend_yes = models.IntegerField("Рекомендують", blank=True, default=0)
     recommend_no = models.IntegerField("Не рекомендують", blank=True, default=0)
+    created = models.DateTimeField("Дата створення", auto_now=False, auto_now_add=True)
 
     class Meta:
         verbose_name = "Лікар"
         verbose_name_plural = "Лікарі"
+
 
     def __unicode__(self):
         return u"%s %s" % (self.first_name, self.last_name)

@@ -1,0 +1,22 @@
+{% csrf_token %}
+{{ form.non_field_errors }}
+<input type="hidden" name="next" value="{{request.GET.next}}" />
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="form-group">
+            <div class="dl-horizontal">
+                {{ form.content }}
+            </div>
+            <div class="text-warning">{{ form.content.errors }}</div>
+        </div>
+
+        <div class="form-group">
+            <div class="dl-horizontal">
+                <input type="submit" class="btn btn-primary" value="Відправити" />
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,87 +1,91 @@
-{% extends "base.html" %}
+{% extends "base_sidebar.html" %}
 {% load i18n %}
 
 
 {%block content%}
-    <section class="first-section color-scheme-white">
-        {%if user.is_authenticated%}
-            {% load i18n %}
-            <div class="container">
-                <div class="text-center text-uppercase modal-soc">{% trans "Введіть дані лікаря:" %}</div>
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <form action="/doctors/add/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ form.non_field_errors }}
-                            {{ f }}
-                                <input type="hidden" name="next" value="{{request.GET.next}}" />
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <dl class="dl-horizontal">
-                                        <dt>{{ form.last_name.label }}*</dt>
-                                        <dd>{{ form.last_name }}</dd>
-                                        <dt></dt>
-                                        <dd class="text-warning">{{ form.last_name.errors }}</dd>
-                                    </dl>
-                                    <dl class="dl-horizontal">
-                                        <dt>{{ form.first_name.label }}*</dt>
-                                        <dd>{{ form.first_name }}</dd>
-                                        <dt></dt>
-                                        <dd class="text-warning">{{ form.first_name.errors }}</dd>
-                                    </dl>
-                                    <dl class="dl-horizontal">
-                                        <dt>{{ form.patronymic.label }}*</dt>
-                                        <dd>{{ form.patronymic }}</dd>
-                                        <dt></dt>
-                                        <dd class="text-warning">{{ form.patronymic.errors }}</dd>
-                                    </dl>
-                                    <dl class="dl-horizontal">
-                                        <dt>{{ form.sex.label }}*</dt>
-                                        <dd>{{ form.sex }}</dd>
-                                        <dt></dt>
-                                        <dd class="text-warning">{{ form.sex.errors }}</dd>
-                                    </dl>
-                                    <dl class="dl-horizontal">
-                                        <dt>{{ form.speciality.label }}*</dt>
-                                        <dd>{{ form.speciality }}</dd>
-                                        <dt></dt>
-                                        <dd class="text-warning">{{ form.speciality.errors }}</dd>
-                                    </dl>
-                                    <dl class="dl-horizontal">
-                                        <dt>{{ form.hospitals.label }}*</dt>
-                                        <dd>{{ form.hospitals }}</dd>
-                                        <dt></dt>
-                                        <dd class="add-button">
-                                            <a href="{% url 'doctors:add-hospital' %}?next={{ request.get_full_path }}" role="button" class="btn btn-primary btn-sm">
-                                                {% trans "Додати клініку" %}
-                                            </a>
-                                        </dd>
-                                        <dd class="text-warning">{{ form.hospitals.errors }}</dd>
-                                    </dl>
-                                    <dl class="dl-horizontal">
-                                        <dt>{{ form.image.label }}</dt>
-                                        <dd>{{ form.image }}</dd>
-                                        <dt></dt>
-                                    </dl>
-                                    <dl class="dl-horizontal">
-                                        <dd><input type="submit" class="btn btn-primary" value="Зберегти" /></dd>
-                                    </dl>
+    {%if user.is_authenticated%}
+        <div class="row">
+            <div class="col-md-7 col-md-offset-3">
+
+                <div class="text-center text-uppercase modal-soc">
+                    <h1 class = "red"> {% trans "Введіть дані про лікаря:" %}</h1>
+                </div>
+
+                <form action="/doctors/add/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <input type="hidden" name="next" value="{{request.GET.next}}" />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="dl-horizontal">
+                                    <strong>{{ form.last_name.label }}*</strong>
+                                    {{ form.last_name }}
+                                </div>
+                                <div class="text-warning">{{ form.last_name.errors }}</div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="dl-horizontal">
+                                    <strong>{{ form.first_name.label }}*</strong>
+                                    {{ form.first_name }}
+                                </div>
+                                <div class="text-warning">{{ form.first_name.errors }}</div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="dl-horizontal">
+                                    <strong>{{ form.patronymic.label }}*</strong>
+                                    {{ form.patronymic }}
+                                </div>
+                                <div class="text-warning">{{ form.patronymic.errors }}</div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="dl-horizontal">
+                                    <strong>{{ form.sex.label }}*</strong>
+                                    {{ form.sex }}
+                                </div>
+                                <div class="text-warning">{{ form.sex.errors }}</div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="dl-horizontal">
+                                    <strong>{{ form.speciality.label }}*</strong>
+                                    {{ form.speciality }}
+                                </div>
+                                <div class="text-warning">{{ form.speciality.errors }}</div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="dl-horizontal">
+                                    <strong>{{ form.hospitals.label }}*</strong>
+                                    {{ form.hospitals }}
+                                    <div class="text-right">
+                                        <a href="{% url 'doctors:add-hospital' %}?next={{ request.get_full_path }}"> {% trans "Додати клініку" %} </a>
+                                    </div>
+                                </div>
+
+                                <div class="text-warning">{{ form.hospitals.errors }}</div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="dl-horizontal">
+                                    <strong>{{ form.image.label }}</strong>
+                                    {{ form.image }}
                                 </div>
                             </div>
-                        </form>
+
+                            <div class="form-group">
+                                <div class="dl-horizontal">
+                                    <input type="submit" class="btn btn-primary" value="Зберегти" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="text-center text-uppercase modal-soc">{% trans "Або ввійдіть через:" %}</div>
-                {% include 'accounts/social.html' %}
-
-                <div class="form-group">
-                    <div class="col-sm-12 text-center">
-                        {% trans "Реєструючись на сайті, ви автоматично погоджуєтеся з " %}<a href="#">{% trans "Умовами використання" %}</a>
-                    </div>
-                </div>
-
+                </form>
             </div>
-    	{%endif%}
-    </section>
+        </div>
+    {%endif%}
 {%endblock%}

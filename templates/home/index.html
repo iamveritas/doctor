@@ -1,196 +1,94 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block menu %}
-    {%if user.is_authenticated%}
-        <li><a href="{% url 'accounts:login' %}">Привіт {{user.username}}</a></li>
-        <li><a href="{% url 'accounts:logout' %}">Exit</a></li>
-    {%else%}
-        {{ block.super }}
-    {%endif%}
-{% endblock menu %}
+
 {% block content %}
+
     <!-- Search -->
-    <section class="top-section color-grey">
+    {% include "home/searchForm.html" %}
+    <!--End Search -->
+
+
+
+    <section class="color-grey text-center">
         <div class="container">
-            <div class="row">
-                <div class="col-md-5 text-center">
-                    <h1 class="text-uppercase top-padding">{% trans "Відгуки про лікарів" %}</h1>
-                    <h2 class="text-uppercase c-red">{% trans "місто Івано-Франківськ" %}</h2>
-                </div>
-                <div class="col-md-6">
-                    <div class="search">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <strong class="text-uppercase c-red">{% trans "Лікар" %}</strong>
-                                <form action="/search/" method="get" class="form-horizontal">
-                                        <div class="form-group">
-                                            <div class="col-xs-8">
-                                                <input type="text" class="form-control" placeholder="Прізвище">
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <button class="btn btn-default" type="button">
-                                                    <span class="glyphicon glyphicon-search"></span>{% trans " Пошук" %}
-                                                </button>
+            <div class="row lykar-home color-scheme-white ">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h2 class="text-uppercase">{% trans "Медичні заклади" %}</h2>
+                            <div class="team boxed-grey">
+
+                                <div class="row">
+                                    {% for hospital_type in hospital_types %}
+                                        <div class=" col-xs-12 col-sm-12 col-md-4">
+                                            <div class="city boxed-white">
+                                                <div class="inner">
+                                                    <h5>{{ hospital_type.name }}</h5>
+                                                    <ul class="line-clinics text-uppercase">
+                                                        {% for hospital in hospitals %}
+                                                            {% if hospital_type == hospital.type %}
+                                                                <li><a href="#">{{ hospital.name }}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    {% empty %}
+                                        <p class="subtitle">{% trans 'Поки що не зареєстровано жодної клініки.' %}</p>
+                                    {% endfor %}
                                 </div>
 
                             </div>
+                        </div>
 
-                            <div class="row">
+                        <div class="col-md-4">
+                            <h2 class="text-uppercase">{% trans "Опитування" %}</h2>
+                            {{ cook }}
+                            {{ quest }}
+                            <div class="team boxed-grey">
+                                {% include question_pattern %}
+                            </div>
+                        </div>
 
-                                <div class="col-md-12">
-                                    <strong class="text-uppercase c-red">{% trans "Спеціальність" %}</strong>
-                                    <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <div class="col-xs-8">
-                                                <select class="form-control" id="select">
-                                                    <option>{% trans "-------------------" %}</option>
-                                                    <option>{% trans "сексопатолог" %}</option>
-                                                    <option>{% trans "невролог" %}</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <button class="btn btn-default" type="button">
-                                                    <span class="glyphicon glyphicon-search"></span></span>{% trans " Пошук" %}
-                                                </button>
-                                            </div>
+                    </div>
+
+                    <!-- Popular Doctor -->
+                    <h2 class="text-uppercase">{% trans "Популярні лікарі" %}</h2>
+
+                    {% comment %}
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-5"><hr /></div>
+                    </div>
+                    {% endcomment %}
+
+                    <div class="row">
+                        {% for doctor in doctors %}
+                            <div class="col-xs-6 col-sm-3 col-md-3">
+                                <div class="team boxed-grey">
+                                    <div class="inner">
+                                        <h5><a href="{% url 'doctors:doctor_profile' doctor.id %}">{{ doctor.last_name }} {{ doctor.first_name }}</a></h5>
+                                        <p class="subtitle">{{ doctor.speciality }}</p>
+                                        <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" alt="doctor name" class="img-responsive img-circle center-block" /></div>
+                                        <div>
+                                            <i class = "glyphicon glyphicon-thumbs-up"></i>
+                                            <span class="badge">{{ doctor.recommend_yes }}</span>
+                                            <i class = "glyphicon glyphicon-thumbs-down"></i>
+                                            <span class="badge">{{ doctor.recommend_no }}</span>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
-
                             </div>
-
-                        </div>
+                        {% empty %}
+                            <p class="subtitle">{% trans 'Поки що не зареєстровано жодного лікаря. Ви можете це зробити, перейшовши <a href="#">сюди</a>.' %}</p>
+                        {% endfor %}
                     </div>
+                    <!-- End Popular Doctor -->
 
-                </div>
-
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="top-spacer"></div>
-                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-        </section> <!--End Search -->
-
-        <section class="main color-grey">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="color-white">
-                            111111111111
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- City Clinics -->
-        <section class="co">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-4">
-                        <div class="city boxed-white">
-                            <div class="inner">
-                                <h5>Поліклініки</h5>
-                                <ul class="line-clinics text-uppercase">
-                                    <li><a href="#">Поліклініка № 1</a></li>
-                                    <li><a href="#">Поліклініка № 2</a></li>
-                                    <li><a href="#">Поліклініка № 3</a></li>
-                                    <li><a href="#">Поліклініка № 4</a></li>
-                                    <li><a href="#">Поліклініка № 5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4">
-                        <div class="city boxed-white">
-                            <div class="inner">
-                                <h5>Диспансери</h5>
-                                <ul class="line-clinics text-uppercase">
-                                    <li><a href="#">Поліклініка № 1</a></li>
-                                    <li><a href="#">Поліклініка № 2</a></li>
-                                    <li><a href="#">Поліклініка № 3</a></li>
-                                    <li><a href="#">Поліклініка № 4</a></li>
-                                    <li><a href="#">Поліклініка № 5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4">
-                        <div class="city boxed-white">
-                            <div class="inner">
-                                <h5>Лікарні</h5>
-                                <ul class="line-clinics text-uppercase">
-                                    <li><a href="#">Поліклініка № 1</a></li>
-                                    <li><a href="#">Поліклініка № 2</a></li>
-                                    <li><a href="#">Поліклініка № 3</a></li>
-                                    <li><a href="#">Поліклініка № 4</a></li>
-                                    <li><a href="#">Поліклініка № 5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> <!-- End City Clinics -->
-
-        <!-- Popular Doctor -->
-        <section class="home-section color-scheme-white text-center">
-            <h2 class="text-uppercase">{% trans "Популярні лікарі" %}</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2 col-md-offset-5"><hr /></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6 col-sm-3 col-md-3">
-                        <div class="team boxed-grey">
-                            <div class="inner">
-                                <h5><a href="#">{% trans "Українець В. В." %}</a></h5>
-                                <p class="subtitle">{% trans "терапевт" %}</p>
-                                <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" alt="doctor name" class="img-responsive img-circle center-block" /></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3 col-md-3">
-                        <div class="team boxed-grey">
-                            <div class="inner">
-                                <h5><a href="#">{% trans "Українець В. В." %}</a></h5>
-                                <p class="subtitle">{% trans "терапевт" %}</p>
-                                <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_m.png" alt="doctor name" class="img-responsive img-circle center-block" /></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3 col-md-3">
-                        <div class="team boxed-grey">
-                            <div class="inner">
-                                <h5><a href="#">{% trans "Українець В. В." %}</a></h5>
-                                <p class="subtitle">{% trans "терапевт" %}</p>
-                                <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" alt="doctor name" class="img-responsive img-circle center-block" /></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3 col-md-3">
-                        <div class="team boxed-grey">
-                            <div class="inner">
-                                <h5><a href="#">{% trans "Українець В. В." %}</a></h5>
-                                <p class="subtitle">{% trans "терапевт" %}</p>
-                                <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_m.png" alt="doctor name" class="img-responsive img-circle center-block" /></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> <!-- End Popular Doctor -->
 {% endblock %}
-
-{% block js %}
-{% endblock js %}

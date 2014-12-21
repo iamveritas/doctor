@@ -1,0 +1,62 @@
+<div class="container">
+            <div class="row ">
+                <div class="col-md-8 col-md-offset-2 lykar-user-main">
+                    <div class="row ">
+                        <div class="col-md-3 ">
+                            <img src="{{ photo }}" width=100% class="img-account img-rounded lykar-user-photo" >
+                            <a href="#" class="btn btn-md active lykar-user-btn" role="button">Редагувати фото</a>
+                            <a href="#" class="btn btn-md active lykar-user-btn" role="button">Мої налаштуваня</a>
+                            <a href="#" class="btn btn-md active lykar-user-btn" role="button">Мої коментарі</a>
+                        </div>
+
+                        <div class="col-md-9">
+                            <h2>
+                                {% if status == 'doctor' %}
+                                    Я лікар  {{ user.get_full_name }}
+                                {% elif status == 'user' %}
+                                    {{ user.get_full_name }}
+                                    <a href="/doctors/doctor_user/">Ідентифікувати себе, як лікаря.</a>
+                                {% endif %}
+                            </h2>
+                            <hr class="lykar-user-line" />
+
+                            <div class="row ">
+                                <div class="col-md-3 ">
+                                    Ваш логін:
+                                </div>
+                                <div class="col-md-9">
+                                    {{ user.username }}
+                                </div>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-md-3 ">
+                                    Ваш email:
+                                </div>
+                                <div class="col-md-9">
+                                    {{ user.email }}
+                                </div>
+                            </div>
+
+                            <hr class="lykar-user-line" />
+
+                            <div class="row ">
+                                <div class="col-md-3 ">
+                                    Ваш коментарі:
+                                </div>
+                                <div class="col-md-9">
+                                    {% if comments %}
+                                        {% for comment in comments %}
+                                            <p>{{ comment }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>

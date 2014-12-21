@@ -6,28 +6,33 @@
     <div class="row">
         <div class="col-md-12">
             <dl class="dl-horizontal">
-                <dt>Логін*</dt>
+                <dd><strong>Логін*</strong></dd>
                 <dd>{{ form.username }}</dd>
                 <dt></dt>
                 <dd class="text-warning">{{ form.username.errors }}</dd>
             </dl>
             <dl class="dl-horizontal">
-                <dt>{{ form.email.label }}*</dt>
+                <dd><strong>{{ form.email.label }}*</strong></dd>
                 <dd>{{ form.email }}</dd>
                 <dt></dt>
                 <dd class="text-warning">{{ form.email.errors }}</dd>
             </dl>
             <dl class="dl-horizontal">
-                <dt>{{ form.password1.label }}*</dt>
+                <dd><strong>{{ form.password1.label }}*</strong></dd>
                 <dd>{{ form.password1 }}</dd>
                 <dt></dt>
                 <dd class="text-warning">{{ form.password1.errors }}</dd>
             </dl>
             <dl class="dl-horizontal">
-                <dt>{{ form.password1.label }}*<br/>(ще раз)</dt>
+                <dd><strong>{{ form.password1.label }} (ще раз)*</strong></dd>
                 <dd>{{ form.password2 }}</dd>
                 <dt></dt>
                 <dd class="text-warning">{{ form.password2.errors }}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dd>{{ form.rules }}  <strong>Я погоджуюсь з <a href="#">умовами</a>  використання сайту.</strong></dd>
+                <dt></dt>
+                <dd class="text-warning">{{ form.rules.errors }}</dd>
             </dl>
             <dl class="dl-horizontal">
                 <dt></dt>

@@ -1,0 +1,23 @@
+{% include 'header.html' %}
+
+    <section class="home-section color-scheme-white">
+        <div class="container">
+            <div class="row">
+
+                <!-- BLOCK CONTENT-->
+                <div class="col-md-9">
+                    {%block content%} {%endblock content%}
+                </div>
+                <!-- end BLOCK CONTENT-->
+
+                <!-- BLOCK SIDEBAR -->
+                <div class="col-md-3 lykar-sidebar">
+                    {% include 'sidebar.html' %}
+                </div>
+                <!-- end BLOCK SIDEBAR -->
+
+            </div>
+        </div>
+    </section>
+
+{% include 'fooret.html' %}

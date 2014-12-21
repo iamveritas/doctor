@@ -1,3 +1,4 @@
+#-*-coding:utf8-*-
 from django.contrib import admin
 from apps.internal.models import (Doctor, Region, City,
                                   Hospital, HospitalType, Speciality, Efficiency,
@@ -5,9 +6,20 @@ from apps.internal.models import (Doctor, Region, City,
                                   DoctorUser,)
 
 
+def make_active(modeladmin, request, queryset):
+    queryset.update(is_active=True)
+make_active.short_description = "Make active"
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['id', 'content', 'is_active']
+    ordering = ['-created']
+    actions = [make_active]
+
+
 admin.site.register(Doctor)
 admin.site.register(DoctorUser)
-admin.site.register(Comment)
+admin.site.register(Comment, CommentAdmin)
 admin.site.register(Hospital)
 admin.site.register(HospitalType)
 admin.site.register(City)
