@@ -7,13 +7,14 @@ import settings
 
 from apps.accounts import views
 
-from apps.accounts.views import LoginForm
+from apps.accounts.views import LoginForm, UserDetail, UserDoctorCreate
 
 
 
 urlpatterns = patterns("",
     url(r'login/$',LoginForm.as_view(), name="login"),
-
+    url(r'(?P<pk>\d+)/$',UserDetail.as_view(), name="personal_page"),
+    url(r'^doctor/$', UserDoctorCreate.as_view(), name="user_doctor"),
 
     url(r'^logout/$',views.logout, name="logout"),
 #    url(r'login/$',views.login, name="login"),

@@ -1,0 +1,154 @@
+{% load i18n %}
+
+<div class="row">
+
+    <div class="col-md-3 lykar-doctor-avatar">
+        <div class="avatar">
+            {% if photo %}
+                <img src="{{ photo }}" alt="doctor name" class="img-responsive img-circle center-block" />
+            {% else %}
+                <img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" alt="doctor name" class="img-responsive img-circle center-block" />
+            {% endif %}
+        </div>
+
+        <div>
+            <p class="text-center">
+                <i class = "glyphicon glyphicon-thumbs-up"></i>
+                <span class="badge">{{ doctor.recommend_yes }}</span>
+
+                <i class = "glyphicon glyphicon-thumbs-down"></i>
+                <span class="badge">{{ doctor.recommend_no }}</span>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="col-md-9">
+        <h1 class = "text-uppercase"> {{ doctor.last_name }} {{ doctor.first_name }} {{ doctor.patronymic }}</h1>
+        <hr class = "lykar-separator" />
+
+        <div class="row">
+            <div class="col-md-4">
+                <strong><span class="text-uppercase red">Спеціальність</span></strong>
+            </div>
+
+            <div class="col-md-8">
+                <ul class="list-unstyled">
+                    <li> {{ doctor.speciality }} </li>
+                    {{ qq }}
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <strong><span class="text-uppercase red">Місце роботи</span></strong>
+            </div>
+
+            <div class="col-md-8">
+                <ul class="list-unstyled">
+                    {% for hospital in doctor.hospitals.all %}
+                    <li> {{ hospital }} </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <h1 class="text-uppercase"> Рейтинг</h1>
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong><span class="text-uppercase red">{{ rating }}% ({{ doctor.recommend_yes }} людей) рекомендують Вас як хорошого лікаря</span></strong>
+                        <br /><br />
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ rating }}%; background : grey;">
+                                <span class="sr-only">60% Готово</span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 text-right">
+                        <strong><span class="text-uppercase red">{{ rating_minus }}% ({{ doctor.recommend_no }} людей) не рекомендують у Вас лікуватися</span></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-uppercase text-center"> Останні відгуки пацієнтів</h2>
+                <hr />
+
+                {% for comment in comments %}
+                    <div class="row lykar-boxed-comment">
+                        <div class="col-md-2 center-block">
+                            <img src="{{  comment.user.userprofile_set }}" alt="" class="img-circle img-responsive">
+                            <strong><p class="text-center red">{{  comment.user}}</p></strong>
+                        </div>
+
+                        <div class="col-md-10">
+                            <p>{{ comment.content }}</p>
+                            {% if user.id == comment.user.id %}
+                            <p class="text-right">
+                                <a href="/doctors/comment/{{ comment.id }}/" >
+                                    Редагувати
+                                </a>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% empty %}
+                    Про Вас ще ніхто не написав відгук.
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-uppercase text-center"> Мої останні відгуки про лікарів</h2>
+                <hr />
+
+                {% for comment in user_comments %}
+                    <div class="row lykar-boxed-comment">
+                        <div class="col-md-2 center-block">
+                            <img src="{{  comment.doctor.image }}" alt="" class="img-circle img-responsive">
+                            <strong><p class="text-center red">{{  comment.doctor}}</p></strong>
+                            <p class="text-center ">{{  comment.doctor.speciality}}</p>
+                        </div>
+
+                        <div class="col-md-10">
+                            <p>{{ comment.content }}</p>
+                            <p class="text-left">
+                                Додано: {{ comment.created }}
+                                </a>
+                            </p>
+                            <p class="text-right">
+                                {% if comment.is_active == 'False' %}
+                                    (коментар перевіряється)
+                                {% endif %}
+                                <a href="/doctors/comment/{{ comment.id }}/" >
+                                    Редагувати
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                {% empty %}
+                    Ви ще не написали жодного відгуку.
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

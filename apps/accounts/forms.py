@@ -1,5 +1,8 @@
 #-*-coding:utf8-*-
 from django import forms
+from apps.accounts.models import UserDoctor
+from apps.internal.models import Doctor
+
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import ugettext_lazy as _
@@ -53,3 +56,14 @@ class LoginForm(forms.Form):
 
     class Meta:
         fields = ('username', 'password')
+
+
+class UserDoctorForm(forms.ModelForm):
+    doctor = forms.ModelChoiceField(queryset=Doctor.objects.all(), label="Виберіть себе серед лікарів",
+                           required=True,
+                           widget=forms.Select(attrs={
+                               "class": BOOTSTRAP_FORM_INPUT_CLASS,
+                           }))
+    class Meta:
+        model = UserDoctor
+        fields = ['doctor']

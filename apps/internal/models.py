@@ -214,10 +214,3 @@ class Recommendation(models.Model):
             recommend = ' not recommended '
         return unicode(self.user) + unicode(recommend) + unicode(self.doctor)
 
-
-class DoctorUser(models.Model):
-    user = models.OneToOneField(User)
-    doctor = models.OneToOneField(Doctor, verbose_name="Лікар")
-    status = models.BooleanField(default=False)
-
-

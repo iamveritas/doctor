@@ -1,6 +1,6 @@
 # -*-coding:utf8-*-
 from django import forms
-from apps.internal.models import (Doctor, DoctorUser, Hospital, Comment,
+from apps.internal.models import (Doctor, Hospital, Comment,
                                   Speciality, HospitalType, City)
 
 BOOTSTRAP_FORM_INPUT_CLASS = "form-control"
@@ -57,12 +57,6 @@ class DoctorForm(forms.ModelForm):
     class Meta:
         model = Doctor
         fields = ['last_name', 'first_name', 'patronymic', 'sex', 'speciality', 'hospitals', 'image']
-
-
-class DoctorUserForm(forms.ModelForm):
-    class Meta:
-        model = DoctorUser
-#        fields = ['doctor']
 
 
 class HospitalForm(forms.ModelForm):

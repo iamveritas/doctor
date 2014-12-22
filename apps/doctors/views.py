@@ -6,13 +6,13 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 
-from django.shortcuts import render_to_response, RequestContext
+#from django.shortcuts import render_to_response, RequestContext
 from apps.internal.models import Doctor, Recommendation, Comment, Hospital
-from django.core.exceptions import ObjectDoesNotExist
-from django.db import IntegrityError
-from django.http.response import Http404
-from django.http import HttpResponse, HttpResponseRedirect
-from apps.doctors.forms import DoctorForm, DoctorUserForm, HospitalForm, CommentForm
+#from django.core.exceptions import ObjectDoesNotExist
+#from django.db import IntegrityError
+#from django.http.response import Http404
+#from django.http import HttpResponse, HttpResponseRedirect
+from apps.doctors.forms import DoctorForm, HospitalForm, CommentForm
 
 
 class HospitalCreate(CreateView):
@@ -118,27 +118,6 @@ class DoctorDetail(DetailView):
         # передаємо у context об’єкт лікаря, для якого додається рейтигн
         context['doctor'] = doctor
         return context
-
-
-def doctor_user(request):
-    args = {}
-    form = DoctorUserForm()
-
-    if request.method == 'POST':
-        request.POST['user'] = request.user.id
-        request.POST['status'] = False
-        form = DoctorUserForm(request.POST)
-
-        if form.is_valid():
-#            doctor = form.save(commit=False)
-            form.save()
-            return HttpResponse('Thank you %s!<br/>'
-                                '<a href="/">Повернутися на головну</a>' % request.user)
-    args['form'] = form
-
-    return render_to_response("doctors/doctor_user.html", args,
-                              context_instance=RequestContext(request))
-
 
 
 class CommentCreate(CreateView):

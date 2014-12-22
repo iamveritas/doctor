@@ -1,62 +1,67 @@
-<div class="container">
-            <div class="row ">
-                <div class="col-md-8 col-md-offset-2 lykar-user-main">
-                    <div class="row ">
-                        <div class="col-md-3 ">
-                            <img src="{{ photo }}" width=100% class="img-account img-rounded lykar-user-photo" >
-                            <a href="#" class="btn btn-md active lykar-user-btn" role="button">Редагувати фото</a>
-                            <a href="#" class="btn btn-md active lykar-user-btn" role="button">Мої налаштуваня</a>
-                            <a href="#" class="btn btn-md active lykar-user-btn" role="button">Мої коментарі</a>
+{% load i18n %}
+
+<div class="row">
+
+    <div class="col-md-3 lykar-doctor-avatar">
+        <div class="avatar">
+            {% if photo %}
+                <img src="{{ photo }}" alt="doctor name" class="img-responsive img-circle center-block" />
+            {% else %}
+                <img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" alt="doctor name" class="img-responsive img-circle center-block" />
+            {% endif %}
+        </div>
+
+        <div class="text-center">
+            <a href="{% url 'accounts:user_doctor' %}" class="btn btn-md active lykar-user-btn" role="button">Я - лікар</a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <h1 class = "text-uppercase">
+            {% if user.last_name or user.first_name %}
+                {{ user.last_name }} {{ user.first_name }}
+            {% else %}
+                {{ user.username }}
+            {% endif %}
+        </h1>
+        <hr class = "lykar-separator" />
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-uppercase text-center"> Мої останні відгуки про лікарів</h2>
+                <hr />
+
+                {% for comment in user_comments %}
+                    <div class="row lykar-boxed-comment">
+                        <div class="col-md-2 center-block">
+                            <img src="{{  comment.doctor.image }}" alt="" class="img-circle img-responsive">
+                            <strong><p class="text-center red">{{  comment.doctor}}</p></strong>
+                            <p class="text-center ">{{  comment.doctor.speciality}}</p>
                         </div>
 
-                        <div class="col-md-9">
-                            <h2>
-                                {% if status == 'doctor' %}
-                                    Я лікар  {{ user.get_full_name }}
-                                {% elif status == 'user' %}
-                                    {{ user.get_full_name }}
-                                    <a href="/doctors/doctor_user/">Ідентифікувати себе, як лікаря.</a>
+                        <div class="col-md-10">
+                            <p>{{ comment.content }}</p>
+                            <p class="text-left">
+                                Додано: {{ comment.created }}
+                                </a>
+                            </p>
+                            <p class="text-right">
+                                {% if comment.is_active == 'False' %}
+                                    (коментар перевіряється)
                                 {% endif %}
-                            </h2>
-                            <hr class="lykar-user-line" />
-
-                            <div class="row ">
-                                <div class="col-md-3 ">
-                                    Ваш логін:
-                                </div>
-                                <div class="col-md-9">
-                                    {{ user.username }}
-                                </div>
-                            </div>
-
-                            <div class="row ">
-                                <div class="col-md-3 ">
-                                    Ваш email:
-                                </div>
-                                <div class="col-md-9">
-                                    {{ user.email }}
-                                </div>
-                            </div>
-
-                            <hr class="lykar-user-line" />
-
-                            <div class="row ">
-                                <div class="col-md-3 ">
-                                    Ваш коментарі:
-                                </div>
-                                <div class="col-md-9">
-                                    {% if comments %}
-                                        {% for comment in comments %}
-                                            <p>{{ comment }}</p>
-                                        {% endfor %}
-                                    {% endif %}
-                                </div>
-                            </div>
-
-
+                                <a href="/doctors/comment/{{ comment.id }}/" >
+                                    Редагувати
+                                </a>
+                            </p>
                         </div>
                     </div>
-                </div>
-            </div>
+                {% empty %}
+                    Ви ще не написали жодного відгуку.
+                {% endfor %}
 
+            </div>
         </div>
+    </div>
+</div>

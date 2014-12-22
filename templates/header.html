@@ -46,7 +46,7 @@
                                 <li><a href="{% url 'home' %}">{% trans "Головна" %}</a></li>
                                 <li><a href="{% url 'doctors:doctors' %}">{% trans "Лікарі" %}</a></li>
                                 <li><a href="{% url 'doctors:add-doctor' %}">{% trans "Додати лікаря" %}</a></li>
-                                <li><a href="{% url 'accounts:login' %}">{% trans "Моя сторінка" %}</a></li>
+                                <li><a href="{% url 'accounts:personal_page' user.id %}">{% trans "Моя сторінка" %}</a></li>
                                 <li><a href="{% url 'accounts:logout' %}">{% trans "Вихід" %}</a></li>
                             {% else %}
                                 <li><a href="{% url 'home' %}">{% trans "Головна" %}</a></li>

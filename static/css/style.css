@@ -257,8 +257,9 @@ div.lykar-separator-vertical-left   {
     box-shadow: 5px 5px 10px #888888;
 }
 .lykar-user-btn{
+    margin-top: 10px;
     background: #808080;
-    width: 100%;
+    width: 90%;
     color: #ffffff;
 }
 

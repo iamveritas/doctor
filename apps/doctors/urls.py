@@ -14,6 +14,4 @@ urlpatterns = patterns("",
     url(r'^(?P<pk>\d+)/newcomment/$', CommentCreate.as_view(), name="add-comment"),
     url(r'^comment/(?P<pk>\d+)/$', CommentUpdate.as_view(), name="edit-comment"),
     url(r'^(?P<pk>\d+)/(?P<recommend>[a-z]{2,3})/$', DoctorDetail.as_view()),
-
-#    url(r'^doctor_user/$', views.doctor_user, name="doctor_user"),
 )
