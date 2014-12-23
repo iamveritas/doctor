@@ -7,43 +7,31 @@
     {% include "home/searchForm.html" %}
     <!--End Search -->
 
-    <section class="color-white text-center margin">
+    <section class="color-white margin">
         <div class="container">
-            <div class="row lykar-home color-scheme-white ">
+            <div class="row lykar-home color-scheme-white">
                 <div class="col-xs-12 col-sm-12 col-md-12">
-
                     <div class="row">
 
                         <div class="col-md-8">
-                            <h2 class="text-uppercase">{% trans "Медичні заклади" %}</h2>
-                            <div class="team boxed-grey">
-
+                            <h2 class="text-uppercase text-center">{% trans "Знайти лікаря за ..." %}</h2>
+                            <div>
+                                <p><strong class="text-uppercase c-red"><span class="glyphicon glyphicon-tag"></span> спеціальністю:</strong></p>
                                 <div class="row">
-                                    {% for hospital_type in hospital_types %}
-                                        <div class=" col-xs-12 col-sm-12 col-md-4">
-                                            <div class="city boxed-white">
-                                                <div class="inner">
-                                                    <h5>{{ hospital_type.name }}</h5>
-                                                    <ul class="line-clinics text-uppercase">
-                                                        {% for hospital in hospitals %}
-                                                            {% if hospital_type == hospital.type %}
-                                                                <li><a href="#">{{ hospital.name }}</a></li>
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <ul class="list-unstyled black-list">
+                                    {% for speciality in specialities %}
+                                        <li class="col-md-3"><a href="#" class="text-uppercase">{{ speciality.name }}</a></li>
                                     {% empty %}
-                                        <p class="subtitle">{% trans 'в БД не зареєстровано жодної клініки.' %}</p>
+                                        <p class="subtitle">{% trans 'в БД не зареєстровано жодної спеціальності.' %}</p>
                                     {% endfor %}
+                                     </ul>
                                 </div>
 
                             </div>
                         </div>
 
                         <div class="col-md-4">
-                            <h2 class="text-uppercase">{% trans "Опитування" %}</h2>
+                            <h2 class="text-uppercase text-center">{% trans "Опитування" %}</h2>
                                 {{ cook }}
                                 {{ quest }}
                                 <div class="team boxed-grey">
