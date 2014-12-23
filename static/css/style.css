@@ -37,14 +37,15 @@
 }
 .top-section {
     display: block;
-    padding-top: 10px;
-    min-height: 290px;
+    padding-top: 5px;
+    min-height: 300px;
 }
 .top-section .search{
     margin-top: 30px;
+    border: 1px solid #eeeeee;
+    box-shadow: 1px 1px 3px #c4c4c0;
     background: #ffffff;
     padding: 20px;
-    border-radius: 4px;
     margin-bottom: 40px;
 }
 h1, .h1 {
@@ -53,10 +54,12 @@ h1, .h1 {
 .c-red {
     color: #e66528;
 }
-
 .top-spacer {
     height: 40px;
     background: #ffffff;
+}
+.margin {
+    padding-bottom: 35px;
 }
 /**  END new design: base.html **/
 
@@ -94,7 +97,7 @@ h1, .h1 {
 /* --- section: home --- */
 .lykar-home{
     margin-top: -50px;
-    box-shadow: 4px -4px 5px 	#C4C4C0;
+    box-shadow: 1px 1px 3px #C4C4C0;
     border: 1px solid #eeeeee;
 }
 /* --- end section: home --- */
@@ -121,6 +124,7 @@ h1, .h1 {
 
 hr.lykar-search-separator{
     margin-bottom: 0px;
+    margin-top: 43px;
 
 }
 /* --- end section: search --- */

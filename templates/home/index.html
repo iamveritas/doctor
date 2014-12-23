@@ -7,14 +7,13 @@
     {% include "home/searchForm.html" %}
     <!--End Search -->
 
-
-
-    <section class="color-grey text-center">
+    <section class="color-white text-center margin">
         <div class="container">
             <div class="row lykar-home color-scheme-white ">
                 <div class="col-xs-12 col-sm-12 col-md-12">
 
                     <div class="row">
+
                         <div class="col-md-8">
                             <h2 class="text-uppercase">{% trans "Медичні заклади" %}</h2>
                             <div class="team boxed-grey">
@@ -36,7 +35,7 @@
                                             </div>
                                         </div>
                                     {% empty %}
-                                        <p class="subtitle">{% trans 'Поки що не зареєстровано жодної клініки.' %}</p>
+                                        <p class="subtitle">{% trans 'в БД не зареєстровано жодної клініки.' %}</p>
                                     {% endfor %}
                                 </div>
 
@@ -45,11 +44,11 @@
 
                         <div class="col-md-4">
                             <h2 class="text-uppercase">{% trans "Опитування" %}</h2>
-                            {{ cook }}
-                            {{ quest }}
-                            <div class="team boxed-grey">
-                                {% include question_pattern %}
-                            </div>
+                                {{ cook }}
+                                {{ quest }}
+                                <div class="team boxed-grey">
+                                    {% include question_pattern %}
+                                </div>
                         </div>
 
                     </div>
@@ -81,7 +80,7 @@
                                 </div>
                             </div>
                         {% empty %}
-                            <p class="subtitle">{% trans 'Поки що не зареєстровано жодного лікаря. Ви можете це зробити, перейшовши <a href="#">сюди</a>.' %}</p>
+                            <p class="subtitle">{% trans 'в БД не зареєстровано жодного лікаря. Ви можете це зробити, перейшовши <a href="#">сюди</a>.' %}</p>
                         {% endfor %}
                     </div>
                     <!-- End Popular Doctor -->

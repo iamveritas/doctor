@@ -3,6 +3,7 @@
 <section class="top-section color-grey">
     <div class="container">
         <div class="row">
+
             <div class="col-md-5 text-center">
                 <h1 class="text-uppercase top-padding">{% trans "Відгуки про лікарів" %}</h1>
                 <h2 class="text-uppercase c-red">{% trans "місто Івано-Франківськ" %}</h2>
@@ -10,43 +11,29 @@
 
             <div class="col-md-6">
                 <div class="search">
+
                     <div class="row">
                         <div class="col-md-12">
-                            <strong class="text-uppercase c-red">{% trans "Лікар" %}</strong>
 
                             <form action="/search/" method="get" class="form-horizontal">
+                                <strong class="text-uppercase c-red">{% trans "Лікар" %}</strong>
                                 <div class="form-group">
                                     <div class="col-xs-8">
                                         <input type="text" class="form-control" placeholder="Прізвище">
                                     </div>
-
-                                    <div class="col-xs-4">
-                                        <button class="btn btn-default" type="button">
-                                            <span class="glyphicon glyphicon-search"></span>{% trans " Пошук" %}
-                                        </button>
-                                    </div>
                                 </div>
-                            </form>
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <strong class="text-uppercase c-red">{% trans "Спеціальність" %}</strong>
-
-                            <form class="form-horizontal">
+                                <strong class="text-uppercase c-red">{% trans "Спеціальність" %}</strong>
                                 <div class="form-group">
                                     <div class="col-xs-8">
                                         <select class="form-control" id="select">
-                                            <option>{% trans "-------------------" %}</option>
-                                            <option>{% trans "сексопатолог" %}</option>
-                                            <option>{% trans "невролог" %}</option>
+                                            <option value="default">{% trans "обрати спеціальність" %}</option>
+                                        {% for speciality in specialities %}
+                                            <option value="{{ speciality.id }}">{{ speciality.name }}</option>
+                                        {% endfor %}
                                         </select>
                                     </div>
-
                                     <div class="col-xs-4">
-                                        <button class="btn btn-default" type="button">
+                                        <button class="btn btn-primary" type="submit">
                                             <span class="glyphicon glyphicon-search"></span></span>{% trans " Пошук" %}
                                         </button>
                                     </div>
@@ -54,10 +41,10 @@
                             </form>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
     <hr class="lykar-search-separator" />
-
 </section>

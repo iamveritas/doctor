@@ -1,7 +1,8 @@
 #-*-coding:utf8-*-
 from django.views.generic import TemplateView
-from apps.internal.models import Doctor, Hospital, HospitalType
+from apps.internal.models import Doctor, Hospital, HospitalType, Speciality
 from apps.polls.models import Question
+
 
 class HomeView(TemplateView):
     """
@@ -14,6 +15,7 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         # передаємо у context об’єкти Doctor, HospitalType, Hospital, Question
         context['doctors'] = Doctor.objects.all().order_by('-recommend_yes')[:4]
+        context['specialities'] = Speciality.objects.all()
         context['hospital_types'] = HospitalType.objects.all()
         context['hospitals'] = Hospital.objects.all()
         context['question'] = Question.objects.get(pk=1)
