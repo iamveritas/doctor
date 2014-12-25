@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response, redirect, render
+from django.shortcuts import render_to_response, redirect
 from apps.accounts.forms import UserForm, LoginForm, UserDoctorForm
 from django.contrib import auth
 from django.core.context_processors import csrf
@@ -7,37 +7,34 @@ from apps.accounts.models import UserProfile, UserDoctor
 from django.http import HttpResponseRedirect
 from apps.internal.models import Comment, Doctor
 
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, FormView
+from django.views.generic import DetailView, CreateView, FormView
 from django.contrib.auth.models import User
-from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 
-def registration(request):
-    args = {}
-    args.update(csrf(request))
-    newuser_form = UserForm()
-    args['form'] = newuser_form
-    args['user'] = request.user
+class UserCreate(CreateView):
+    """
+    Повертає реєстраційну форму
+    """
 
-    if request.POST:
-        newuser_form = UserForm(request.POST)
+    model = User
+    template_name = 'accounts/registration.html'
+    form_class = UserForm
+    success_url = '/login/'
 
-        if newuser_form.is_valid():
-            newuser_form.save()
-#            newuser = auth.authenticate(username=newuser_form.cleaned_data['username'],
-#                                        password=newuser_form.cleaned_data['password1'])
-#            auth.login(request, newuser)
-            return redirect('/')
-        else:
-            args['form'] = newuser_form
-    return render_to_response('accounts/registration.html', args)
+    def form_valid(self, form):
+        super(UserCreate, self).form_valid(form)
+        form_login = LoginForm()
+        args = {'success_registration': 'Реєстрація пройшла успішно. Введіть логін і пароль, щоб увійти на сайт.',
+                'form':form_login}
+        args.update(csrf(self.request))
+        return render_to_response('accounts/login.html', args)
 
 
-class LoginForm(FormView):
+class UserLogin(FormView):
     """
     Перевіряє введені користувачем логін і пароль, якщо користувач з такими даними існує
     здійснює вхід і повертає особисту сторінку користувача, в іншому випадку повертає форму входу
@@ -106,7 +103,7 @@ class UserDetail(DetailView):
         return context
 
 
-class UserDoctorCreate(CreateView   ):
+class UserDoctorCreate(CreateView):
     """
     Поєднує профіль користувача з профілем лікаря.
     Ідентифікує користувача як лікаря
@@ -138,66 +135,6 @@ class UserDoctorCreate(CreateView   ):
         context['doctors'] = Doctor.objects.order_by('-recommend_yes')[:6]
         context['qq'] =  UserDoctor.objects.filter(user=self.request.user.id)
         return context
-
-
-
-def doctor_user(request):
-    args = {}
-    form = DoctorUserForm()
-
-    if request.method == 'POST':
-        request.POST['user'] = request.user.id
-        request.POST['status'] = False
-        form = DoctorUserForm(request.POST)
-
-        if form.is_valid():
-#            doctor = form.save(commit=False)
-            form.save()
-            return HttpResponse('Thank you %s!<br/>'
-                                '<a href="/">Повернутися на головну</a>' % request.user)
-    args['form'] = form
-
-    return render_to_response("doctors/user_doctor.html", args,
-                              context_instance=RequestContext(request))
-
-
-
-
-def login1(request):
-
-    args = {}
-    args.update(csrf(request))
-
-    if UserProfile.objects.filter(user_id=request.user.id):
-        photo = UserProfile.objects.filter(user_id=request.user.id)[0]
-    else:
-        photo = ''
-
-    user = request.user
-    args['photo'] = photo
-
-    if request.POST:
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-#            return redirect('/')
-        else:
-            args['login_error'] = 'Користувач не знайдений! Можливо Ви забули пароль?'
-
-    args['user'] = user
-
-    if DoctorUser.objects.filter(user=request.user.id):
-        args['status'] = 'doctor'
-    else:
-        args['status'] = 'user'
-    try:
-        args['comments'] = Comment.objects.filter(user_id=user.id)
-    except:
-        args['comments'] = {}
-
-    return render_to_response("accounts/login.html", args)
 
 
 def logout(request):
