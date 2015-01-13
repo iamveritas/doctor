@@ -2,25 +2,44 @@
 {% load i18n %}
 
 {%block content%}
-<section class="top-section color-grey">
-    <div class="container">
-
-    {%if not user.is_authenticated%}
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+    <section class="top-section">
+        <div class="container">
+            <div class="container">
+            {%if not user.is_authenticated%}
+                <div class="top-padding">
+                    <h2 class="text-uppercase text-center">{% trans "Реєстрація" %}</h2>
+                </div>
                 <div class="text-center text-uppercase modal-soc">
-                    <h2 class=""> {% trans "Ви можете увійти через:" %}</h2>
+                    {% trans "Ввійти через:" %}
                 </div>
                 {% include 'accounts/social.html' %}
-                <br />
                 <div class="text-center text-uppercase modal-soc">
-                    <h1 class = "red"> {% trans "Або зареєструватися:" %}</h1>
+                    {% trans "Або зареєструватися:" %}
                 </div>
                 {% include 'accounts/registration_form.html' %}
-
+            {%endif%}
             </div>
         </div>
-    {%endif%}
-    </div>
-</section>
+    </section>
+    <!-- modal conditions -->
+        <div class="modal fade" id="conditions" tabindex="-1" role="dialog" aria-labelledby="Conditions" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h2 class="modal-title">Правила</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p>Тут будуть правила використання сайту</p>
+                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        <p>Тут будуть правила використання сайту</p>
+                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        <p>Тут будуть правила використання сайту</p>
+                        <div class="text-right">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end modal conditions -->
 {%endblock%}

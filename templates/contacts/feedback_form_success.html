@@ -1,1 +1,16 @@
-good!
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="padding-feedback-success">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center text-uppercase">{% trans "Дякуємо, ми отримали Ваш лист і зв'яжемося з вами найближчим часом!" %}</p>
+                     <img class="center-block" src="{% static "img/logo.png" %}" alt="lykar.com.ua" />
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

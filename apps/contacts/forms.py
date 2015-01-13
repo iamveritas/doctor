@@ -11,10 +11,10 @@ class FeedbackForm(forms.Form):
     name = forms.CharField(label=_("Your Name"), required=True,
                            widget=forms.TextInput(attrs={
                                "class": BOOTSTRAP_FORM_INPUT_CLASS,
-                               "placeholder": _("Your name")
+                               "placeholder": _("Name")
                            }))
     email = forms.EmailField(label=_("Email"), required=True,
-                             widget=forms.TextInput(attrs={
+                             widget=forms.EmailInput(attrs={
                                  "class": BOOTSTRAP_FORM_INPUT_CLASS,
                                  "placeholder": _("Email")
                              }))

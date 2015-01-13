@@ -2,12 +2,22 @@
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3 ">
-
         <ul class="line text-center">
-            <li><a href="{% url 'social:begin' 'facebook' %}" class="facebook"><img src="{% static "img/facebook.png" %}" alt="facebook" /></a></li>
-            <li><a href="{% url 'social:begin' 'vk-oauth2' %}" class="vkontakte"><img src="{% static "img/vkontakte.png" %}" alt="vkontakte" /></a></li>
-            <li><a href="{% url 'social:begin' 'google-oauth2' %}" class="google_plus"><img src="{% static "img/google_plus.png" %}" alt="google_plus" /></a></li>
+            <li>
+                <a href="{% url 'social:begin' 'facebook' %}" class="facebook">
+                    <img src="{% static "img/facebook.png" %}" alt="facebook" />
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'social:begin' 'vk-oauth2' %}" class="vkontakte">
+                    <img src="{% static "img/vkontakte.png" %}" alt="vkontakte" />
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'social:begin' 'google-oauth2' %}" class="google_plus">
+                    <img src="{% static "img/google_plus.png" %}" alt="google_plus" />
+                </a>
+            </li>
         </ul>
-
     </div>
 </div>

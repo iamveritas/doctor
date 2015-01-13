@@ -11,9 +11,9 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r"^accounts/", include("apps.accounts.urls", namespace="accounts")),
 
-#    url(r"^doctors/", include("apps.doctors.urls")),
+
     url(r"^contacts/", include("apps.contacts.urls", namespace="contacts")),
-#    url(r"^contacts/", include('contact_form.urls')),
+
 
     url(r"^doctors/", include("apps.doctors.urls",  namespace="doctors")),
     url(r"^polls/", include("apps.polls.urls",  namespace="polls")),
@@ -25,4 +25,6 @@ urlpatterns = patterns('',
         'document_root': settings.MEDIA_ROOT}),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^captcha/', include('captcha.urls')),
+
+    url(r"^search/", include("apps.search.urls", namespace="search")),
 )

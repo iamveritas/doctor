@@ -1,3 +1,0 @@
-{{ message }}
-
-{{ user_name }}, {{ user_email }}

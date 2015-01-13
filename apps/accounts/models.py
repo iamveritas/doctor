@@ -3,7 +3,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from apps.internal.models import Doctor
 
+
 class UserProfile(models.Model):
+
     user = models.ForeignKey(User, unique=True, related_name='profile')
     photo = models.TextField()
 

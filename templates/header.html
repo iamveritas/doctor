@@ -40,10 +40,10 @@
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right text-uppercase">
+                    <ul class="nav navbar-nav navbar-right text-uppercase menu">
                         {% block menu %}
                             {%if user.is_authenticated%}
-                                <li><a href="{% url 'home' %}">{% trans "Головна" %}</a></li>
+                                <li><a class="active" href="{% url 'home' %}">{% trans "Головна" %}</a></li>
                                 <li><a href="{% url 'doctors:doctors' %}">{% trans "Лікарі" %}</a></li>
                                 <li><a href="{% url 'doctors:add-doctor' %}">{% trans "Додати лікаря" %}</a></li>
                                 <li><a href="{% url 'accounts:personal_page' user.id %}">{% trans "Моя сторінка" %}</a></li>

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load staticfiles %}
 
 {% block content %}
 
@@ -12,37 +13,66 @@
             <div class="row lykar-home color-scheme-white">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="row">
-
-                        <div class="col-md-8">
-                            <h2 class="text-uppercase text-center">{% trans "Знайти лікаря за ..." %}</h2>
-                            <div>
-                                <p><strong class="text-uppercase c-red"><span class="glyphicon glyphicon-tag"></span> спеціальністю:</strong></p>
-                                <div class="row">
-                                    <ul class="list-unstyled black-list">
-                                    {% for speciality in specialities %}
-                                        <li class="col-md-3"><a href="#" class="text-uppercase">{{ speciality.name }}</a></li>
-                                    {% empty %}
-                                        <p class="subtitle">{% trans 'в БД не зареєстровано жодної спеціальності.' %}</p>
-                                    {% endfor %}
-                                     </ul>
-                                </div>
-
+                        <div class="col-xs-8 col-sm-7 col-md-8">
+                            <h2 class="text-uppercase text-center">{% trans "Про проект" %}</h2>
+                            <br />
+                            <div class="text-justify">
+                                <p>
+                                    <strong><span class="c-red">«lykar.com.ua»</span></strong> - це місце, де пацієнти діляться своїм досвідом лікування, хвалять хороших лікарів
+                                    і лають поганих, борються за свої права, не дають розводити себе на гроші, вибирають
+                                    найкращих фахівців ... Всього і не перерахуєш!
+                                </p>
+                                <p>
+                                    Всі ми різні, але всім нам потрібна ефективна система надання медичної допомоги. Хтось
+                                    звертається за допомогою до лікаря лише зрідка, а комусь потрібне постійне лікування.
+                                    У будь-якому випадку приходить момент, коли нам потрібен лікар - найкращий лікар. І для
+                                    того, щоб знати, до кого звернутись завтра, ми пропонуємо оцінити свого лікаря сьогодні.
+                                    Давайте надамо собі можливість лікуватися у хороших лікарів!
+                                </p>
+                                <p>
+                                    Ми розуміємо, що без зацікавленості пацієнтів нічого не вийде. Тому ми робимо все, щоб Вам
+                                    було зручно висловлювати думку і вивчати накопичені відгуки. Очевидно, що тільки спільними
+                                    зусиллями вдасться поліпшити якість вітчизняної охорони здоров'я.
+                                </p>
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                            <h2 class="text-uppercase text-center">{% trans "Опитування" %}</h2>
+                        <div class="col-sm-5 col-md-4">
+
                                 {{ cook }}
                                 {{ quest }}
-                                <div class="team boxed-grey">
+                                <br />
+                                <div class="question boxed">
+                                    <h2 class="text-uppercase text-center">{% trans "Опитування" %}</h2>
                                     {% include question_pattern %}
                                 </div>
                         </div>
 
                     </div>
 
+
+                        <div class="row">
+                            <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 border-tb">
+                                <h2 class="text-uppercase text-center">{% trans "Знайти лікаря за спеціальністю" %}</h2>
+                                <br />
+
+                                    <div class="row">
+                                        <ul class="list-unstyled black-list">
+                                        {% for speciality in specialities %}
+                                            <li class="col-md-3 text-center"><a href="#" class="text-uppercase">{{ speciality.name }}</a></li>
+                                        {% empty %}
+                                            <p class="subtitle">{% trans 'в БД не зареєстровано жодної спеціальності.' %}</p>
+                                        {% endfor %}
+                                         </ul>
+                                    </div>
+<br />
+                            </div>
+                        </div>
+                    <br />
+                    <div class="row">
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
                     <!-- Popular Doctor -->
-                    <h2 class="text-uppercase">{% trans "Популярні лікарі" %}</h2>
+                    <h2 class="text-uppercase text-center">{% trans "Популярні лікарі" %}</h2>
 
                     {% comment %}
                     <div class="row">
@@ -50,7 +80,7 @@
                     </div>
                     {% endcomment %}
 
-                    <div class="row">
+
                         {% for doctor in doctors %}
                             <div class="col-xs-6 col-sm-3 col-md-3">
                                 <div class="team boxed-grey">
@@ -70,6 +100,7 @@
                         {% empty %}
                             <p class="subtitle">{% trans 'в БД не зареєстровано жодного лікаря. Ви можете це зробити, перейшовши <a href="#">сюди</a>.' %}</p>
                         {% endfor %}
+                    </div>
                     </div>
                     <!-- End Popular Doctor -->
 

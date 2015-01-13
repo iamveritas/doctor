@@ -10,12 +10,14 @@ from captcha.fields import CaptchaField
 
 BOOTSTRAP_FORM_INPUT_CLASS = "form-control"
 
+
 class UserForm(UserCreationForm):
+
     username = forms.RegexField(label=_("Username"), max_length=30, regex=r'^[\w.@+-]+$',
-                           widget=forms.TextInput(attrs={
-                               "class": BOOTSTRAP_FORM_INPUT_CLASS,
-                               "placeholder": "Введіть логін",
-                           }))
+                                widget=forms.TextInput(attrs={
+                                    "class": BOOTSTRAP_FORM_INPUT_CLASS,
+                                    "placeholder": "Введіть логін",
+                                }))
     email = forms.EmailField(label=_("Email"),
                            widget=forms.EmailInput(attrs={
                                "class": BOOTSTRAP_FORM_INPUT_CLASS,

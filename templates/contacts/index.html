@@ -1,44 +1,33 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
-    <div class="first-section">
-    <div class="container">
-  <div class="page-title"><h1>Contacts Us</h1></div>
-    <div class="page-content">
-      <div class="page-description">
-        <div class="row">
-          <div class="col-xs-12">
-            <p>
-              For servie requests, estimates, general queries and other enquiries please contact us by email,
-              phone, skype and post or by using the contact form below.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="contacts">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="contact-form">
-              <form class="form-horizontal" role="form" action="" method="post">{% csrf_token %}
-                {% include "contacts/form_fields.html" %}
-                {% include "contacts/captcha_field.html" %}
-               <button type="submit" class="btn btn-default">Submit</button>
-              </form>
+    <div class="top-padding padding-contacts">
+        <div class="container">
+            <div class="row">
+                <h2 class="text-uppercase"><strong>{% trans "Контакти" %}</strong></h2>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <p>
+                            {% trans "Виникли запитання або пропозиції? Напишіть нам листа." %}
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 margin">
+                        <form class="form-horizontal" role="form" action="" method="post">{% csrf_token %}
+                            {% include "contacts/form_fields.html" %}
+                            {% include "contacts/captcha_field.html" %}
+                            <button class="btn btn-primary" type="submit">
+                                {% trans "Відправити" %}
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-md-3 col-md-offset-1">
+
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-sm-3 col-sm-offset-1">
-            <div class="contact-column">
-              <h4>Ettera Consulting LLC</h4><br />
-              <p>13A Bandera Road, Ukraine </p><br />
-              <p>Operation time: GMT/BST business hours (9AM-6PM)</p><br />
-              <p>Company number: 0981234567</p><br />
-              <p><strong>Tel. </strong><a href="#">099 1234567</a></p>
-              <p><strong>E-mail </strong><a href="#">ettera@gmail.com</a></p>
-              <p><strong>Skype </strong><a href="#">ettera</a></p><br />
-              <p>Registered in U.S.A. in 2012.</p>
-            </div>
-          </div>
         </div>
-      </div>
-    </div></div></div>
+    </div>
 {% endblock %}

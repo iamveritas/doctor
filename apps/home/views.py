@@ -1,5 +1,5 @@
 #-*-coding:utf8-*-
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from apps.internal.models import Doctor, Hospital, HospitalType, Speciality
 from apps.polls.models import Question
 

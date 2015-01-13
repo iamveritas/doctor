@@ -1,7 +1,8 @@
 {%extends 'base.html'%}
+{% load i18n %}
 
 {%block content%}
-    <section class="top-section color-grey">
+    <section class="top-section">
         <div class="container">
     	{%if user.is_authenticated%}
             <div class="row ">
@@ -64,16 +65,19 @@
                 </div>
             </div>
 
-	{%else%}
-        {% load i18n %}
-        <div class="container">
-            <div class="text-center text-uppercase modal-soc">{% trans "Введіть логін і пароль:" %}</div>
-            {% include 'accounts/login_form.html' %}
-
-            <div class="text-center text-uppercase modal-soc">{% trans "Або ввійдіть через:" %}</div>
-            {% include 'accounts/social.html' %}
-        </div>
-	{%endif%}
+	    {%else%}
+            <div class="container">
+                <div class="top-padding"><h2 class="text-uppercase text-center">{% trans "Вхід" %}</h2></div>
+                <div class="text-center text-uppercase modal-soc">
+                    {% trans "Ввійдіть через:" %}
+                </div>
+                {% include 'accounts/social.html' %}
+                <div class="text-center text-uppercase modal-soc">
+                    {% trans "Або введіть логін і пароль:" %}
+                </div>
+                {% include 'accounts/login_form.html' %}
+            </div>
+	    {%endif%}
         </div>
     </section>
 {%endblock%}
