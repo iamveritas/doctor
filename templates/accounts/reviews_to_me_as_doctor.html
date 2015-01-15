@@ -1,0 +1,15 @@
+{% for comment in comments %}
+    {# block review #}
+    {% include 'doctors/doctor_review_full.html' %}
+    {# endblock review #}
+{% empty %}
+    Про Вас ще ніхто не написав жодного відгук.
+{% endfor %}
+
+{% if comments.count == 5 %}
+    <div class="row lykar-boxed-comment">
+        <div class="col-md-12 text-center">
+             <a href="{% url 'doctors:doctor_reviews' doctor.id %}">Показати всі відгуки</a>
+        </div>
+    </div>
+{% endif %}

@@ -2,7 +2,8 @@
 from django.contrib import admin
 from apps.internal.models import (Doctor, Region, City,
                                   Hospital, HospitalType, Speciality, Efficiency,
-                                  Quality, Respect, Bribery, Comment, Like, Recommendation,)
+                                  Quality, Respect, Bribery, Comment, Like, Recommendation,
+                                  CommentAnswer, )
 
 
 def make_active(modeladmin, request, queryset):
@@ -18,6 +19,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 admin.site.register(Doctor)
 admin.site.register(Comment, CommentAdmin)
+admin.site.register(CommentAnswer)
 admin.site.register(Hospital)
 admin.site.register(HospitalType)
 admin.site.register(City)

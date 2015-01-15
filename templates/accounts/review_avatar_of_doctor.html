@@ -1,0 +1,17 @@
+{% if  comment.doctor.userdoctor.user.profile.all %}
+    {% for photo in comment.doctor.userdoctor.user.profile.all %}
+        <div class="avatar"><img src="{{ photo }}" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+    {% empty %}
+    {% endfor %}
+{% elif comment.doctor.userdoctor.user.usersetting_set.all %}
+    {% for photo in comment.doctor.userdoctor.user.usersetting_set.all %}
+        <div class="avatar"><img src="{{ MEDIA_URL }}{{ photo }}" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+    {% empty %}
+    {% endfor %}
+{% elif comment.doctor.image %}
+    <div class="avatar"><img src="{{ MEDIA_URL }}{{ comment.doctor.image }}" alt="" class="img-responsive img-circle center-block" /></div>
+{% elif comment.doctor.sex == 'F' %}
+    <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+{% else %}
+    <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_m.png" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+{% endif %}

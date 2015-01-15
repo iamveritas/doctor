@@ -1,0 +1,40 @@
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+<div class="row">
+    <div class="col-md-3 col-md-offset-1 ">
+        <div class="text-center text-uppercase modal-soc">
+            {% if  photo %}
+                <div class="avatar"><img src="{{ MEDIA_URL }}{{ photo }}" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+            {% elif  user.userdoctor.user.profile.all %}
+                {% for photo in user.userdoctor.user.profile.all %}
+                    <div class="avatar"><img src="{{ photo }}" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+                {% empty %}
+                {% endfor %}
+            {% elif doctor.sex == 'F' %}
+                <div class="avatar"><img src="{{ MEDIA_URL }}user_photos/anonum_f.png" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+            {% else %}
+                <div class="avatar"><img src="{{ MEDIA_URL }}user_photos/anonum_m.png" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-md-6 col-md-offset-1">
+        <div class="text-center text-uppercase modal-soc">
+            <h4 class = "red text-left"> {% trans "Ваші особисті дані:" %}</h4>
+        </div>
+
+        <form action="" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{ form|crispy }}
+
+            <div class="form-group">
+                <div class="dl-horizontal">
+                    <input type="submit" class="btn btn-primary" value="Зберегти" />
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

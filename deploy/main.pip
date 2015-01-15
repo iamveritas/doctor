@@ -3,3 +3,4 @@ pillow==2.6.1
 fabric==1.10.0
 python-social-auth
 django-simple-captcha
+easy-thumbnails==2.1

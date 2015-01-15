@@ -1,23 +1,33 @@
-{% extends "base_sidebar.html" %}
+{%extends 'base_sidebar.html' %}
 {% load i18n %}
-
+{% load thumbnail %}
 
 {%block content%}
-    {%if user.is_authenticated%}
-        <div class="row">
-            <div class="col-md-7 col-md-offset-3">
-
-                <div class="text-center text-uppercase modal-soc">
-                    <h1> {{ doctor }} </h1>
-                    <h2 class = "red"> {% trans "Напишіть відгук цього про лікаря:" %} </h2>
-
-                </div>
-                {{ do }}
-                <form action="" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
-                    {% include 'doctors/comment_form.html' %}
-                </form>
-
-            </div>
+    <div class="row">
+        <div class="col-md-3 lykar-doctor-avatar">
+            {% include 'doctors/doctor_avatar.html' %}
         </div>
-    {%endif%}
-{%endblock%}
+
+        <div class="col-md-9">
+            {% include 'doctors/doctor_header.html' %}
+
+            {% if user.is_authenticated %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="text-uppercase text-center"> Напишіть відгук про лікаря</h2>
+                            </div>
+                        </div>
+
+                        <form action="" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                            {% include 'doctors/comment_form.html' %}
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+
+
+        </div>
+    </div>
+{%endblock content%}

@@ -1,0 +1,14 @@
+{% for user_profile in comment.user.usersetting_set.all %}
+    <img src="{{ MEDIA_URL }}{{ user_profile.photo }}" alt="" class="img-circle img-responsive">
+{% empty %}
+{% endfor %}
+
+{% for user_profile in comment.user.profile.all %}
+    <img src="{{ user_profile.photo }}" alt="" class="img-circle img-responsive">
+{% empty %}
+{% endfor %}
+
+{% if  comment.user.usersetting_set.all and comment.user.profile.all%}
+        <img src="{{ MEDIA_URL }}user_photos/anonum_m.png" alt="" class="img-circle img-responsive">
+{% endif %}
+

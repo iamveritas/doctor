@@ -1,0 +1,49 @@
+{%extends 'base_sidebar.html' %}
+{% load i18n %}
+
+{%block content%}
+
+<div class="row">
+    <div class="col-md-7 col-md-offset-3">
+        {# block header #}
+        <div class="text-center text-uppercase modal-soc">
+            <h1 class = "red"> {% trans "Ідентифікація лікаря:" %}</h1>
+        </div>
+
+        <div>
+            <p>Якщо Ви лікар і виявили, що Вас вже хтось зареєстрував на нашому сайті,
+               Ви можете ідентифікуватись, використавши форму нижче
+            </p>
+        </div>
+        {# endblock header #}
+
+        {# block form #}
+        <form action="{% url 'accounts:user_doctor' %}" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <input type="hidden" name="next" value="{{request.GET.next}}" />
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="dl-horizontal">
+                            <strong>{{ form.doctor.label }}*</strong>
+                            {{ form.doctor }}
+                        </div>
+                        <div class="text-warning">{{ form.doctor.errors }}</div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="dl-horizontal">
+                            <input type="submit" class="btn btn-primary" value="Зберегти" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {# endblock form #}
+    </div>
+</div>
+
+{%endblock content%}

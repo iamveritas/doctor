@@ -1,0 +1,10 @@
+{%extends 'base_sidebar.html' %}
+{% load i18n %}
+
+{%block content%}
+    {% if not user.userdoctor %}
+        {% include 'accounts/settings_user.html' %}
+    {% else %}
+        {% include 'accounts/settings_doctor.html' %}
+    {% endif %}
+{%endblock content%}

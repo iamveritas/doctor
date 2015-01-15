@@ -1,0 +1,33 @@
+{% load thumbnail %}
+
+{% if  doctor.userdoctor.user.profile.all %}
+    {% for photo in doctor.userdoctor.user.profile.all %}
+        <div class="avatar"><img src="{{ photo }}" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+    {% empty %}
+    {% endfor %}
+{% elif doctor.userdoctor.user.usersetting_set.all %}
+    {% for photo in doctor.userdoctor.user.usersetting_set.all %}
+        <div class="avatar"><img src="{{ MEDIA_URL }}{{ photo }}" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+    {% empty %}
+    {% endfor %}
+{% elif doctor.image %}
+    <div class="avatar"><img src="{{ MEDIA_URL }}{{ doctor.image }}" alt="" class="img-responsive img-circle center-block" /></div>
+{% elif doctor.sex == 'F' %}
+    <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+{% else %}
+    <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_m.png" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+{% endif %}
+
+<div>
+    <p class="text-center">
+        <a href="/doctors/{{ doctor.id }}/yes/" class="lykar-comment-like">
+            <i class = "glyphicon glyphicon-thumbs-up"></i>
+        </a>
+        <span class="badge">{{ doctor.recommend_yes }}</span>
+
+        <a href="/doctors/{{ doctor.id }}/no/" class="lykar-comment-like">
+            <i class = "glyphicon glyphicon-thumbs-down"></i>
+        </a>
+        <span class="badge">{{ doctor.recommend_no }}</span>
+    </p>
+</div>

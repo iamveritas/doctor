@@ -2,6 +2,10 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from sorl.thumbnail import ImageField, get_thumbnail
+
+from easy_thumbnails.fields import ThumbnailerImageField
+
 
 SEX_CHOICES = (
     (None, "Оберіть стать"),
@@ -101,11 +105,14 @@ class Doctor(models.Model):
     user = models.ForeignKey(User, verbose_name="Хто створив")
     hospitals = models.ManyToManyField(Hospital, blank=False, verbose_name="Клініка")
     is_active = models.CharField("Статус", default=False, max_length=5, choices=STATUS_CHOICES)
-    image = models.ImageField("Зображення", upload_to="doctor_photos/",
-                              null=True, blank=True)
+    image = ThumbnailerImageField("Зображення", upload_to="doctor_photos/", blank=True,
+                                  resize_source=dict(size=(128, 128), sharpen=True, autocrop=True, crop='smart'))
+    #image = ImageField("Зображення", upload_to="doctor_photos/",
+    #                          null=True, blank=True)
     recommend_yes = models.IntegerField("Рекомендують", blank=True, default=0)
     recommend_no = models.IntegerField("Не рекомендують", blank=True, default=0)
     created = models.DateTimeField("Дата створення", auto_now=False, auto_now_add=True)
+
 
     class Meta:
         verbose_name = "Лікар"
@@ -173,6 +180,24 @@ class Comment(models.Model):
     user = models.ForeignKey(User, verbose_name="Користувач")
     doctor = models.ForeignKey(Doctor, verbose_name="Лікар")
     is_active = models.CharField("Статус", default=False, max_length=5, choices=STATUS_CHOICES)
+    created = models.DateTimeField("Дата створення", auto_now=False, auto_now_add=True)
+    edited = models.DateTimeField("Дата редагування", auto_now=True, auto_now_add=False)
+
+
+    class Meta:
+        verbose_name = "Відгук"
+        verbose_name_plural = "Відгуки"
+
+    def __unicode__(self):
+        return unicode(self.content)
+
+
+class CommentAnswer(models.Model):
+
+    content = models.TextField("Коментар", blank=False, max_length=1000)
+    comment = models.ForeignKey(Comment, verbose_name="Відгук")
+    doctor = models.ForeignKey(Doctor, verbose_name="Лікар")
+    is_active = models.CharField("Статус", default=True, max_length=5, choices=STATUS_CHOICES)
     created = models.DateTimeField("Дата створення", auto_now=False, auto_now_add=True)
     edited = models.DateTimeField("Дата редагування", auto_now=True, auto_now_add=False)
 

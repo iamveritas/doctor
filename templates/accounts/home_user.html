@@ -1,0 +1,41 @@
+{% load i18n %}
+
+<div class="row">
+
+    {# block avatar #}
+    <div class="col-md-3">
+        <div class="lykar-doctor-avatar">
+            {% include 'accounts/avatar_main_user.html' with photo=photo %}
+        </div>
+    </div>
+    {# endblock avatar #}
+
+    <div class="col-md-9">
+        {# block header #}
+        <h1 class = "text-uppercase">
+            {% if user.last_name or user.first_name %}
+                {{ user.last_name }} {{ user.first_name }}
+            {% else %}
+                {{ user.username }}
+            {% endif %}
+        </h1>
+            {% if nonsocial %}
+                <a href="{% url 'accounts:user_settings' %}" > Мої налаштування </a>
+            {% else %}
+                <span class = "red"> <a href="{% url 'accounts:user_doctor' %}">Я - лікар !!! </a> </span>
+            {% endif %}
+        <hr />
+        {# endblock header #}
+
+        {# block reviews #}
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-uppercase text-center"> Мої відгуки про лікарів</h2>
+                <hr />
+                {% include 'accounts/reviews_from_me.html' %}
+            </div>
+        </div>
+        {# endblock reviews #}
+
+    </div>
+</div>

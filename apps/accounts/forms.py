@@ -1,10 +1,11 @@
 #-*-coding:utf8-*-
 from django import forms
-from apps.accounts.models import UserDoctor
+from apps.accounts.models import UserDoctor, UserProfile, UserSetting
 from apps.internal.models import Doctor
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from captcha.fields import CaptchaField
 
@@ -67,3 +68,24 @@ class UserDoctorForm(forms.ModelForm):
     class Meta:
         model = UserDoctor
         fields = ['doctor']
+
+
+class UserSettingsForm(forms.ModelForm):
+
+    class Meta:
+        model = UserSetting
+        fields = ['last_name', 'first_name', 'photo']
+
+
+class UserSettingsDocPhotoForm(forms.ModelForm):
+
+    class Meta:
+        model = UserSetting
+        fields = ['photo']
+
+
+class UserSettingsDocForm(forms.ModelForm):
+
+    class Meta:
+        model = Doctor
+        fields = ['speciality', 'hospitals', 'image']

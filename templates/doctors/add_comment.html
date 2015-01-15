@@ -12,7 +12,6 @@
                     <h2 class = "red"> {% trans "Напишіть відгук цього про лікаря:" %} </h2>
 
                 </div>
-                {{ do }}
                 <form action="/doctors/{{ doctor.id }}/newcomment/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
                     {% include 'doctors/comment_form.html' %}
                 </form>

@@ -1,0 +1,45 @@
+{% load i18n %}
+
+<div class="row">
+    {# block avatar #}
+    <div class="col-md-3 lykar-doctor-avatar">
+        {% include 'accounts/avatar_doctor.html' %}
+    </div>
+    {# endblock avatar #}
+
+    <div class="col-md-9">
+        {# block header #}
+        {% include 'doctors/doctor_header.html' %}
+        {# endblock header #}
+
+        {# block content #}
+        <div class="row">
+            <div class="col-md-12">
+                <div role="tabpanel">
+                    <ul class="nav nav-tabs lykar-button-comment" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#review_about" aria-controls="review_about" role="tab" data-toggle="tab">
+                                <h2 class="text-uppercase text-center">Відгуки пацієнтів</h2>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#review_me" aria-controls="profile" role="review_me" data-toggle="tab">
+                                <h2 class="text-uppercase text-center"> Мої відгуки про лікарів</h2>
+                            </a>
+                        </li>
+                    </ul>
+
+                     <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="review_about">
+                            {% include 'accounts/reviews_to_me_as_doctor.html' %}
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="review_me">
+                            {% include 'accounts/reviews_from_me.html' %}
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+        {# endblock content #}
+    </div>
+</div>

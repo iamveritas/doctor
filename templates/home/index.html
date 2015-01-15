@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load thumbnail %}
 
 {% block content %}
 
@@ -70,7 +71,15 @@
                                     <div class="inner">
                                         <h5><a href="{% url 'doctors:doctor_profile' doctor.id %}">{{ doctor.last_name }} {{ doctor.first_name }}</a></h5>
                                         <p class="subtitle">{{ doctor.speciality }}</p>
-                                        <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" alt="doctor name" class="img-responsive img-circle center-block" /></div>
+
+                                        {% if  doctor.image %}
+                                            <div class="avatar"><img src="{{ MEDIA_URL }}{{ doctor.image }}" alt="" class="img-responsive img-circle center-block" /></div>
+                                        {% elif doctor.sex == 'M' %}
+                                            <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_m.png" alt="" class="img-responsive img-circle center-block" /></div>
+                                        {% else %}
+                                            <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" alt="" class="img-responsive img-circle center-block" /></div>
+                                        {% endif %}
+
                                         <div>
                                             <i class = "glyphicon glyphicon-thumbs-up"></i>
                                             <span class="badge">{{ doctor.recommend_yes }}</span>

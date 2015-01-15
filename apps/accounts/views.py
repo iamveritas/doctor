@@ -1,19 +1,21 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response, redirect
-from apps.accounts.forms import UserForm, LoginForm, UserDoctorForm
+from django.shortcuts import render, render_to_response, redirect
+from apps.accounts.forms import (UserForm, LoginForm, UserDoctorForm, UserSettingsForm,
+                                 UserSettingsDocPhotoForm, UserSettingsDocForm,)
 from django.contrib import auth
 from django.core.context_processors import csrf
-from apps.accounts.models import UserProfile, UserDoctor
-from django.http import HttpResponseRedirect
-from apps.internal.models import Comment, Doctor
+from apps.accounts.models import UserProfile, UserDoctor, UserSetting
+from django.http import HttpResponseRedirect, HttpResponse
+from apps.internal.models import Comment, Doctor, CommentAnswer
 
-from django.views.generic import DetailView, CreateView, FormView
+from django.views.generic import DetailView, ListView, CreateView, FormView
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
+from settings import MEDIA_ROOT
 
 class UserCreate(CreateView):
     """
@@ -65,7 +67,7 @@ class UserDetail(DetailView):
     """
 
     model = User
-    template_name = 'accounts/personal_page.html'
+    template_name = 'accounts/home.html'
     context_object_name = 'user'
 
     # доступ додавати лікаря мають тільки зареєстровані користувачі
@@ -85,21 +87,55 @@ class UserDetail(DetailView):
             context['rating'] = int(100*int(doctor.recommend_yes)/(int(doctor.recommend_yes) + int(doctor.recommend_no)+0.001)+0.5)
             context['rating_minus'] = int(100*int(doctor.recommend_no)/(int(doctor.recommend_yes) + int(doctor.recommend_no)+0.001)+0.5)
             # передаємо у context об’єкти Comment
-            context['comments'] = Comment.objects.filter(doctor=self.object.id).filter(is_active=True).order_by('-created')
+            context['comments'] = Comment.objects.filter(doctor=doctor_id).filter(is_active=True).order_by('-created')[:5]
             # передаємо у context лікаря
             context['doctor'] = doctor
 
         else:
-            context['user_status']  = 'user'
+            context['user_status'] = 'user'
+        # перевіряємо чи користувач зареєструвався через соц мережі
+        if UserProfile.objects.filter(user=self.object.id):
+            context['nonsocial'] = False
+        else:
+            context['nonsocial'] = True
         # отримуємо коментарі, які залишив користувач
-        context['user_comments'] = Comment.objects.filter(user=self.object.id).order_by('-created')
+        context['user_comments'] = Comment.objects.filter(user=self.object.id).order_by('-created')[:5]
         # передаємо у context об’єкти Doctor для sidebar
         context['doctors'] = Doctor.objects.order_by('-recommend_yes')[:6]
+        # передаємо у context коментарі до відгуків
+        context['comment_answers'] = CommentAnswer.objects.filter(is_active=True).order_by('-created')
         # передаємо у context фото користувача
-        try:
+        if UserProfile.objects.filter(user=self.object.id):
             context['photo'] = UserProfile.objects.get(user=self.object.id).photo
-        except Exception:
-            pass
+        elif UserSetting.objects.filter(user=self.request.user.id):
+            context['photo'] = UserSetting.objects.get(user=self.request.user.id).photo
+        else:
+            context['photo'] = False
+        return context
+
+
+class UserReviewList(ListView):
+    """
+    Повертає список коментарів користувача відсортованих по даті додавання
+    """
+
+    model = Comment
+    context_object_name = 'user_comments'
+    template_name = 'accounts/reviews_from_me_all.html'
+    paginate_by = 2
+
+    def get_queryset(self):
+        """
+        Повертає коментарі активного користувача
+        """
+        return Comment.objects.filter(user=self.request.user).order_by('-created')
+
+    def get_context_data(self, **kwargs):
+        context = super(UserReviewList, self).get_context_data(**kwargs)
+        # передаємо у context об’єкти Doctor для sidebar
+        context['doctors'] = Doctor.objects.order_by('-recommend_yes')[:6]
+        # передаємо у context коментарі до відгуків
+        context['comment_answers'] = CommentAnswer.objects.filter(is_active=True).order_by('-created')
         return context
 
 
@@ -111,7 +147,7 @@ class UserDoctorCreate(CreateView):
     form_class = UserDoctorForm
     model = UserDoctor
     success_url = '/doctors/'
-    template_name = 'accounts/user_doctor.html'
+    template_name = 'accounts/user_is_doctor_form.html'
 
     # доступ додавати лікаря мають тільки зареєстровані користувачі
     @method_decorator(login_required())
@@ -140,3 +176,137 @@ class UserDoctorCreate(CreateView):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect("/accounts/login")
+
+
+def user_settings(request):
+    """
+    Повертає форму для редагування даних користувача (ім’я, прізвище) і додавання/оновлення фото.
+    """
+    # передаємо у context об’єкти Doctor для  елементів sidebar
+    doctors = Doctor.objects.order_by('-recommend_yes')[:6]
+    args = {'doctors': doctors}
+    # створюємо об’єкт користувача
+    user = User.objects.get(pk=request.user.id)
+    # перевіряємо чи була відправлена форма
+    if request.method == 'POST':
+        # створюємо об’єкт форми
+        form = UserSettingsForm(request.POST, request.FILES)
+        # передаємо у форму обов’язкове поле user
+        form.instance.user = request.user
+        if form.is_valid():
+            # Якщо форма валідна, зберігаємо ім’я і прізвище користувача у таблицю User
+            user.last_name = form.cleaned_data["last_name"]
+            user.first_name = form.cleaned_data["first_name"]
+            user.save()
+            # якщо дані про користувача уже є у таблиці UserSetting, то редагуємо їх, в іншому випадку
+            # додаємо новий запис
+            if  UserSetting.objects.filter(user=request.user):
+                user_setting = UserSetting.objects.get(user=request.user)
+                if form.cleaned_data['photo']:
+                    user_setting.photo = form.cleaned_data['photo']
+                user_setting.last_name = form.cleaned_data['last_name']
+                user_setting.first_name = form.cleaned_data['first_name']
+                user_setting.save()
+            else:
+                form.save()
+    else:
+        # якщо форма не була відправлена, заповнюємо її даними користувача з таблиці User
+        data = {'last_name': user.last_name,
+                'first_name': user.first_name}
+        form = UserSettingsForm(data)
+
+    args['form'] = form
+  # якщо фото користувача уже збережено у БД, витягуємо об’єкт з таблиці UserSetting для активного користувача
+    # і передаємо фото у контекст
+    if UserSetting.objects.filter(user=request.user.id):
+        photo = UserSetting.objects.get(user=request.user.id)
+        args['photo'] = photo.photo
+
+    return  render(request, 'accounts/settings.html', args)
+
+
+def user_settings_doctor(request):
+    """
+    Повертає форму для редагування даних користувача (лікаря) і додавання/оновлення фото.
+    """
+    # передаємо у context об’єкти Doctor для  елементів sidebar
+    doctors = Doctor.objects.order_by('-recommend_yes')[:6]
+    # отримуємо об’єкт лікаря зв’язаного з користувачем
+    doctor = request.user.userdoctor.doctor
+    # перевіряємо чи була відправлена форма
+    if request.method == 'POST':
+        # створюємо об’єкт форми
+        form = UserSettingsDocForm(request.POST, request.FILES)
+        if form.is_valid():
+            doctor.speciality = form.cleaned_data['speciality']
+            doctor.hospitals = form.cleaned_data['hospitals']
+            doctor.save()
+            if  UserSetting.objects.filter(user=request.user):
+                user_setting = UserSetting.objects.get(user=request.user)
+                if form.cleaned_data['image']:
+                    user_setting.photo = form.cleaned_data['image']
+                user_setting.save()
+            elif UserProfile.objects.filter(user=request.user):
+                pass
+            else:
+                UserSetting.objects.create(user=request.user,
+                                           photo=form.cleaned_data['image'],
+                                           first_name=form.cleaned_data['first_name'],
+                                           last_name=form.cleaned_data['larst_name'],
+                                           )
+    else:
+        # якщо форма не була відправлена, заповнюємо її даними користувача з таблиці User
+        hospitals = [hospital.id for hospital in doctor.hospitals.all()]
+        data = {'speciality': doctor.speciality.id, 'hospitals': hospitals}
+        form = UserSettingsDocForm(data)
+    args = {'doctors': doctors, 'form': form}
+    # якщо фото користувача уже збережено у БД, витягуємо об’єкт з таблиці UserSetting для активного користувача
+    # і передаємо фото у контекст
+    if UserSetting.objects.filter(user=request.user.id):
+        photo = UserSetting.objects.get(user=request.user.id)
+        args['photo'] = photo.photo
+    return  render(request, 'accounts/settings.html', args)
+
+
+"""
+def user_settings(request):
+    user = User.objects.get(pk=request.user.id)
+    if  UserProfile.objects.filter(user=request.user):
+        user_photo = UserProfile.objects.get(user=request.user)
+        qq = 1
+    else:
+        user_photo = UserProfile(user=request.user, photo='')
+        qq = 2
+    if request.method == 'POST':
+        form = UserSettingsForm(request.POST, request.FILES)
+        if form.is_valid():
+            user.first_name = form.cleaned_data["first_name"]
+            user.last_name = form.cleaned_data["last_name"]
+            user.save()
+            #handle_uploaded_file(request.FILES['file'])
+            user_photo.photo = request.FILES['photo'].name
+            user_photo.save()
+
+            file = request.FILES['photo']
+            with open('%s/%s/%s' % (MEDIA_ROOT, 'user_photos', user_photo.photo), 'wb+') as fd:
+                fd.write(file.read())
+                fd.close()
+            pp = 6
+            #pp = dir(user_photo)
+            pp = dir(request.FILES['photo'])
+            #pp = request.FILES['photo'].name
+        else:
+            pp = 3
+    else:
+        data = {'first_name': user.first_name,
+                'last_name': user.last_name,
+                'photo': user_photo.photo}
+        form = UserSettingsForm(data)
+        pp = 1
+
+
+
+    args = {'form': form, 'pp': pp}
+
+    return  render(request, 'accounts/settings.html', args)
+"""

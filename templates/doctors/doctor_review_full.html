@@ -1,0 +1,23 @@
+<div class="row lykar-boxed-comment">
+    <div class="col-md-2 center-block">
+        {% include 'doctors/doctor_review_user_avatar.html' %}
+    </div>
+
+    <div class="col-md-10">
+        {% include 'doctors/doctor_review_review.html' %}
+    </div>
+    {# block comment #}
+    <div class="row">
+        <div class="col-md-10    col-md-offset-2">
+            {% for comment_answer in comment_answers %}
+                {% if comment.id == comment_answer.comment.id %}
+                    <hr />
+                    {% include 'doctors/doctor_comments.html' %}
+                {% endif %}
+            {% empty %}
+            {% endfor %}
+        </div>
+    </div>
+    {# endblock comment #}
+
+</div>

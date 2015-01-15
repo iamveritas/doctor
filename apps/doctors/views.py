@@ -6,14 +6,15 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 
-#from django.shortcuts import render_to_response, RequestContext
-from apps.internal.models import Doctor, Recommendation, Comment, Hospital
+from django.shortcuts import render_to_response, RequestContext
+from apps.internal.models import Doctor, Recommendation, Comment, Hospital, CommentAnswer
 #from django.core.exceptions import ObjectDoesNotExist
 #from django.db import IntegrityError
 #from django.http.response import Http404
 #from django.http import HttpResponse, HttpResponseRedirect
-from apps.doctors.forms import DoctorForm, HospitalForm, CommentForm
+from apps.doctors.forms import DoctorForm, HospitalForm, CommentForm, CommentAnswerForm
 
+from apps.accounts.models import UserProfile, UserSetting
 
 class HospitalCreate(CreateView):
     """
@@ -79,8 +80,46 @@ class DoctorList(ListView):
     model = Doctor
     context_object_name = 'doctors'
     template_name = 'doctors/doctors.html'
-    queryset = Doctor.objects.all().order_by('-recommend_yes')
+    queryset = Doctor.objects.order_by('-recommend_yes')
     paginate_by = 4
+
+
+class DoctorReviewList(ListView):
+    """
+    Повертає список коментарів відсортованих по даті додавання
+    """
+
+    model = Comment
+    context_object_name = 'comments'
+    template_name = 'doctors/doctor_reviews.html'
+    paginate_by = 2
+
+    def get_queryset(self):
+        """
+        Повертає коментарі заданого лікаря
+        """
+        return Comment.objects.filter(doctor=self.kwargs['pk']).order_by('-created')
+
+    def get_context_data(self, **kwargs):
+        context = super(DoctorReviewList, self).get_context_data(**kwargs)
+        # отримуємо об’єкт лікаря
+        doctor = Doctor.objects.get(pk=self.kwargs['pk'])
+        # передаємо у context об’єкти Doctor для sidebar
+        context['doctors'] = Doctor.objects.order_by('-recommend_yes')[:6]
+        # передаємо у context об’єкт лікаря, для якого додається рейтигн
+        context['doctor'] = doctor
+        # передаємо у context відгуки на коментарі
+        context['comment_answers'] = CommentAnswer.objects.filter(doctor=doctor.id).filter(is_active=True).order_by('-created')
+        # передаємо у context об’єкт лікаря, для якого додається рейтигн
+        #context['form'] = CommentForm()
+        # передаємо у context фото користувача
+        if UserProfile.objects.filter(user=doctor.userdoctor.user):
+            context['photo'] = UserProfile.objects.get(user=doctor.userdoctor.user).photo
+        elif UserSetting.objects.filter(user=doctor.userdoctor.user):
+            context['photo'] = UserSetting.objects.get(user=doctor.userdoctor.user).photo
+        else:
+            context['photo'] = False
+        return context
 
 
 class DoctorDetail(DetailView):
@@ -112,11 +151,24 @@ class DoctorDetail(DetailView):
         # передаємо рейтинг лікаря у змінну rating
         context['rating'] = int(100*int(doctor.recommend_yes)/(int(doctor.recommend_yes) + int(doctor.recommend_no)+0.001)+0.5)
         context['rating_minus'] = int(100*int(doctor.recommend_no)/(int(doctor.recommend_yes) + int(doctor.recommend_no)+0.001)+0.5)
-        # передаємо у context об’єкти Comment, Doctor
-        context['comments'] = Comment.objects.filter(doctor=self.object.id).filter(is_active=True).order_by('-created')
+        # передаємо у context об’єкти Comment, CommentAnswer, Doctor
+        context['comments'] = Comment.objects.filter(doctor=self.object.id).filter(is_active=True).order_by('-created')[:5]
+        context['comment_answers'] = CommentAnswer.objects.filter(doctor=self.object.id).filter(is_active=True).order_by('-created')
         context['doctors'] = Doctor.objects.order_by('-recommend_yes')[:6]
         # передаємо у context об’єкт лікаря, для якого додається рейтигн
         context['doctor'] = doctor
+        # передаємо у context об’єкт лікаря, для якого додається рейтигн
+        context['form'] = CommentForm()
+        # передаємо у context фото користувача, якщо лікар ідентифікований користувачем
+        try:
+            if UserProfile.objects.filter(user=doctor.userdoctor.user.id):
+                context['photo'] = UserProfile.objects.get(user=doctor.userdoctor.user.id).photo
+            elif UserSetting.objects.filter(user=doctor.userdoctor.user.id):
+                context['photo'] = UserSetting.objects.get(user=doctor.userdoctor.user.id).photo
+            else:
+                context['photo'] = False
+        except Doctor.DoesNotExist:
+            pass
         return context
 
 
@@ -126,9 +178,10 @@ class CommentCreate(CreateView):
     """
 
     model = Comment
-    template_name = 'doctors/add_comment.html'
+    template_name = 'doctors/comment_update.html'
     form_class = CommentForm
     success_url = '/doctors/'
+
 
     # доступ додавати лікаря мають тільки зареєстровані користувачі
     @method_decorator(login_required())
@@ -144,6 +197,14 @@ class CommentCreate(CreateView):
         super(CommentCreate, self).form_valid(form)
         return redirect(reverse("doctors:doctor_profile", args=[self.get_queryset().id]))
 
+    def form_invalid(self, form):
+        """
+        Якщо форма не валідна (користувач спробував відправити порожню форму,
+        здійснюється редірект на сторінку лікаря.
+        """
+        super(CommentCreate, self).form_invalid(form)
+        return redirect(reverse("doctors:doctor_profile", args=[self.get_queryset().id]))
+
     def get_queryset(self):
         """
         Повертає об’єкт лікаря, для якого додається коментар
@@ -152,10 +213,92 @@ class CommentCreate(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(CommentCreate, self).get_context_data(**kwargs)
+        # передаємо у context об’єкт Doctor, для якого додаємо коментар
+        doctor = Doctor.objects.get(pk=self.get_queryset().id)
+        context['doctor'] = doctor
+        # передаємо рейтинг лікаря у змінну rating
+        context['rating'] = int(100*int(doctor.recommend_yes)/(int(doctor.recommend_yes) + int(doctor.recommend_no)+0.001)+0.5)
+        context['rating_minus'] = int(100*int(doctor.recommend_no)/(int(doctor.recommend_yes) + int(doctor.recommend_no)+0.001)+0.5)
         # передаємо у context об’єкти Doctor для  елементів sidebar
         context['doctors'] = Doctor.objects.order_by('-recommend_yes')[:6]
+        return context
+
+
+class CommentAnswerCreate(CreateView):
+    """
+    Повертає форму для створення коментаря на відгук
+    """
+
+    model = CommentAnswer
+    template_name = 'doctors/comment_answer.html'
+    form_class = CommentAnswerForm
+    success_url = '/doctors/'
+
+    # доступ тільки для зареєстрованих користувачів
+    @method_decorator(login_required())
+    def dispatch(self, request, *args, **kwargs):
+        return super(CommentAnswerCreate, self).dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        # вказуємо значення полів, які не можуть бути пустими і не відображаються у формі
+        form.instance.is_active = True
+        form.instance.comment = Comment.objects.get(pk=self.kwargs['pk'])
+        form.instance.doctor = form.instance.comment.doctor
+        # перезавантажуємо метод form_valid() батьківського класу
+        super(CommentAnswerCreate, self).form_valid(form)
+        return redirect(reverse("doctors:doctor_profile", args=[form.instance.doctor.id]))
+
+    def get_context_data(self, **kwargs):
+        context = super(CommentAnswerCreate, self).get_context_data(**kwargs)
         # передаємо у context об’єкт Doctor, для якого додаємо коментар
-        context['doctor'] = Doctor.objects.get(pk=self.get_queryset().id)
+        doctor = Comment.objects.get(pk=self.kwargs['pk']).doctor
+        context['doctor'] = doctor
+        # передаємо рейтинг лікаря у змінну rating
+        context['rating'] = int(100*int(doctor.recommend_yes)/(int(doctor.recommend_yes) + int(doctor.recommend_no)+0.001)+0.5)
+        context['rating_minus'] = int(100*int(doctor.recommend_no)/(int(doctor.recommend_yes) + int(doctor.recommend_no)+0.001)+0.5)
+        # передаємо у context об’єкти Doctor для  елементів sidebar
+        context['doctors'] = Doctor.objects.order_by('-recommend_yes')[:6]
+        # передаємо у context відгук, що коментується
+        context['comment'] = Comment.objects.get(pk=self.kwargs['pk'])
+        return context
+
+
+class CommentAnswerUpdate(UpdateView):
+    """
+    Повертає форму для редагування коментаря на відгук
+    """
+
+    model = CommentAnswer
+    template_name = 'doctors/comment_answer.html'
+    form_class = CommentAnswerForm
+    success_url = '/doctors/'
+
+    # доступ тільки для зареєстрованих користувачів
+    @method_decorator(login_required())
+    def dispatch(self, request, *args, **kwargs):
+        return super(CommentAnswerUpdate, self).dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        # вказуємо значення полів, які не можуть бути пустими і не відображаються у формі
+        form.instance.is_active = True
+        form.instance.comment = CommentAnswer.objects.get(pk=self.kwargs['pk']).comment
+        form.instance.doctor = form.instance.comment.doctor
+        # перезавантажуємо метод form_valid() батьківського класу
+        super(CommentAnswerUpdate, self).form_valid(form)
+        return redirect(reverse("doctors:doctor_profile", args=[form.instance.doctor.id]))
+
+    def get_context_data(self, **kwargs):
+        context = super(CommentAnswerUpdate, self).get_context_data(**kwargs)
+        # передаємо у context об’єкт Doctor, для якого додаємо коментар
+        doctor = CommentAnswer.objects.get(pk=self.kwargs['pk']).doctor
+        context['doctor'] = doctor
+        # передаємо рейтинг лікаря у змінну rating
+        context['rating'] = int(100*int(doctor.recommend_yes)/(int(doctor.recommend_yes) + int(doctor.recommend_no)+0.001)+0.5)
+        context['rating_minus'] = int(100*int(doctor.recommend_no)/(int(doctor.recommend_yes) + int(doctor.recommend_no)+0.001)+0.5)
+        # передаємо у context об’єкти Doctor для  елементів sidebar
+        context['doctors'] = Doctor.objects.order_by('-recommend_yes')[:6]
+        # передаємо у context відгук, що коментується
+        context['comment'] = CommentAnswer.objects.get(pk=self.kwargs['pk']).comment
         return context
 
 
@@ -169,17 +312,12 @@ class CommentUpdate(UpdateView):
     model = Comment
     template_name = 'doctors/comment_update.html'
     form_class = CommentForm
+    success_url = '/doctors/'
 
     # доступ додавати лікаря мають тільки зареєстровані користувачі
     @method_decorator(login_required())
     def dispatch(self, request, *args, **kwargs):
         return super(CommentUpdate, self).dispatch(request, *args, **kwargs)
-
-    def get_success_url(self):
-        # отримуємо id лікаря, для якоро редагується коментар, щоб після успішного редагування
-        # зробити редірект на сторінку лікаря
-        doctor = str(Comment.objects.get(pk=self.kwargs['pk']).doctor.id)
-        return u'/doctors/'+doctor
 
     def form_valid(self, form):
         # вказуємо значення поля is_active = False, щоб відправити коментар на перевірку
@@ -190,3 +328,15 @@ class CommentUpdate(UpdateView):
         # зробити редірект на сторінку лікаря
         doctor = str(Comment.objects.get(pk=self.kwargs['pk']).doctor.id)
         return redirect(reverse("doctors:doctor_profile", args=[doctor]))
+
+    def get_context_data(self, **kwargs):
+        context = super(CommentUpdate, self).get_context_data(**kwargs)
+        # передаємо у context об’єкт Doctor, для якого додаємо коментар
+        doctor = Comment.objects.get(pk=self.kwargs['pk']).doctor
+        context['doctor'] = doctor
+        # передаємо рейтинг лікаря у змінну rating
+        context['rating'] = int(100*int(doctor.recommend_yes)/(int(doctor.recommend_yes) + int(doctor.recommend_no)+0.001)+0.5)
+        context['rating_minus'] = int(100*int(doctor.recommend_no)/(int(doctor.recommend_yes) + int(doctor.recommend_no)+0.001)+0.5)
+        # передаємо у context об’єкти Doctor для  елементів sidebar
+        context['doctors'] = Doctor.objects.order_by('-recommend_yes')[:6]
+        return context

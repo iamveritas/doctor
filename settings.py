@@ -68,6 +68,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'social.apps.django_app.default',
+    'easy_thumbnails',
+    'crispy_forms',
 
     'apps.home',
     'apps.adminpanel',
@@ -218,7 +220,7 @@ SOCIAL_AUTH_PIPELINE = (
     'apps.accounts.pipeline.get_profile_picture',
 )
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 try:
     from local_settings import *

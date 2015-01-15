@@ -1,0 +1,82 @@
+{%extends 'base_sidebar.html' %}
+{% load i18n %}
+{% load thumbnail %}
+
+{%block content%}
+    <div class="row">
+        <div class="col-md-3 lykar-doctor-avatar">
+        </div>
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    {# block header #}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-uppercase text-center"> Мої відгуки про лікарів </h2>
+                        </div>
+                    </div>
+                    {# endblock header #}
+
+                    {# block reviews #}
+                    {% include 'accounts/reviews_from_me.html' %}
+                    {# endblock reviews #}
+
+                    {# block pagination #}
+                    <div class="row text-center">
+                        {% if is_paginated %}
+                            <div class="pagination">
+                                <span class="page-links">
+                                    {% if page_obj.has_previous %}
+                                        <a href="{% url 'accounts:user_reviews' user.id %}?page={{ page_obj.previous_page_number }}">
+                                            <span class="glyphicon glyphicon-arrow-left"></span>
+                                        </a>
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-arrow-left"></span>
+                                    {% endif %}
+                                    <span class="page-current">
+                                        {% if page_obj.number > 2 %}
+                                            <a href="{% url 'accounts:user_reviews' user.id %}?page=1"> 1 </a>
+                                        {% endif %}
+
+                                        {% if page_obj.number > 3 %}
+                                             ...
+                                        {% endif %}
+
+                                        {% if page_obj.has_previous %}
+                                            <a href="{% url 'accounts:user_reviews' user.id %}?page={{ page_obj.previous_page_number }}">
+                                                {{ page_obj.previous_page_number }}
+                                            </a>
+                                        {% endif %}
+
+                                        {{ page_obj.number }}
+
+                                        {% if page_obj.has_next %}
+                                            <a href="{% url 'accounts:user_reviews' user.id %}?page={{ page_obj.next_page_number }}"> {{ page_obj.next_page_number }} </a>
+                                        {% endif %}
+
+                                        {% if page_obj.next_page_number < page_obj.paginator.num_pages %}
+                                             ...
+                                            <a href="{% url 'accounts:user_reviews' user.id %}?page={{ page_obj.paginator.num_pages }}">
+                                                {{ page_obj.paginator.num_pages }}
+                                            </a>
+                                        {% endif %}
+                                    </span>
+                                    {% if page_obj.has_next %}
+                                        <a href="{% url 'accounts:user_reviews' user.id %}?page={{ page_obj.next_page_number }}">
+                                            <span class="glyphicon glyphicon-arrow-right"></span>
+                                        </a>
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-arrow-right"></span>
+                                    {% endif %}
+
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {# endblock pagination #}
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock content%}

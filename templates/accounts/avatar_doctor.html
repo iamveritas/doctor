@@ -1,0 +1,15 @@
+{% include 'accounts/avatar_main_user.html' %}
+
+<div>
+    <p class="text-center">
+        <i class = "glyphicon glyphicon-thumbs-up"></i>
+        <span class="badge">{{ doctor.recommend_yes }}</span>
+
+        <i class = "glyphicon glyphicon-thumbs-down"></i>
+        <span class="badge">{{ doctor.recommend_no }}</span>
+    </p>
+</div>
+
+<div class="text-center">
+    <a href="{% url 'accounts:user_settings_doctor' %}" > Мої налаштування </a>
+</div>

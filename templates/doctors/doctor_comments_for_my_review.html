@@ -1,0 +1,38 @@
+<div class="row lykar-boxed-comment">
+    <div class="col-md-2 center-block">
+
+        {% if doctor.userdoctor %}
+            {% include 'accounts/avatar_main_user.html' %}
+        {% else %}
+            {% if  doctor.image %}
+                <div class="avatar"><img src="{{ MEDIA_URL }}{{ doctor.image }}" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+            {% elif doctor.sex == 'M' %}
+                <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_m.png" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+            {% else %}
+                <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+            {% endif %}
+        {% endif %}
+
+        <p class="text-center red">
+            <strong>
+                {{ comment_answer.doctor.first_name }}
+            </strong>
+        </p>
+    </div>
+
+    <div class="col-md-10">
+        <p>{{ comment_answer.content }}</p>
+        <p class="text-left">
+            Додано: {{ comment_answer.created }}
+            </a>
+        </p>
+        <p class="text-right">
+            {% if doctor.id == user.userdoctor.doctor.id %}
+                <a href="{% url 'doctors:answer-update' comment_answer.id %}" >
+                    Редагувати
+                </a>
+            {% endif %}
+        </p>
+    </div>
+
+</div>

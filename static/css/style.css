@@ -215,9 +215,17 @@ div.lykar-btn-add-fb {
 div.lykar-boxed-comment {
     background: none repeat scroll 0 0 #f9f9f9;
     padding: 20px;
-    margin-bottom: 20px
-
+    margin-bottom: 20px;
+    margin-right: 0px;
+    margin-left: 0px;
 }
+ul.lykar-button-comment {
+    margin-bottom: 20px;
+}
+div h2.lykar-button-text{
+    color: #ffffff;
+}
+
 a.lykar-comment-like:hover, a.facebook:hover, a.vkontakte:hover {
     text-decoration: none;
    } 
@@ -275,7 +283,8 @@ div.lykar-sidebar{
 div.lykar-sidebar-block{
     margin: 0px 10px 15px 10px;
     padding: 15px;
-    background: none repeat scroll 0 0 #f9f9f9;
+    padding-top: 0px;
+    background: none repeat scroll 0 0 #fff;
 }
 
 div.lykar-sidebar-team {

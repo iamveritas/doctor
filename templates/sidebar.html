@@ -1,3 +1,4 @@
+{% load thumbnail %}
 <aside>
     <div class = "row">
         <div class = "col-md-12 lykar-sidebar-block text-center">
@@ -11,7 +12,24 @@
                     <div class="col-xs-4 col-sm-2 col-md-4 lykar-sidebar-team-padding">
                         <div class="lykar-sidebar-team">
                             <a href="{% url 'doctors:doctor_profile' doctor.id %}">
-                                <img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" alt="{{ doctor.first_name }} {{ doctor.last_name }}" class="img-responsive img-circle center-block" />
+                                {% if  doctor.userdoctor.user.profile.all %}
+                                    {% for photo in doctor.userdoctor.user.profile.all %}
+                                        <div class="avatar"><img src="{{ photo }}" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+                                    {% empty %}
+                                    {% endfor %}
+                                {% elif doctor.userdoctor.user.usersetting_set.all %}
+                                    {% for photo in doctor.userdoctor.user.usersetting_set.all %}
+                                        <div class="avatar"><img src="{{ MEDIA_URL }}{{ photo }}" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+                                    {% empty %}
+                                    {% endfor %}
+                                {% elif doctor.image %}
+                                    <div class="avatar"><img src="{{ MEDIA_URL }}{{ doctor.image }}" alt="" class="img-responsive img-circle center-block" /></div>
+                                {% elif doctor.sex == 'F' %}
+                                    <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+                                {% else %}
+                                    <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_m.png" width="256" alt="" class="img-responsive img-circle center-block" /></div>
+                                {% endif %}
+
                                 {{ doctor.last_name }}<br/>
                                 {{ doctor.first_name }}<br/>
                             </a>

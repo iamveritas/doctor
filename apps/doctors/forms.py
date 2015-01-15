@@ -1,6 +1,6 @@
 # -*-coding:utf8-*-
 from django import forms
-from apps.internal.models import (Doctor, Hospital, Comment,
+from apps.internal.models import (Doctor, Hospital, Comment, CommentAnswer,
                                   Speciality, HospitalType, City)
 
 BOOTSTRAP_FORM_INPUT_CLASS = "form-control"
@@ -15,6 +15,7 @@ IS_STATE_CHOICES = (
     ("Y", "так"),
     ("N", "ні"),
 )
+
 
 class DoctorForm(forms.ModelForm):
 
@@ -118,4 +119,17 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
+        fields = ['content']
+
+
+class CommentAnswerForm(forms.ModelForm):
+
+    content = forms.CharField(required=True,
+                           widget=forms.Textarea(attrs={
+                               "class": BOOTSTRAP_FORM_INPUT_CLASS,
+                               "placeholder": "Прокоментуйте відгук пацієнта?"
+                           }))
+
+    class Meta:
+        model = CommentAnswer
         fields = ['content']
