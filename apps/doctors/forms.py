@@ -16,6 +16,7 @@ IS_STATE_CHOICES = (
     ("N", "ні"),
 )
 
+
 class DoctorForm(forms.ModelForm):
 
     last_name = forms.CharField(label="Прізвище", required=True,

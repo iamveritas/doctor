@@ -10,6 +10,12 @@ from captcha.fields import CaptchaField
 
 BOOTSTRAP_FORM_INPUT_CLASS = "form-control"
 
+SEX_CHOICES = (
+    (None, "Оберіть стать"),
+    ("M", "чоловіча"),
+    ("F", "жіноча"),
+)
+
 
 class UserForm(UserCreationForm):
 
@@ -33,6 +39,10 @@ class UserForm(UserCreationForm):
                                "class": BOOTSTRAP_FORM_INPUT_CLASS,
                                "placeholder": "Введіть пароль ще раз",
                            }))
+    sex = forms.ChoiceField(choices=SEX_CHOICES, label="Стать", required=True,
+                           widget=forms.Select(attrs={
+                               "class": BOOTSTRAP_FORM_INPUT_CLASS,
+                           }))
 
     rules = forms.BooleanField(label="Умови використання", required=True)
 
@@ -40,7 +50,7 @@ class UserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2', 'rules', 'captcha')
+        fields = ('username', 'email', 'password1', 'password2', 'sex', 'rules', 'captcha')
 
 
 class LoginForm(forms.Form):
@@ -61,11 +71,11 @@ class LoginForm(forms.Form):
 
 
 class UserDoctorForm(forms.ModelForm):
-    doctor = forms.ModelChoiceField(queryset=Doctor.objects.all(), label="Виберіть себе серед лікарів",
-                           required=True,
-                           widget=forms.Select(attrs={
-                               "class": BOOTSTRAP_FORM_INPUT_CLASS,
-                           }))
+    doctor = forms.ModelChoiceField(queryset=Doctor.objects.all(),
+                                    label="Виберіть себе серед лікарів", required=True,
+                                    widget=forms.Select(attrs={
+                                    "class": BOOTSTRAP_FORM_INPUT_CLASS,
+                                    }))
     class Meta:
         model = UserDoctor
         fields = ['doctor']

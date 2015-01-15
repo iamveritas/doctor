@@ -31,7 +31,7 @@ def registration(request):
 #            newuser = auth.authenticate(username=newuser_form.cleaned_data['username'],
 #                                        password=newuser_form.cleaned_data['password1'])
 #            auth.login(request, newuser)
-            return redirect('/')
+            return redirect('/accounts/login')
         else:
             args['form'] = newuser_form
     return render_to_response('accounts/registration.html', args)

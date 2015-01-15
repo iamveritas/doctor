@@ -95,7 +95,7 @@ class Doctor(models.Model):
 
     last_name = models.CharField("Прізвище", blank=False, max_length=30)
     first_name = models.CharField("Ім'я", blank=False, max_length=25)
-    patronymic = models.CharField("По батькові", blank=False, max_length=30)
+    patronymic = models.CharField("По батькові", blank=True, max_length=30)
     sex = models.CharField("Стать", blank=False, max_length=1, choices=SEX_CHOICES)
     speciality = models.ForeignKey(Speciality, verbose_name="Спеціальність")
     user = models.ForeignKey(User, verbose_name="Хто створив")
