@@ -3,23 +3,24 @@
         {% include 'accounts/review_avatar_of_doctor.html' %}
     </div>
 
-    {# block review_content #}
-    {% include 'accounts/review_content.html' %}
-    {# endblock review_content #}
+    <div class="col-md-10 center-block">
+        {# block review_content #}
+        {% include 'accounts/review_content.html' %}
+        {# endblock review_content #}
 
-    {# block comment #}
-    <div class="row">
-        <div class="col-md-10    col-md-offset-2">
-            {% for comment_answer in comment_answers %}
-                {% if comment.id == comment_answer.comment.id %}
-                    <hr class="lykar-between-review"/>
-                    {% include 'accounts/comment_on_review.html' %}
-                {% endif %}
-            {% empty %}
-            {% endfor %}
+        {# block comment #}
+        <div class="row">
+            <div class="col-md-12">
+                {% for comment_answer in comment_answers %}
+                    {% if comment.id == comment_answer.comment.id %}
+                        <hr class="lykar-between-review"/>
+                        {% include 'accounts/comment_on_review.html' %}
+                    {% endif %}
+                {% empty %}
+                {% endfor %}
+            </div>
         </div>
+        {# endblock comment #}
     </div>
-    {# endblock comment #}
-
 </div>
 <hr class="lykar-between-review" />
