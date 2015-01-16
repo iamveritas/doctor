@@ -1,4 +1,4 @@
-<p class="text-left red">
+<div class="text-left red">
     <strong>
         {% if comment.user.userdoctor.doctor.first_name %}
             {{ comment.user.userdoctor.doctor.first_name }} {{ comment.user.userdoctor.doctor.last_name }}
@@ -6,13 +6,14 @@
             {{ comment.user.username }}
         {% endif %}
     </strong>
-</p>
-<p>{{ comment.content }}</p>
-<p class="text-left">
+</div>
+
+<div>{{ comment.content }}</div>
+
+<div class="text-left lykar-review-footer">
     {{ comment.created|date:"d E Y" }} о {{ comment.created|time:"H:i" }}
 
     {% if doctor.id == user.userdoctor.doctor.id %}
         | <a href="/doctors/comment/{{ comment.id }}/answer/" > Коментувати </a>
     {% endif %}
-
-</p>
+</div>

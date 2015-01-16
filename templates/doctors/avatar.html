@@ -11,7 +11,7 @@
     {% empty %}
     {% endfor %}
 {% elif doctor.image %}
-    <div class="avatar"><img src="{{ MEDIA_URL }}{{ doctor.image }}" alt="" class="img-responsive img-circle center-block" /></div>
+    <div class="avatar"><img src="{{ MEDIA_URL }}{{ doctor.image }}" width="256"alt="" class="img-responsive img-circle center-block" /></div>
 {% elif doctor.sex == 'F' %}
     <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_f.png" width="256" alt="" class="img-responsive img-circle center-block" /></div>
 {% else %}

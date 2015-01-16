@@ -1,12 +1,11 @@
 <div>
-    <div class=" red text-uppercase modal-soc">
-         {{ question.question_text }}
+    <div class="c-red text-uppercase modal-soc">
+         <strong>{{ question.question_text }}</strong>
     </div>
-
     <div>
         {% for choice in question.choice_set.all %}
             <ul class="line-clinics text-left">
-                <li>{{ choice.choice_text }} ---- {{ choice.votes }} голосів</li>
+                <li><strong>{{ choice.choice_text }}</strong> --- <strong><span class="c-red">{{ choice.votes }}</span></strong> голосів</li>
             </ul>
         {% endfor %}
     </div>

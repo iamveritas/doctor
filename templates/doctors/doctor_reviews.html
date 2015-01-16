@@ -5,7 +5,7 @@
 {%block content%}
     <div class="row">
         <div class="col-md-3 lykar-doctor-avatar">
-            {% include 'doctors/doctor_avatar.html' %}
+            {% include 'doctors/avatar.html' %}
             <h4 class="text-center"><a href="{% url 'doctors:doctor_profile' doctor.id %}">{{ doctor.last_name }} {{ doctor.first_name }}</a></h4>
         </div>
 
@@ -19,13 +19,13 @@
                     </div>
 
                     {% for comment in comments %}
-                        {% include 'doctors/doctor_review_full.html' %}
+                        {% include 'doctors/review_block.html' %}
 
                         <div class="row">
                             <div class="col-md-10    col-md-offset-2">
                                 {% for comment_answer in comment_answers %}
                                     {% if comment.id == comment_answer.comment.id %}
-                                        {% include 'doctors/doctor_comments.html' %}
+                                        {% include 'doctors/comment_block.html' %}
                                     {% endif %}
                                 {% empty %}
                                 {% endfor %}

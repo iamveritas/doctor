@@ -128,7 +128,7 @@ class DoctorDetail(DetailView):
     """
 
     model = Doctor
-    template_name = 'doctors/doctor_profile.html'
+    template_name = 'doctors/home.html'
     context_object_name = 'doctor'
 
     def get_context_data(self, **kwargs):
@@ -230,7 +230,7 @@ class CommentAnswerCreate(CreateView):
     """
 
     model = CommentAnswer
-    template_name = 'doctors/comment_answer.html'
+    template_name = 'doctors/comment.html'
     form_class = CommentAnswerForm
     success_url = '/doctors/'
 
@@ -269,7 +269,7 @@ class CommentAnswerUpdate(UpdateView):
     """
 
     model = CommentAnswer
-    template_name = 'doctors/comment_answer.html'
+    template_name = 'doctors/comment.html'
     form_class = CommentAnswerForm
     success_url = '/doctors/'
 

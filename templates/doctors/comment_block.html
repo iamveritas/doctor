@@ -1,5 +1,5 @@
-<div class="row lykar-boxed-comment">
-    <div class="col-md-2 center-block">
+<div class="row lykar-comment-block">
+    <div class="col-md-2 col-xs-3 center-block">
 
         {% if doctor.userdoctor %}
             {% include 'accounts/avatar_main_user.html' %}
@@ -14,20 +14,20 @@
         {% endif %}
     </div>
 
-    <div class="col-md-10">
-        <p class="text-left red">
+    <div class="col-md-10 col-xs-9">
+        <div class="text-left red">
             <strong>
                 {{ comment_answer.doctor.first_name }} {{ comment_answer.doctor.last_name }}
             </strong>
-        </p>
-        <p>{{ comment_answer.content }}</p>
-        <p class="text-left">
+        </div>
+        <div class="">{{ comment_answer.content }}</div>
+        <div class="text-left lykar-comment-footer">
             {{ comment.created|date:"d E Y" }} о {{ comment.created|time:"H:i" }}
 
             {% if doctor.id == user.userdoctor.doctor.id %}
                 | <a href="{% url 'doctors:answer-update' comment_answer.id %}" > Редагувати </a>
             {% endif %}
-        </p>
+        </div>
     </div>
 
 </div>

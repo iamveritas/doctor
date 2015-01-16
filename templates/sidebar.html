@@ -1,12 +1,10 @@
-{% load thumbnail %}
+{% load i18n %}
 <aside>
     <div class = "row">
         <div class = "col-md-12 lykar-sidebar-block text-center">
-
             <h2>Популярні лікарі</h2>
             <hr />
-
-            <div class="row lykar-sidebar-block-padding ">
+            <div class="row lykar-sidebar-block-padding">
 
                 {% for doctor in doctors %}
                     <div class="col-xs-4 col-sm-2 col-md-4 lykar-sidebar-team-padding">
@@ -37,6 +35,7 @@
                         </div>
                     </div>
                 {% endfor %}
+
             </div>
         </div>
     </div>

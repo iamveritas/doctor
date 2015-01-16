@@ -5,11 +5,11 @@
 {%block content%}
     <div class="row">
         <div class="col-md-3 lykar-doctor-avatar">
-            {% include 'doctors/doctor_avatar.html' %}
+            {% include 'doctors/avatar.html' %}
         </div>
 
         <div class="col-md-9">
-            {% include 'doctors/doctor_header.html' %}
+            {% include 'doctors/header.html' %}
 
             {% if user.is_authenticated %}
                 <div class="row">

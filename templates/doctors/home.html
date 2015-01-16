@@ -5,11 +5,11 @@
 {%block content%}
     <div class="row">
         <div class="col-md-3 lykar-doctor-avatar">
-            {% include 'doctors/doctor_avatar.html' %}
+            {% include 'doctors/avatar.html' %}
         </div>
 
         <div class="col-md-9">
-            {% include 'doctors/doctor_header.html' %}
+            {% include 'doctors/header.html' %}
 
             <div class="row">
                 <div class="col-md-12">
@@ -22,18 +22,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             {% for comment in comments %}
-                                {% include 'doctors/doctor_review_full.html' %}
-
-                                <div class="row">
-                                    <div class="col-md-10    col-md-offset-2">
-                                        {% for comment_answer in comment_answers %}
-                                            {% if comment.id == comment_answer.comment.id %}
-                                                {% include 'doctors/doctor_comments.html' %}
-                                            {% endif %}
-                                        {% empty %}
-                                        {% endfor %}
-                                    </div>
-                                </div>
+                                {% include 'doctors/review_block.html' %}
                             {% empty %}
                                 Про цього лікаря ще ніхто не написав відгук.
                         {% endfor %}
@@ -46,10 +35,11 @@
                                  <a href="{% url 'doctors:doctor_reviews' doctor.id %}">Показати всі відгуки</a>
                             </div>
                         </div>
+                        <hr />
                     {% endif %}
                 </div>
             </div>
-            <hr />
+
 
             {% if user.is_authenticated %}
                 <div class="row">
@@ -63,18 +53,9 @@
                         <form action="/doctors/{{ doctor.id }}/newcomment/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
                             {% include 'doctors/comment_form.html' %}
                         </form>
-
-                        {% comment %}
-                        <div class="lykar-btn-add-fb">
-                            <p class="text-center"><a href="{% url 'doctors:add-comment' doctor.id %}" class="btn btn-primary btn-lg active" role="button">Додати відгук</a></p>
-                        </div>
-                        {% endcomment %}
                     </div>
                 </div>
             {% endif %}
-
-            {% include 'doctors/review_confirmation.html' %}
-            {{ uu }}
         </div>
     </div>
 {%endblock content%}

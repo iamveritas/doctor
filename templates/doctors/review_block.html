@@ -1,18 +1,18 @@
 <div class="row lykar-boxed-comment">
     <div class="col-md-2 center-block">
-        {% include 'doctors/doctor_review_user_avatar.html' %}
+        {% include 'doctors/avatar_user.html' %}
     </div>
 
     <div class="col-md-10">
-        {% include 'doctors/doctor_review_review.html' %}
+        {% include 'doctors/review_content.html' %}
     </div>
     {# block comment #}
     <div class="row">
         <div class="col-md-10    col-md-offset-2">
             {% for comment_answer in comment_answers %}
                 {% if comment.id == comment_answer.comment.id %}
-                    <hr />
-                    {% include 'doctors/doctor_comments.html' %}
+                    <hr class="lykar-between-review"/>
+                    {% include 'doctors/comment_block.html' %}
                 {% endif %}
             {% empty %}
             {% endfor %}
@@ -21,3 +21,4 @@
     {# endblock comment #}
 
 </div>
+<hr class="lykar-between-review" />

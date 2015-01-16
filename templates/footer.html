@@ -1,14 +1,14 @@
 {% load i18n %}
 {% load staticfiles %}
 
-        <footer class="color-grey text-center">
+        <footer class="footer color-grey text-center">
             <hr class="lykar-separator" />
-            <div class="container">
+            <div class="container-fluid color-grey">
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="line padding-top text-uppercase red">
-                            <li><a href="#">{% trans "Правила" %}</a></li>
-                            <li><a href="#">{% trans "Контакти" %}</a></li>
+                            <li><a href="{% url 'regulations' %}">{% trans "Правила" %}</a></li>
+                            <li><a href="{% url 'contacts:index' %}">{% trans "Контакти" %}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -45,8 +45,16 @@
         </footer>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="{% static "js/jquery.min.js" %}"></script>
         <script src="{% static "js/bootstrap.min.js" %}"></script>
-        {% block js %}{% endblock js %}
+    {% block js %}
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var link = window.location.pathname;
+                $('.menu li a[href="'+link+'"]').parent().addClass('active');
+            })
+        </script>
+    {% endblock js %}
 
     </body>
 </html>
