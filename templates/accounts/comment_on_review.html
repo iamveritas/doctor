@@ -1,30 +1,19 @@
-<div class="row lykar-boxed-comment">
-    {# block doctor_avatar #}
-    <div class="col-md-2 center-block">
-        {% include 'accounts/review_avatar_of_doctor.html' %}
-        <p class="text-center red">
-            <strong>
-                {{ comment_answer.doctor.first_name }}
-            </strong>
-        </p>
-    </div>
-    {# endblock doctor_avatar #}
-
+<div class="row lykar-comment-block">
     {# block comment_content #}
-    <div class="col-md-10">
-        <p>{{ comment_answer.content }}</p>
-        <p class="text-left">
-            Додано: {{ comment_answer.created }}
-            </a>
-        </p>
-        <p class="text-right">
-            {% if comment_answer.doctor.id == user.userdoctor.doctor.id %}
-                <a href="{% url 'doctors:answer-update' comment_answer.id %}" >
-                    Редагувати
-                </a>
-            {% endif %}
-        </p>
-    </div>
-    {# endblock comment_content #}
+    <div class="col-md-12">
+        <div class="text-left">
+            <strong>
+                <span class="red"> {{ comment_answer.doctor.first_name }} {{ comment_answer.doctor.last_name }} </span>
+                відповідає:
+            </strong>
+        </div>
+        <div class="">{{ comment_answer.content }}</div>
+        <div class="text-left lykar-comment-footer">
+            {{ comment.created|date:"d E Y" }} о {{ comment.created|time:"H:i" }}
 
+            {% if comment_answer.doctor.id == user.userdoctor.doctor.id %}
+                | <a href="{% url 'doctors:answer-update' comment_answer.id %}" > Редагувати </a>
+            {% endif %}
+        </div>
+    </div>
 </div>

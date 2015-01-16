@@ -1,57 +1,19 @@
-{% for comment in user_comments %}
-    {# block review #}
-    <div class="row lykar-boxed-comment">
-        {# block doctor_avatar #}
-        <div class="col-md-2 center-block">
-            {% include 'accounts/review_avatar_of_doctor.html' %}
-            <p class="text-center">
-                <strong class="red">{{ comment.doctor }}</strong>
-            </p>
+<div class="review-block">
+    {% for comment in user_comments %}
+        {# block review #}
+        {% include 'accounts/review_block.html' %}
+        {# endblock review #}
+    {% empty %}
+        Про Вас ще ніхто не написав жодного відгук.
+    {% endfor %}
+    {# block link_on_all_reviews #}
+    {% if user_comments.count == 5 %}
+        <div class="row lykar-boxed-comment">
+            <div class="col-md-12 text-center">
+                 <a href="{% url 'accounts:user_reviews' user.id %}">Показати всі відгуки</a>
+            </div>
         </div>
-        {# endblock doctor_avatar #}
+    {% endif %}
+    {# endblock link_on_all_reviews #}
+</div>
 
-        {# block review_content #}
-        <div class="col-md-10">
-            <p>{{ comment.content }}</p>
-            <p class="text-left">
-                Додано: {{ comment.created }}
-                </a>
-            </p>
-            <p class="text-right">
-                {% if comment.is_active == 'False' %}
-                    (Відгук перевіряється)
-                {% endif %}
-                <a href="/doctors/comment/{{ comment.id }}/" >
-                    Редагувати
-                </a>
-            </p>
-        </div>
-        {# endblock review_content #}
-    </div>
-    {# endblock review #}
-
-    {# block comment #}
-    <div class="row">
-        <div class="col-md-10    col-md-offset-2">
-            {% for comment_answer in comment_answers %}
-                {% if comment_answer.comment.id == comment.id %}
-                    {% include 'accounts/comment_on_review.html' %}
-                {% endif %}
-            {% empty %}
-            {% endfor %}
-        </div>
-    </div>
-    {# endblock comment #}
-{% empty %}
-    Ви ще не написали жодного відгуку.
-{% endfor %}
-
-{# block link_on_all_reviews #}
-{% if user_comments.count == 5 %}
-    <div class="row lykar-boxed-comment">
-        <div class="col-md-12 text-center">
-             <a href="{% url 'accounts:user_reviews' user.id %}">Показати всі відгуки</a>
-        </div>
-    </div>
-{% endif %}
-{# endblock link_on_all_reviews #}

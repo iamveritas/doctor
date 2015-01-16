@@ -5,7 +5,7 @@
 {%block content%}
     <div class="row">
         <div class="col-md-3 lykar-doctor-avatar">
-            {% include 'doctors/avatar.html' %}
+            {% include 'doctors/avatar_for_page.html' %}
             <h4 class="text-center"><a href="{% url 'doctors:doctor_profile' doctor.id %}">{{ doctor.last_name }} {{ doctor.first_name }}</a></h4>
         </div>
 
@@ -20,17 +20,6 @@
 
                     {% for comment in comments %}
                         {% include 'doctors/review_block.html' %}
-
-                        <div class="row">
-                            <div class="col-md-10    col-md-offset-2">
-                                {% for comment_answer in comment_answers %}
-                                    {% if comment.id == comment_answer.comment.id %}
-                                        {% include 'doctors/comment_block.html' %}
-                                    {% endif %}
-                                {% empty %}
-                                {% endfor %}
-                            </div>
-                        </div>
 
                     {% empty %}
                         Про цього лікаря ще ніхто не написав відгук.

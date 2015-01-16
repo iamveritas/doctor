@@ -1,0 +1,14 @@
+<div class="text-left">
+    <strong>
+        Ваш відгук про лікаря:
+        <span class="red"> {{ comment.doctor.first_name }} {{ comment.doctor.last_name }}</span>
+    </strong>
+</div>
+
+<div>{{ comment.content }}</div>
+
+<div class="text-left lykar-review-footer">
+    {{ comment.created|date:"d E Y" }} о {{ comment.created|time:"H:i" }}
+    | <a href="/doctors/comment/{{ comment.id }}/" > Редагувати </a>
+    {% if comment.is_active == 'False' %} (відгук перевіряється) {% endif %}
+</div>

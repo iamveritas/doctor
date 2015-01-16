@@ -17,17 +17,3 @@
 {% else %}
     <div class="avatar"><img src="{{ MEDIA_URL }}doctor_photos/doctor_m.png" width="256" alt="" class="img-responsive img-circle center-block" /></div>
 {% endif %}
-
-<div>
-    <p class="text-center">
-        <a href="/doctors/{{ doctor.id }}/yes/" class="lykar-comment-like">
-            <i class = "glyphicon glyphicon-thumbs-up"></i>
-        </a>
-        <span class="badge">{{ doctor.recommend_yes }}</span>
-
-        <a href="/doctors/{{ doctor.id }}/no/" class="lykar-comment-like">
-            <i class = "glyphicon glyphicon-thumbs-down"></i>
-        </a>
-        <span class="badge">{{ doctor.recommend_no }}</span>
-    </p>
-</div>

@@ -22,7 +22,7 @@ class HospitalCreate(CreateView):
     """
 
     model = Hospital
-    template_name = 'doctors/add_hospital.html'
+    template_name = 'doctors/hospital_add.html'
     form_class = HospitalForm
     success_url = '/doctors/add/'
 
@@ -44,7 +44,7 @@ class DoctorCreate(CreateView):
     """
 
     model = Doctor
-    template_name = 'doctors/add_update.html'
+    template_name = 'doctors/doctor_add.html'
     form_class = DoctorForm
     success_url = '/doctors/'
 
@@ -91,7 +91,7 @@ class DoctorReviewList(ListView):
 
     model = Comment
     context_object_name = 'comments'
-    template_name = 'doctors/doctor_reviews.html'
+    template_name = 'doctors/reviews.html'
     paginate_by = 2
 
     def get_queryset(self):
@@ -163,11 +163,15 @@ class DoctorDetail(DetailView):
         try:
             if UserProfile.objects.filter(user=doctor.userdoctor.user.id):
                 context['photo'] = UserProfile.objects.get(user=doctor.userdoctor.user.id).photo
-            elif UserSetting.objects.filter(user=doctor.userdoctor.user.id):
+        except Exception:
+            pass
+
+        try:
+            if UserSetting.objects.filter(user=doctor.userdoctor.user.id):
                 context['photo'] = UserSetting.objects.get(user=doctor.userdoctor.user.id).photo
             else:
                 context['photo'] = False
-        except Doctor.DoesNotExist:
+        except Exception:
             pass
         return context
 
@@ -230,7 +234,7 @@ class CommentAnswerCreate(CreateView):
     """
 
     model = CommentAnswer
-    template_name = 'doctors/comment.html'
+    template_name = 'doctors/comment_add.html'
     form_class = CommentAnswerForm
     success_url = '/doctors/'
 
@@ -269,7 +273,7 @@ class CommentAnswerUpdate(UpdateView):
     """
 
     model = CommentAnswer
-    template_name = 'doctors/comment.html'
+    template_name = 'doctors/comment_add.html'
     form_class = CommentAnswerForm
     success_url = '/doctors/'
 
