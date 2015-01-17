@@ -3,8 +3,8 @@
 <form action="{% url 'accounts:login' %}" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="row">
-        <div class="col-md-6 col-md-offset-3 ">
-            <div class="red"> {{ login_error }} </div>
+        <div class="col-md-12 box">
+            <div class="red">{{ login_error }}</div>
             <div class="red"> {{ success_registration }} </div>
             <div class="form-group">
                 <div class="dl-horizontal">
@@ -13,7 +13,6 @@
                 </div>
                 <div class="text-warning">{{ form.username.errors }}</div>
             </div>
-
             <div class="form-group">
                 <div class="dl-horizontal">
                     <strong>{{ form.password.label }}*</strong>
@@ -21,8 +20,12 @@
                 </div>
                 <div class="text-warning">{{ form.password.errors }}</div>
             </div>
-
-
+            <div class="form-group">
+                <div class="dl-horizontal text-right">
+                    <a href="#">{% trans "Забули пароль?" %}</a>
+                </div>
+                <div class="text-warning">{{ form.password.errors }}</div>
+            </div>
             <div class="form-group">
                 <div class="dl-horizontal">
                     <input type="submit" class="btn btn-primary" value="Увійти" />

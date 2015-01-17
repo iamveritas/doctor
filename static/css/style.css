@@ -164,7 +164,11 @@ div.lykar-polls-block {
 hr.lykar-search-separator{
     margin-bottom: 0px;
     margin-top: 43px;
-
+}
+div.lykar-seach-home-block {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 150%;
 }
 /* --- end section: search --- */
 

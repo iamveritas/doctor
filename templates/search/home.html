@@ -1,0 +1,21 @@
+{%extends 'base.html' %}
+{% load i18n %}
+{% load thumbnail %}
+
+{%block content%}
+
+    {# block search #}
+    {% include "home/searchForm.html" %}
+    {# endblock search #}
+
+    <section class="color-white margin">
+        <div class="container">
+            <div class="row lykar-home color-scheme-white text-center">
+                <div class="col-xs-12 col-sm-12 col-md-12 lykar-seach-home-block">
+                    <p class="subtitle">{{ sp }}{% trans 'Ви можете знайти лікаря за прізвищем або спеціальністю.' %}</p>
+                </div>
+            </div>
+        </div>
+    </section> <!-- End List Doctor -->
+
+{%endblock%}

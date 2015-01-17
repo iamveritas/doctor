@@ -1,48 +1,64 @@
 {% load i18n %}
 
-<form action="/accounts/registration/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+<form action="{% url 'accounts:registration' %}" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.non_field_errors }}
     <div class="row">
-        <div class="col-md-12">
-            <dl class="dl-horizontal">
-                <dd><strong>Логін*</strong></dd>
-                <dd>{{ form.username }}</dd>
-                <dt></dt>
-                <dd class="text-warning">{{ form.username.errors }}</dd>
-            </dl>
-            <dl class="dl-horizontal">
-                <dd><strong>{{ form.email.label }}*</strong></dd>
-                <dd>{{ form.email }}</dd>
-                <dt></dt>
-                <dd class="text-warning">{{ form.email.errors }}</dd>
-            </dl>
-            <dl class="dl-horizontal">
-                <dd><strong>{{ form.password1.label }}*</strong></dd>
-                <dd>{{ form.password1 }}</dd>
-                <dt></dt>
-                <dd class="text-warning">{{ form.password1.errors }}</dd>
-            </dl>
-            <dl class="dl-horizontal">
-                <dd><strong>{{ form.password1.label }} (ще раз)*</strong></dd>
-                <dd>{{ form.password2 }}</dd>
-                <dt></dt>
-                <dd class="text-warning">{{ form.password2.errors }}</dd>
-            </dl>
-            <dl class="dl-horizontal">
-                <dd>{{ form.rules }}  <strong>Я погоджуюсь з <a href="#">умовами</a>  використання сайту.</strong></dd>
-                <dt></dt>
-                <dd class="text-warning">{{ form.rules.errors }}</dd>
-            </dl>
-            <dl class="dl-horizontal">
-                <dt></dt>
-                <dd>{{form.captcha}}</dd>
-                <dt></dt>
-                <dd class="text-warning">{{form.captcha.errors}}</dd>
-            </dl>
-            <dl class="dl-horizontal">
-                 <dd><input type="submit" class="btn btn-primary" value="Зареєструватися" /> </dd>
-            </dl>
+        <div class="col-md-12 box">
+            <div class="form-group">
+                <div class="dl-horizontal">
+                    <strong>{% trans "Логін" %}*</strong>
+                    {{ form.username }}
+                </div>
+                <div class="text-warning">{{ form.username.errors }}</div>
+            </div>
+            <div class="form-group">
+                <div class="dl-horizontal">
+                    <strong>{{ form.email.label }}*</strong>
+                    {{ form.email }}
+                </div>
+                <div class="text-warning">{{ form.email.errors }}</div>
+            </div>
+            <div class="form-group">
+                <div class="dl-horizontal">
+                    <strong>{{ form.password1.label }}*</strong>
+                    {{ form.password1 }}
+                </div>
+                <div class="text-warning">{{ form.password1.errors }}</div>
+            </div>
+            <div class="form-group">
+                <div class="dl-horizontal">
+                    <strong>{{ form.password1.label }}*</strong>
+                    {{ form.password2 }}
+                </div>
+                <div class="text-warning">{{ form.password2.errors }}</div>
+            </div>
+            {% comment %}
+            <div class="form-group">
+                <div class="dl-horizontal">
+                    <strong>{{ form.sex.label }}*</strong>
+                    {{ form.sex }}
+                </div>
+                <div class="text-warning">{{ form.sex.errors }}</div>
+            </div>
+            {% endcomment %}
+            <div class="form-group">
+                <div class="dl-horizontal">
+                    {{ form.rules }}  Я погоджуюсь з <a href="#conditions" data-toggle="modal" data-target="#conditions">умовами</a>  використання сайту
+                </div>
+                <div class="text-warning">{{ form.rules.errors }}</div>
+            </div>
+            <div class="form-group">
+                <div class="dl-horizontal">
+                    {{ form.captcha }}
+                </div>
+                <div class="text-warning">{{ form.captcha.errors }}</div>
+            </div>
+            <div class="form-group">
+                <div class="dl-horizontal">
+                    <input type="submit" class="btn btn-primary" value="Зареєструватися" />
+                </div>
+            </div>
         </div>
     </div>
 </form>

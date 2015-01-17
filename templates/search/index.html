@@ -1,0 +1,95 @@
+{%extends 'base.html' %}
+{% load i18n %}
+{% load thumbnail %}
+
+{%block content%}
+
+    {# block search #}
+    {% include "home/searchForm.html" %}
+    {# endblock search #}
+
+    <section class="color-white margin">
+        <div class="container">
+            <div class="row lykar-home color-scheme-white text-center">
+                {% for doctor in doctors %}
+                    <div class="col-xs-6 col-sm-3 col-md-3">
+                        <div class="team boxed-grey">
+                            <div class="inner">
+                                <h5><a href="{% url 'doctors:doctor_profile' doctor.id %}">{{ doctor.last_name }} {{ doctor.first_name }}</a></h5>
+                                <p class="subtitle">{{ doctor.speciality }}</p>
+
+                                {% include 'doctors/avatar.html' %}
+
+                                <div>
+                                    <i class = "glyphicon glyphicon-thumbs-up"></i>
+                                    <span class="badge">{{ doctor.recommend_yes }}</span>
+                                    <i class = "glyphicon glyphicon-thumbs-down"></i>
+                                    <span class="badge">{{ doctor.recommend_no }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <p class="subtitle">{% trans 'За Вашим запитом нічого не знайдено.' %}</p>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="row">
+                {% if is_paginated %}
+                    <div class="pagination">
+                        <span class="page-links">
+                            {% if page_obj.has_previous %}
+                                <a href="{% url 'search:index' %}?page={{ page_obj.previous_page_number }}">
+                                    <span class="glyphicon glyphicon-arrow-left"></span>
+                                </a>
+                            {% else %}
+                                <span class="glyphicon glyphicon-arrow-left"></span>
+                            {% endif %}
+                            <span class="page-current">
+                                {% if page_obj.number > 2 %}
+                                    <a href="{% url 'search:index' %}?page=1"> 1 </a>
+                                {% endif %}
+
+                                {% if page_obj.number > 3 %}
+                                     ...
+                                {% endif %}
+
+                                {% if page_obj.has_previous %}
+                                    <a href="{% url 'search:index' %}?page={{ page_obj.previous_page_number }}">
+                                        {{ page_obj.previous_page_number }}
+                                    </a>
+                                {% endif %}
+
+                                {{ page_obj.number }}
+
+                                {% if page_obj.has_next %}
+                                    <a href="{% url 'search:index' %}?page={{ page_obj.next_page_number }}"> {{ page_obj.next_page_number }} </a>
+                                {% endif %}
+
+                                {% if page_obj.next_page_number < page_obj.paginator.num_pages %}
+                                     ...
+                                    <a href="{% url 'search:index' %}?page={{ page_obj.paginator.num_pages }}">
+                                        {{ page_obj.paginator.num_pages }}
+                                    </a>
+                                {% endif %}
+                            </span>
+                            {% if page_obj.has_next %}
+                                <a href="{% url 'search:index' %}?page={{ page_obj.next_page_number }}">
+                                    <span class="glyphicon glyphicon-arrow-right"></span>
+                                </a>
+                            {% else %}
+                                <span class="glyphicon glyphicon-arrow-right"></span>
+                            {% endif %}
+
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </section> <!-- End List Doctor -->
+
+{%endblock%}

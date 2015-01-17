@@ -2,25 +2,54 @@
 {% load i18n %}
 
 {%block content%}
-<section class="top-section color-grey">
-    <div class="container">
+    <section class="top-section">
+        <div class="container">
+            {%if not user.is_authenticated%}
+                <div class="container">
+                    <div class="top-padding"><h2 class="text-uppercase text-center">{% trans "Реєстрація" %}</h2></div>
+                    <div class="col-md-5 col-md-offset-2">
+                         {% include 'accounts/registration_form.html' %}
+                    </div>
 
-    {%if not user.is_authenticated%}
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="text-center text-uppercase modal-soc">
-                    <h2 class=""> {% trans "Ви можете увійти через:" %}</h2>
+                    <div class="col-md-3 col-md-offset-1">
+                        <div class="text-center text-uppercase modal-soc">
+                            {% trans "Ввійти через:" %}
+                        </div>
+                        {% include 'accounts/social.html' %}
+                    </div>
                 </div>
-                {% include 'accounts/social.html' %}
-                <br />
-                <div class="text-center text-uppercase modal-soc">
-                    <h1 class = "red"> {% trans "Або зареєструватися:" %}</h1>
-                </div>
-                {% include 'accounts/registration_form.html' %}
-
-            </div>
+            {%endif%}
         </div>
-    {%endif%}
-    </div>
-</section>
+    </section>
+    <!-- modal conditions -->
+        <div class="modal fade" id="conditions" tabindex="-1" role="dialog" aria-labelledby="Conditions" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h2 class="modal-title">Правила</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p>Сайт lykar.com.ua (далі - Сайт) - це соціальний проект, створений для відкритого, вільного і безперешкодного обговорення лікарів і працівників медичної галузі України.</p>
+                        <p>Зареєструвавшись на Сайті, Ви підтверджуєте, що прочитали, зрозуміли і приймаєте дану Угоду Користувача. Угода може бути змінена без будь-якого спеціального повідомлення Адміністрацією сервісу lykar.com.ua (далі - Адміністрація), нова редакція Угоди вступає в силу з моменту її розміщення, якщо інше не передбачено новою редакцією Угоди. Найбільш актуальна редакція Угоди користувача завжди знаходиться на сторінці за адресою http://lykar.com.ua/disclaimer/</p>
+                        <p>Ваше подальше використання Сайту означає Вашу згоду з цією Угодою Користувача. Якщо Ви не погоджуєтесь з цієї Угодою Користувача (частково або в цілому) покиньте Сайт і не використовуйте його.</p>
+                        <ol>
+                            <li>Набуття чинності Угоди користувача:</li>
+                            <ol>
+                                <li>Угода Користувача набуває чинності з моменту початку використання Сайту користувачем.</li>
+                            </ol>
+                            <li>Реєстрація, пароль і безпека:</li>
+                            <ol>
+                                <li>По завершенні процесу реєстрації Ви отримаєте логін і пароль для доступу до персоналізованої частини Сайту. Ви несете відповідальність за безпеку вашого логіна і пароля, а також за все, що буде зроблено на Сайті під Вашим логіном і паролем. Ви погоджуєтеся з тим, що зобов'язані негайно повідомити Адміністрацію про будь-який випадок неавторизованого (без Вашого відома і згоди) доступу з Вашим логіном та паролем, про будь-яке порушення безпеки. Адміністрація не відповідає за можливе псування або втрату даних, яка може статися через порушення Вами положень з цієї частини Угоди Користувача.</li>
+                                <li></li>
+                                <li></li>
+                            </ol>
+                        </ol>
+                        <div class="text-right">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end modal conditions -->
 {%endblock%}

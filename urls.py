@@ -27,4 +27,6 @@ urlpatterns = patterns('',
         'document_root': settings.MEDIA_ROOT}),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^captcha/', include('captcha.urls')),
+
+    url(r"^search/", include("apps.search.urls", namespace="search")),
 )

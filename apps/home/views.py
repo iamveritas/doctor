@@ -12,7 +12,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        # передаємо у context об’єкти Doctor, HospitalType, Hospital, Question
+        # передаємо у context об’єкти Doctor, Specialities, Question
         context['doctors'] = Doctor.objects.all().order_by('-recommend_yes')[:4]
         context['specialities'] = Speciality.objects.all()
         context['question'] = Question.objects.get(pk=1)
