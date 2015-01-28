@@ -1,0 +1,1690 @@
+[
+{
+    "fields":
+    {
+        "name": "Радіолог"
+    },
+    "model": "internal.speciality",
+    "pk": 1
+},
+{
+    "fields":
+    {
+        "name": "Реабілітолог"
+    },
+    "model": "internal.speciality",
+    "pk": 2
+},
+{
+    "fields":
+    {
+        "name": "Реаніматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 3
+},
+{
+    "fields":
+    {
+        "name": "Ревматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 4
+},
+{
+    "fields":
+    {
+        "name": "Рентгенолог"
+    },
+    "model": "internal.speciality",
+    "pk": 5
+},
+{
+    "fields":
+    {
+        "name": "Репродуктолог"
+    },
+    "model": "internal.speciality",
+    "pk": 6
+},
+{
+    "fields":
+    {
+        "name": "Рефлексотерапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 7
+},
+{
+    "fields":
+    {
+        "name": "Дитячий психотерапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 8
+},
+{
+    "fields":
+    {
+        "name": "Дитячий пульмонолог"
+    },
+    "model": "internal.speciality",
+    "pk": 9
+},
+{
+    "fields":
+    {
+        "name": "Дитячий ревматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 10
+},
+{
+    "fields":
+    {
+        "name": "Дитячий рефлексотерапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 11
+},
+{
+    "fields":
+    {
+        "name": "Дитячий судинний хірург"
+    },
+    "model": "internal.speciality",
+    "pk": 12
+},
+{
+    "fields":
+    {
+        "name": "Дитячий стоматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 13
+},
+{
+    "fields":
+    {
+        "name": "Дитячий стоматолог-хірург"
+    },
+    "model": "internal.speciality",
+    "pk": 14
+},
+{
+    "fields":
+    {
+        "name": "Дитячий сурдолог"
+    },
+    "model": "internal.speciality",
+    "pk": 15
+},
+{
+    "fields":
+    {
+        "name": "Дитячий терапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 16
+},
+{
+    "fields":
+    {
+        "name": "Дитячий травматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 17
+},
+{
+    "fields":
+    {
+        "name": "Дитячий уролог"
+    },
+    "model": "internal.speciality",
+    "pk": 18
+},
+{
+    "fields":
+    {
+        "name": "Дитячий фізіотерапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 19
+},
+{
+    "fields":
+    {
+        "name": "Дитячий флеболог"
+    },
+    "model": "internal.speciality",
+    "pk": 20
+},
+{
+    "fields":
+    {
+        "name": "Дитячий фониатр"
+    },
+    "model": "internal.speciality",
+    "pk": 21
+},
+{
+    "fields":
+    {
+        "name": "Дитячий фтизіатр"
+    },
+    "model": "internal.speciality",
+    "pk": 22
+},
+{
+    "fields":
+    {
+        "name": "Дитячий хірург"
+    },
+    "model": "internal.speciality",
+    "pk": 23
+},
+{
+    "fields":
+    {
+        "name": "Дитячий хірург-ортопед"
+    },
+    "model": "internal.speciality",
+    "pk": 24
+},
+{
+    "fields":
+    {
+        "name": "Дитячий хірург-уролог"
+    },
+    "model": "internal.speciality",
+    "pk": 25
+},
+{
+    "fields":
+    {
+        "name": "Дитячий ендокринолог"
+    },
+    "model": "internal.speciality",
+    "pk": 26
+},
+{
+    "fields":
+    {
+        "name": "Дитячий епілептології"
+    },
+    "model": "internal.speciality",
+    "pk": 27
+},
+{
+    "fields":
+    {
+        "name": "Дитячий ЛОР"
+    },
+    "model": "internal.speciality",
+    "pk": 28
+},
+{
+    "fields":
+    {
+        "name": "Дитячий мамолог"
+    },
+    "model": "internal.speciality",
+    "pk": 29
+},
+{
+    "fields":
+    {
+        "name": "Дитячий масажист"
+    },
+    "model": "internal.speciality",
+    "pk": 30
+},
+{
+    "fields":
+    {
+        "name": "Дитячий мікології"
+    },
+    "model": "internal.speciality",
+    "pk": 31
+},
+{
+    "fields":
+    {
+        "name": "Дитячий нарколог"
+    },
+    "model": "internal.speciality",
+    "pk": 32
+},
+{
+    "fields":
+    {
+        "name": "Дитячий невролог"
+    },
+    "model": "internal.speciality",
+    "pk": 33
+},
+{
+    "fields":
+    {
+        "name": "Дитячий невропатолог"
+    },
+    "model": "internal.speciality",
+    "pk": 34
+},
+{
+    "fields":
+    {
+        "name": "Дитячий нейрохірург"
+    },
+    "model": "internal.speciality",
+    "pk": 35
+},
+{
+    "fields":
+    {
+        "name": "Дитячий нефролог"
+    },
+    "model": "internal.speciality",
+    "pk": 36
+},
+{
+    "fields":
+    {
+        "name": "Дитячий окуліст"
+    },
+    "model": "internal.speciality",
+    "pk": 37
+},
+{
+    "fields":
+    {
+        "name": "Дитячий онколог"
+    },
+    "model": "internal.speciality",
+    "pk": 38
+},
+{
+    "fields":
+    {
+        "name": "Дитячий ортопед"
+    },
+    "model": "internal.speciality",
+    "pk": 39
+},
+{
+    "fields":
+    {
+        "name": "Дитячий ортопед-травматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 40
+},
+{
+    "fields":
+    {
+        "name": "Дитячий остеопат"
+    },
+    "model": "internal.speciality",
+    "pk": 41
+},
+{
+    "fields":
+    {
+        "name": "Дитячий офтальмолог"
+    },
+    "model": "internal.speciality",
+    "pk": 42
+},
+{
+    "fields":
+    {
+        "name": "Дитячий паразитолог"
+    },
+    "model": "internal.speciality",
+    "pk": 43
+},
+{
+    "fields":
+    {
+        "name": "Дитячий педіатр"
+    },
+    "model": "internal.speciality",
+    "pk": 44
+},
+{
+    "fields":
+    {
+        "name": "Дитячий проктолог"
+    },
+    "model": "internal.speciality",
+    "pk": 45
+},
+{
+    "fields":
+    {
+        "name": "Дитячий психіатр"
+    },
+    "model": "internal.speciality",
+    "pk": 46
+},
+{
+    "fields":
+    {
+        "name": "Дитячий психолог"
+    },
+    "model": "internal.speciality",
+    "pk": 47
+},
+{
+    "fields":
+    {
+        "name": "Дитячий алерголог"
+    },
+    "model": "internal.speciality",
+    "pk": 48
+},
+{
+    "fields":
+    {
+        "name": "Дитячий алерголог-імунолог"
+    },
+    "model": "internal.speciality",
+    "pk": 49
+},
+{
+    "fields":
+    {
+        "name": "Дитячий андролог"
+    },
+    "model": "internal.speciality",
+    "pk": 50
+},
+{
+    "fields":
+    {
+        "name": "Дитячий аритмологи"
+    },
+    "model": "internal.speciality",
+    "pk": 51
+},
+{
+    "fields":
+    {
+        "name": "Дитячий вертебролог"
+    },
+    "model": "internal.speciality",
+    "pk": 52
+},
+{
+    "fields":
+    {
+        "name": "Дитячий вірусолог"
+    },
+    "model": "internal.speciality",
+    "pk": 53
+},
+{
+    "fields":
+    {
+        "name": "Дитячий гастроентеролог"
+    },
+    "model": "internal.speciality",
+    "pk": 54
+},
+{
+    "fields":
+    {
+        "name": "Дитячий гематолог"
+    },
+    "model": "internal.speciality",
+    "pk": 55
+},
+{
+    "fields":
+    {
+        "name": "Дитячий гепатолог"
+    },
+    "model": "internal.speciality",
+    "pk": 56
+},
+{
+    "fields":
+    {
+        "name": "Дитячий гінеколог"
+    },
+    "model": "internal.speciality",
+    "pk": 57
+},
+{
+    "fields":
+    {
+        "name": "Дитячий гінеколог-ендокринолог"
+    },
+    "model": "internal.speciality",
+    "pk": 58
+},
+{
+    "fields":
+    {
+        "name": "Дитячий гомеопат"
+    },
+    "model": "internal.speciality",
+    "pk": 59
+},
+{
+    "fields":
+    {
+        "name": "Дитячий дерматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 60
+},
+{
+    "fields":
+    {
+        "name": "Дитячий зубний лікар"
+    },
+    "model": "internal.speciality",
+    "pk": 61
+},
+{
+    "fields":
+    {
+        "name": "Дитячий імунолог"
+    },
+    "model": "internal.speciality",
+    "pk": 62
+},
+{
+    "fields":
+    {
+        "name": "Дитячий інфекціоніст"
+    },
+    "model": "internal.speciality",
+    "pk": 63
+},
+{
+    "fields":
+    {
+        "name": "Дитячий кардіолог"
+    },
+    "model": "internal.speciality",
+    "pk": 64
+},
+{
+    "fields":
+    {
+        "name": "Дитячий кардіоревматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 65
+},
+{
+    "fields":
+    {
+        "name": "Дитячий косметолог"
+    },
+    "model": "internal.speciality",
+    "pk": 66
+},
+{
+    "fields":
+    {
+        "name": "Дитячий логопед"
+    },
+    "model": "internal.speciality",
+    "pk": 67
+},
+{
+    "fields":
+    {
+        "name": "Фармаколог клінічний"
+    },
+    "model": "internal.speciality",
+    "pk": 68
+},
+{
+    "fields":
+    {
+        "name": "Фізіотерапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 69
+},
+{
+    "fields":
+    {
+        "name": "Флеболог"
+    },
+    "model": "internal.speciality",
+    "pk": 70
+},
+{
+    "fields":
+    {
+        "name": "Фониатр"
+    },
+    "model": "internal.speciality",
+    "pk": 71
+},
+{
+    "fields":
+    {
+        "name": "Фтизіатр"
+    },
+    "model": "internal.speciality",
+    "pk": 72
+},
+{
+    "fields":
+    {
+        "name": "Фтізіопедіатр"
+    },
+    "model": "internal.speciality",
+    "pk": 73
+},
+{
+    "fields":
+    {
+        "name": "Хірург"
+    },
+    "model": "internal.speciality",
+    "pk": 74
+},
+{
+    "fields":
+    {
+        "name": "Хірург дитячий"
+    },
+    "model": "internal.speciality",
+    "pk": 75
+},
+{
+    "fields":
+    {
+        "name": "Хірург пластичний"
+    },
+    "model": "internal.speciality",
+    "pk": 76
+},
+{
+    "fields":
+    {
+        "name": "Хірург судинний"
+    },
+    "model": "internal.speciality",
+    "pk": 77
+},
+{
+    "fields":
+    {
+        "name": "Хірург торакальний"
+    },
+    "model": "internal.speciality",
+    "pk": 78
+},
+{
+    "fields":
+    {
+        "name": "Хірург щелепно-лицевої"
+    },
+    "model": "internal.speciality",
+    "pk": 79
+},
+{
+    "fields":
+    {
+        "name": "Хірург-флеболог"
+    },
+    "model": "internal.speciality",
+    "pk": 80
+},
+{
+    "fields":
+    {
+        "name": "Щелепно-лицьовий хірург"
+    },
+    "model": "internal.speciality",
+    "pk": 81
+},
+{
+    "fields":
+    {
+        "name": "Ембріолог"
+    },
+    "model": "internal.speciality",
+    "pk": 82
+},
+{
+    "fields":
+    {
+        "name": "Ендодонт"
+    },
+    "model": "internal.speciality",
+    "pk": 83
+},
+{
+    "fields":
+    {
+        "name": "Ендокринолог"
+    },
+    "model": "internal.speciality",
+    "pk": 84
+},
+{
+    "fields":
+    {
+        "name": "Ендоскопіст"
+    },
+    "model": "internal.speciality",
+    "pk": 85
+},
+{
+    "fields":
+    {
+        "name": "Епідеміолог"
+    },
+    "model": "internal.speciality",
+    "pk": 86
+},
+{
+    "fields":
+    {
+        "name": "Епідеміолог"
+    },
+    "model": "internal.speciality",
+    "pk": 87
+},
+{
+    "fields":
+    {
+        "name": "Спеціаліст відновного лікування"
+    },
+    "model": "internal.speciality",
+    "pk": 88
+},
+{
+    "fields":
+    {
+        "name": "Стоматолог-ортодонт"
+    },
+    "model": "internal.speciality",
+    "pk": 89
+},
+{
+    "fields":
+    {
+        "name": "Стоматолог-ортопед"
+    },
+    "model": "internal.speciality",
+    "pk": 90
+},
+{
+    "fields":
+    {
+        "name": "Стоматолог-протезист"
+    },
+    "model": "internal.speciality",
+    "pk": 91
+},
+{
+    "fields":
+    {
+        "name": "Стоматолог-терапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 92
+},
+{
+    "fields":
+    {
+        "name": "Стоматолог-хірург"
+    },
+    "model": "internal.speciality",
+    "pk": 93
+},
+{
+    "fields":
+    {
+        "name": "Сугестологія"
+    },
+    "model": "internal.speciality",
+    "pk": 94
+},
+{
+    "fields":
+    {
+        "name": "Судово-медичний експерт"
+    },
+    "model": "internal.speciality",
+    "pk": 95
+},
+{
+    "fields":
+    {
+        "name": "Сурдолог"
+    },
+    "model": "internal.speciality",
+    "pk": 96
+},
+{
+    "fields":
+    {
+        "name": "Сурдопедагог"
+    },
+    "model": "internal.speciality",
+    "pk": 97
+},
+{
+    "fields":
+    {
+        "name": "Терапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 98
+},
+{
+    "fields":
+    {
+        "name": "Терапевт мануальний"
+    },
+    "model": "internal.speciality",
+    "pk": 99
+},
+{
+    "fields":
+    {
+        "name": "Токсиколог"
+    },
+    "model": "internal.speciality",
+    "pk": 100
+},
+{
+    "fields":
+    {
+        "name": "Торакальний хірург"
+    },
+    "model": "internal.speciality",
+    "pk": 101
+},
+{
+    "fields":
+    {
+        "name": "Травматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 102
+},
+{
+    "fields":
+    {
+        "name": "Трансфузіолог"
+    },
+    "model": "internal.speciality",
+    "pk": 103
+},
+{
+    "fields":
+    {
+        "name": "Трихолог"
+    },
+    "model": "internal.speciality",
+    "pk": 104
+},
+{
+    "fields":
+    {
+        "name": "УЗД лікар"
+    },
+    "model": "internal.speciality",
+    "pk": 105
+},
+{
+    "fields":
+    {
+        "name": "Урогінекологія"
+    },
+    "model": "internal.speciality",
+    "pk": 106
+},
+{
+    "fields":
+    {
+        "name": "Уролог"
+    },
+    "model": "internal.speciality",
+    "pk": 107
+},
+{
+    "fields":
+    {
+        "name": "Психолог"
+    },
+    "model": "internal.speciality",
+    "pk": 108
+},
+{
+    "fields":
+    {
+        "name": "Психоневролог"
+    },
+    "model": "internal.speciality",
+    "pk": 109
+},
+{
+    "fields":
+    {
+        "name": "Пульмонолог"
+    },
+    "model": "internal.speciality",
+    "pk": 110
+},
+{
+    "fields":
+    {
+        "name": "Санітарний лікар з гігієни дітей та підлітків"
+    },
+    "model": "internal.speciality",
+    "pk": 111
+},
+{
+    "fields":
+    {
+        "name": "Санітарний лікар з гігієни харчування"
+    },
+    "model": "internal.speciality",
+    "pk": 112
+},
+{
+    "fields":
+    {
+        "name": "Санітарний лікар з гігієни праці"
+    },
+    "model": "internal.speciality",
+    "pk": 113
+},
+{
+    "fields":
+    {
+        "name": "Сексолог"
+    },
+    "model": "internal.speciality",
+    "pk": 114
+},
+{
+    "fields":
+    {
+        "name": "Сексопатолог"
+    },
+    "model": "internal.speciality",
+    "pk": 115
+},
+{
+    "fields":
+    {
+        "name": "Сімейний лікар"
+    },
+    "model": "internal.speciality",
+    "pk": 116
+},
+{
+    "fields":
+    {
+        "name": "Сімейний доктор"
+    },
+    "model": "internal.speciality",
+    "pk": 117
+},
+{
+    "fields":
+    {
+        "name": "Сомнолог"
+    },
+    "model": "internal.speciality",
+    "pk": 118
+},
+{
+    "fields":
+    {
+        "name": "Судинний хірург"
+    },
+    "model": "internal.speciality",
+    "pk": 119
+},
+{
+    "fields":
+    {
+        "name": "Стоматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 120
+},
+{
+    "fields":
+    {
+        "name": "Ортодонт"
+    },
+    "model": "internal.speciality",
+    "pk": 121
+},
+{
+    "fields":
+    {
+        "name": "Ортопед"
+    },
+    "model": "internal.speciality",
+    "pk": 122
+},
+{
+    "fields":
+    {
+        "name": "Остеопат"
+    },
+    "model": "internal.speciality",
+    "pk": 123
+},
+{
+    "fields":
+    {
+        "name": "Отоларинголог"
+    },
+    "model": "internal.speciality",
+    "pk": 124
+},
+{
+    "fields":
+    {
+        "name": "Отоневрологів"
+    },
+    "model": "internal.speciality",
+    "pk": 125
+},
+{
+    "fields":
+    {
+        "name": "Офтальмолог"
+    },
+    "model": "internal.speciality",
+    "pk": 126
+},
+{
+    "fields":
+    {
+        "name": "Офтальмолог-хірург"
+    },
+    "model": "internal.speciality",
+    "pk": 127
+},
+{
+    "fields":
+    {
+        "name": "Паразитолог"
+    },
+    "model": "internal.speciality",
+    "pk": 128
+},
+{
+    "fields":
+    {
+        "name": "Паркінсонолог"
+    },
+    "model": "internal.speciality",
+    "pk": 129
+},
+{
+    "fields":
+    {
+        "name": "Пародонтолог"
+    },
+    "model": "internal.speciality",
+    "pk": 130
+},
+{
+    "fields":
+    {
+        "name": "Педіатр"
+    },
+    "model": "internal.speciality",
+    "pk": 131
+},
+{
+    "fields":
+    {
+        "name": "Педіатр-неонатолог"
+    },
+    "model": "internal.speciality",
+    "pk": 132
+},
+{
+    "fields":
+    {
+        "name": "Перинатології"
+    },
+    "model": "internal.speciality",
+    "pk": 133
+},
+{
+    "fields":
+    {
+        "name": "Пластичний хірург"
+    },
+    "model": "internal.speciality",
+    "pk": 134
+},
+{
+    "fields":
+    {
+        "name": "Подолог"
+    },
+    "model": "internal.speciality",
+    "pk": 135
+},
+{
+    "fields":
+    {
+        "name": "Проктолог"
+    },
+    "model": "internal.speciality",
+    "pk": 136
+},
+{
+    "fields":
+    {
+        "name": "Профпатолог"
+    },
+    "model": "internal.speciality",
+    "pk": 137
+},
+{
+    "fields":
+    {
+        "name": "Психіатр"
+    },
+    "model": "internal.speciality",
+    "pk": 138
+},
+{
+    "fields":
+    {
+        "name": "Психіатр-нарколог"
+    },
+    "model": "internal.speciality",
+    "pk": 139
+},
+{
+    "fields":
+    {
+        "name": "Психотерапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 140
+},
+{
+    "fields":
+    {
+        "name": "Курортолог"
+    },
+    "model": "internal.speciality",
+    "pk": 141
+},
+{
+    "fields":
+    {
+        "name": "ЛОР"
+    },
+    "model": "internal.speciality",
+    "pk": 142
+},
+{
+    "fields":
+    {
+        "name": "Мамолог"
+    },
+    "model": "internal.speciality",
+    "pk": 143
+},
+{
+    "fields":
+    {
+        "name": "Мануальний терапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 144
+},
+{
+    "fields":
+    {
+        "name": "Масажист"
+    },
+    "model": "internal.speciality",
+    "pk": 145
+},
+{
+    "fields":
+    {
+        "name": "Мікології"
+    },
+    "model": "internal.speciality",
+    "pk": 146
+},
+{
+    "fields":
+    {
+        "name": "Нарколог"
+    },
+    "model": "internal.speciality",
+    "pk": 147
+},
+{
+    "fields":
+    {
+        "name": "Невролог"
+    },
+    "model": "internal.speciality",
+    "pk": 148
+},
+{
+    "fields":
+    {
+        "name": "Невропатолог"
+    },
+    "model": "internal.speciality",
+    "pk": 149
+},
+{
+    "fields":
+    {
+        "name": "Нейротравматології"
+    },
+    "model": "internal.speciality",
+    "pk": 150
+},
+{
+    "fields":
+    {
+        "name": "Нейрохірург"
+    },
+    "model": "internal.speciality",
+    "pk": 151
+},
+{
+    "fields":
+    {
+        "name": "Неонатолог"
+    },
+    "model": "internal.speciality",
+    "pk": 152
+},
+{
+    "fields":
+    {
+        "name": "Нефролог"
+    },
+    "model": "internal.speciality",
+    "pk": 153
+},
+{
+    "fields":
+    {
+        "name": "Окуліст"
+    },
+    "model": "internal.speciality",
+    "pk": 154
+},
+{
+    "fields":
+    {
+        "name": "Онкогінеколог"
+    },
+    "model": "internal.speciality",
+    "pk": 155
+},
+{
+    "fields":
+    {
+        "name": "Онколог"
+    },
+    "model": "internal.speciality",
+    "pk": 156
+},
+{
+    "fields":
+    {
+        "name": "Онколог-гінеколог"
+    },
+    "model": "internal.speciality",
+    "pk": 157
+},
+{
+    "fields":
+    {
+        "name": "Онколог-хірург"
+    },
+    "model": "internal.speciality",
+    "pk": 158
+},
+{
+    "fields":
+    {
+        "name": "Онкоуролог"
+    },
+    "model": "internal.speciality",
+    "pk": 159
+},
+{
+    "fields":
+    {
+        "name": "Ортопед-травматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 160
+},
+{
+    "fields":
+    {
+        "name": "Гінеколог-перинатології"
+    },
+    "model": "internal.speciality",
+    "pk": 161
+},
+{
+    "fields":
+    {
+        "name": "Гінеколог-ендокринолог"
+    },
+    "model": "internal.speciality",
+    "pk": 162
+},
+{
+    "fields":
+    {
+        "name": "Гірудотерапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 163
+},
+{
+    "fields":
+    {
+        "name": "Гомеопат"
+    },
+    "model": "internal.speciality",
+    "pk": 164
+},
+{
+    "fields":
+    {
+        "name": "Дерматовенеролог"
+    },
+    "model": "internal.speciality",
+    "pk": 165
+},
+{
+    "fields":
+    {
+        "name": "Дерматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 166
+},
+{
+    "fields":
+    {
+        "name": "Діагност"
+    },
+    "model": "internal.speciality",
+    "pk": 167
+},
+{
+    "fields":
+    {
+        "name": "Дієтолог"
+    },
+    "model": "internal.speciality",
+    "pk": 168
+},
+{
+    "fields":
+    {
+        "name": "Зубний лікар"
+    },
+    "model": "internal.speciality",
+    "pk": 169
+},
+{
+    "fields":
+    {
+        "name": "Голкорефлексотерапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 170
+},
+{
+    "fields":
+    {
+        "name": "Кардіолог"
+    },
+    "model": "internal.speciality",
+    "pk": 171
+},
+{
+    "fields":
+    {
+        "name": "Кардіоревматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 172
+},
+{
+    "fields":
+    {
+        "name": "Кардіохірург"
+    },
+    "model": "internal.speciality",
+    "pk": 173
+},
+{
+    "fields":
+    {
+        "name": "Кінезіології"
+    },
+    "model": "internal.speciality",
+    "pk": 174
+},
+{
+    "fields":
+    {
+        "name": "Колопроктології"
+    },
+    "model": "internal.speciality",
+    "pk": 175
+},
+{
+    "fields":
+    {
+        "name": "Косметолог"
+    },
+    "model": "internal.speciality",
+    "pk": 176
+},
+{
+    "fields":
+    {
+        "name": "Лаборант"
+    },
+    "model": "internal.speciality",
+    "pk": 177
+},
+{
+    "fields":
+    {
+        "name": "Логопед"
+    },
+    "model": "internal.speciality",
+    "pk": 178
+},
+{
+    "fields":
+    {
+        "name": "Анестезіолог-реаніматолог"
+    },
+    "model": "internal.speciality",
+    "pk": 179
+},
+{
+    "fields":
+    {
+        "name": "Бактеріолог"
+    },
+    "model": "internal.speciality",
+    "pk": 180
+},
+{
+    "fields":
+    {
+        "name": "Бальнеолог"
+    },
+    "model": "internal.speciality",
+    "pk": 181
+},
+{
+    "fields":
+    {
+        "name": "Валеолог"
+    },
+    "model": "internal.speciality",
+    "pk": 182
+},
+{
+    "fields":
+    {
+        "name": "Венеролог"
+    },
+    "model": "internal.speciality",
+    "pk": 183
+},
+{
+    "fields":
+    {
+        "name": "Вертебролог"
+    },
+    "model": "internal.speciality",
+    "pk": 184
+},
+{
+    "fields":
+    {
+        "name": "Вірусолог"
+    },
+    "model": "internal.speciality",
+    "pk": 185
+},
+{
+    "fields":
+    {
+        "name": "Лікар загальної практики"
+    },
+    "model": "internal.speciality",
+    "pk": 186
+},
+{
+    "fields":
+    {
+        "name": "Лікар з лікувальної фізкультури та спорту"
+    },
+    "model": "internal.speciality",
+    "pk": 187
+},
+{
+    "fields":
+    {
+        "name": "Лікар з лікування безпліддя"
+    },
+    "model": "internal.speciality",
+    "pk": 188
+},
+{
+    "fields":
+    {
+        "name": "Лікар зі спортивної медицини"
+    },
+    "model": "internal.speciality",
+    "pk": 189
+},
+{
+    "fields":
+    {
+        "name": "Лікар швидкої допомоги"
+    },
+    "model": "internal.speciality",
+    "pk": 190
+},
+{
+    "fields":
+    {
+        "name": "Лікар УЗД"
+    },
+    "model": "internal.speciality",
+    "pk": 191
+},
+{
+    "fields":
+    {
+        "name": "Лікар функціональної діагностики"
+    },
+    "model": "internal.speciality",
+    "pk": 192
+},
+{
+    "fields":
+    {
+        "name": "Гастроентеролог"
+    },
+    "model": "internal.speciality",
+    "pk": 193
+},
+{
+    "fields":
+    {
+        "name": "Гематолог"
+    },
+    "model": "internal.speciality",
+    "pk": 194
+},
+{
+    "fields":
+    {
+        "name": "Генетик"
+    },
+    "model": "internal.speciality",
+    "pk": 195
+},
+{
+    "fields":
+    {
+        "name": "Гепатолог"
+    },
+    "model": "internal.speciality",
+    "pk": 196
+},
+{
+    "fields":
+    {
+        "name": "Геріатр"
+    },
+    "model": "internal.speciality",
+    "pk": 197
+},
+{
+    "fields":
+    {
+        "name": "Гінеколог"
+    },
+    "model": "internal.speciality",
+    "pk": 198
+},
+{
+    "fields":
+    {
+        "name": "Акушер-гінеколог"
+    },
+    "model": "internal.speciality",
+    "pk": 199
+},
+{
+    "fields":
+    {
+        "name": "Акушерка"
+    },
+    "model": "internal.speciality",
+    "pk": 200
+},
+{
+    "fields":
+    {
+        "name": "Алерголог"
+    },
+    "model": "internal.speciality",
+    "pk": 201
+},
+{
+    "fields":
+    {
+        "name": "Алерголог-імунолог"
+    },
+    "model": "internal.speciality",
+    "pk": 202
+},
+{
+    "fields":
+    {
+        "name": "Ангіохірург"
+    },
+    "model": "internal.speciality",
+    "pk": 203
+},
+{
+    "fields":
+    {
+        "name": "Андролог"
+    },
+    "model": "internal.speciality",
+    "pk": 204
+},
+{
+    "fields":
+    {
+        "name": "Андролог-ендокринолог"
+    },
+    "model": "internal.speciality",
+    "pk": 205
+},
+{
+    "fields":
+    {
+        "name": "Анестезіолог"
+    },
+    "model": "internal.speciality",
+    "pk": 206
+},
+{
+    "fields":
+    {
+        "name": "Аритмологи"
+    },
+    "model": "internal.speciality",
+    "pk": 207
+},
+{
+    "fields":
+    {
+        "name": "Ароматерапевт"
+    },
+    "model": "internal.speciality",
+    "pk": 208
+},
+{
+    "fields":
+    {
+        "name": "Артролога"
+    },
+    "model": "internal.speciality",
+    "pk": 209
+},
+{
+    "fields":
+    {
+        "name": "Імунолог"
+    },
+    "model": "internal.speciality",
+    "pk": 210
+},
+{
+    "fields":
+    {
+        "name": "Інфекціоніст"
+    },
+    "model": "internal.speciality",
+    "pk": 211
+}
+]

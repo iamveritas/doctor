@@ -1,0 +1,10 @@
+[
+{
+    "fields":
+    {
+        "name": "Івано-Франківська"
+    },
+    "model": "internal.region",
+    "pk": 1
+}
+]

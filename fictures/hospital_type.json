@@ -1,0 +1,82 @@
+[
+{
+    "fields":
+    {
+        "name": "Поліклініка"
+    },
+    "model": "internal.hospitaltype",
+    "pk": 1
+},
+{
+    "fields":
+    {
+        "name": "Амбулаторія"
+    },
+    "model": "internal.hospitaltype",
+    "pk": 2
+},
+{
+    "fields":
+    {
+        "name": "Диспансер"
+    },
+    "model": "internal.hospitaltype",
+    "pk": 3
+},
+{
+    "fields":
+    {
+        "name": "Консультативно-діагностичний центр"
+    },
+    "model": "internal.hospitaltype",
+    "pk": 4
+},
+{
+    "fields":
+    {
+        "name": "Лікарня"
+    },
+    "model": "internal.hospitaltype",
+    "pk": 5
+},
+{
+    "fields":
+    {
+        "name": "Клініка"
+    },
+    "model": "internal.hospitaltype",
+    "pk": 6
+},
+{
+    "fields":
+    {
+        "name": "Госпіталь"
+    },
+    "model": "internal.hospitaltype",
+    "pk": 7
+},
+{
+    "fields":
+    {
+        "name": "Санаторій"
+    },
+    "model": "internal.hospitaltype",
+    "pk": 8
+},
+{
+    "fields":
+    {
+        "name": "Станція «Швидкої допомоги»"
+    },
+    "model": "internal.hospitaltype",
+    "pk": 9
+},
+{
+    "fields":
+    {
+        "name": "Пологовий будинок"
+    },
+    "model": "internal.hospitaltype",
+    "pk": 10
+}
+]

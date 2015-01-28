@@ -1,0 +1,392 @@
+[
+{
+    "fields":
+    {
+        "name": "Обласний клінічний дерматовенерологічний диспансер",
+        "is_state": "Y",
+        "type": 3,
+        "city": 1,
+        "address": "вул. Короля Данила, 10",
+        "email": "okdvd@ukr.net",
+        "phone": "2-49-92",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 1
+},
+{
+    "fields":
+    {
+        "name": "Обласний клінічний кардіологічний диспансер",
+        "is_state": "Y",
+        "type": 3,
+        "city": 1,
+        "address": "вул. Гетьмана Мазепи, 114",
+        "email": "ifkardioorg@ukr.net",
+        "phone": "52-70-49",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 2
+},
+{
+    "fields":
+    {
+        "name": "Обласний клінічний онкологічний диспансер",
+        "is_state": "Y",
+        "type": 3,
+        "city": 1,
+        "address": "вул. Медична, 17",
+        "email": "ood@optima.com.ua",
+        "phone": "50-22-69",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 3
+},
+{
+    "fields":
+    {
+        "name": "Обласний наркологічний диспансер",
+        "is_state": "Y",
+        "type": 3,
+        "city": 1,
+        "address": "вул. Млинарська, 21",
+        "email": "ondzvit@ukr.net",
+        "phone": "57-23-72",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 4
+},
+{
+    "fields":
+    {
+        "name": "Обласна дитяча клінічна лікарня",
+        "is_state": "Y",
+        "type": 5,
+        "city": 1,
+        "address": "вул. Коновальця, 132",
+        "email": "if-odkl@ua.fm",
+        "phone": "2-56-56",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 5
+},
+{
+    "fields":
+    {
+        "name": "Івано-Франківська міська дитяча клінічна лікарня",
+        "is_state": "Y",
+        "type": 5,
+        "city": 1,
+        "address": "вул. Чорновола, 44",
+        "email": "dpoliklinika@i.ua",
+        "phone": "2-27-17",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 6
+},
+{
+    "fields":
+    {
+        "name": "Обласна клінічна інфекційна лікарня",
+        "is_state": "Y",
+        "type": 5,
+        "city": 1,
+        "address": "вул. Гетьмана Сагайдачного, 66",
+        "email": " ifokilrs@ukr.net",
+        "phone": "50-49-06 ",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 7
+},
+{
+    "fields":
+    {
+        "name": "Івано-Франківська центральна міська клінічна лікарня",
+        "is_state": "Y",
+        "type": 5,
+        "city": 1,
+        "address": "вул. Гетьмана Мазепи, 114",
+        "email": "info@cmkl.if.ua",
+        "phone": "2-44-54",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 8
+},
+{
+    "fields":
+    {
+        "name": "Івано-Франківська міська клінічна лікарня №1",
+        "is_state": "Y",
+        "type": 5,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 9
+},
+{
+    "fields":
+    {
+        "name": "Івано-Франківський міський клінічний пологовий будинок",
+        "is_state": "Y",
+        "type": 10,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 10
+},
+{
+    "fields":
+    {
+        "name": "Івано-Франківська міська поліклініка №1",
+        "is_state": "Y",
+        "type": 1,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 11
+},
+{
+    "fields":
+    {
+        "name": "Івано-Франківська міська поліклініка №2",
+        "is_state": "Y",
+        "type": 1,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 12
+},
+{
+    "fields":
+    {
+        "name": "Івано-Франківська міська поліклініка №3",
+        "is_state": "Y",
+        "type": 1,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 13
+},
+{
+    "fields":
+    {
+        "name": "Івано-Франківська міська поліклініка №4",
+        "is_state": "Y",
+        "type": 1,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 14
+},
+{
+    "fields":
+    {
+        "name": "Івано-Франківська міська стоматологічна поліклініка",
+        "is_state": "Y",
+        "type": 1,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 15
+},
+{
+    "fields":
+    {
+        "name": "Обласна клінічна лікарня",
+        "is_state": "Y",
+        "type": 5,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 16
+},
+{
+    "fields":
+    {
+        "name": "Обласний фтизіопульмонологічний центр",
+        "is_state": "Y",
+        "type": 6,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 17
+},
+{
+    "fields":
+    {
+        "name": "Обласна психіатрична клінічна лікарня №1",
+        "is_state": "Y",
+        "type": 5,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 18
+},
+{
+    "fields":
+    {
+        "name": "Обласна психоневрологічна Лікарня №3",
+        "is_state": "Y",
+        "type": 5,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 19
+},
+{
+    "fields":
+    {
+        "name": "Обласна стоматологічна Поліклініка",
+        "is_state": "Y",
+        "type": 1,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 20
+},
+{
+    "fields":
+    {
+        "name": "Івано-Франківський обласний центр екcтреної медичної допомоги та медицини катастроф",
+        "is_state": "Y",
+        "type": 9,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 21
+},
+{
+    "fields":
+    {
+        "name": "Івано-Франківська станція швидкої і невідкладної медичної допомоги",
+        "is_state": "Y",
+        "type": 9,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 22
+},
+{
+    "fields":
+    {
+        "name": "Обласний клінічний центр паліативної допомоги",
+        "is_state": "Y",
+        "type": 6,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 23
+},
+{
+    "fields":
+    {
+        "name": "Обласний лікарсько-фізкультурний центр здоров'я",
+        "is_state": "Y",
+        "type": 6,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 24
+},
+{
+    "fields":
+    {
+        "name": "Обласна станція переливання крові",
+        "is_state": "Y",
+        "type": 6,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 25
+},
+{
+    "fields":
+    {
+        "name": "Івано-Франківська міська дитяча стоматологічна поліклініка",
+        "is_state": "Y",
+        "type": 1,
+        "city": 1,
+        "address": "",
+        "email": "",
+        "phone": "",
+        "image": ""
+    },
+    "model": "internal.hospital",
+    "pk": 26
+}
+]
