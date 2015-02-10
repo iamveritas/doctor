@@ -25,11 +25,11 @@ FEEDBACK_EMAIL_RECEIVERS = (
 SECRET_KEY = '^c)!y#yitssh7b%4gyge-_l!5py*cc8&tin0$%jx^x1%$36ji='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lykartest.com']
 
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -72,7 +72,6 @@ INSTALLED_APPS = (
     'crispy_forms',
 
     'apps.home',
-    'apps.adminpanel',
     'apps.accounts',
     'apps.internal',
 
@@ -117,15 +116,14 @@ WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     "default": {
-        'ENGINE': 'django.db.backends.',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'lykarcom_db',
+        'USER': 'root', #'lykarcom_db',
+        'PASSWORD': '1111', #'qGFODHPJ883',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
-
 
 
 # Internationalization
@@ -145,7 +143,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static-collect/')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static-collect/')
+STATIC_ROOT = '/home/lykarcom/domains/lykar.com.ua/public_html/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
@@ -153,16 +152,19 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = '/home/lykarcom/domains/lykar.com.ua/public_html/media/'
 
 MEDIA_URL = '/media/'
+
+ADMIN_MEDIA_PREFIX = '/media/'
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates/'),
 )
 
 FIXTURE_DIRS = (
-    os.path.join(BASE_DIR, 'fictures/'),
+    os.path.join(BASE_DIR, 'fixtures/'),
 )
 
 AUTH_PROFILE_MODULE = 'apps.accounts.UserProfile'
@@ -194,6 +196,9 @@ SOCIAL_AUTH_GOOGLE_EXTRA_DATA = [
     # pattern is (source key, destination key)
     ('email', 'email'),
 ]
+
+#SOCIAL_AUTH_TWITTER_KEY = 'qPa17vMyGZk0MpnjLeFK474pP'
+#SOCIAL_AUTH_TWITTER_SECRET = 'owWb9CFbwoHKU6zc9KWKiPemfSIlfwDs8pwoUFGVwNrXsbJgPk'
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '4619476'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = '55n826lBeD3FLcyBazD8'

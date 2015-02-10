@@ -1,8 +1,9 @@
 # -*-coding:utf8-*-
-from django.shortcuts import render, render_to_response, get_object_or_404, RequestContext
+from django.shortcuts import render, render_to_response, redirect, get_object_or_404, RequestContext
 from django.http.response import Http404
 from django.http import HttpResponseRedirect
 from apps.polls.models import Question, Choice
+from django.core.urlresolvers import reverse
 
 
 def poll(request, question_id='1'):
@@ -23,6 +24,7 @@ def poll(request, question_id='1'):
             selected_choice = question.choice_set.get(pk=request.POST['choice'])
         except (KeyError, Choice.DoesNotExist):
             args['message_errors'] = 'Ви нічого не обрали! Зробіть будь ласка вибір!'
+            return redirect(reverse('home'))
 
         else:
             selected_choice.votes += 1
@@ -33,3 +35,4 @@ def poll(request, question_id='1'):
 
     return render_to_response("polls/question.html", args,
                               context_instance=RequestContext(request))
+

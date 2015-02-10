@@ -1,0 +1,61 @@
+[
+{
+    "fields":
+    {
+        "question_text": "Чи є для Вас актуальним даний ресурс?",
+        "pub_date": "2014-12-09 17:45:56"
+    },
+    "model": "polls.question",
+    "pk": 1
+},
+{
+    "fields":
+    {
+        "question": 1,
+        "choice_text": "Так"
+        "votes": "0"
+    },
+    "model": "polls.choice",
+    "pk": 1
+},
+{
+    "fields":
+    {
+        "question": 1,
+        "choice_text": "Частково"
+        "votes": "0"
+    },
+    "model": "polls.choice",
+    "pk": 2
+},
+{
+    "fields":
+    {
+        "question": 1,
+        "choice_text": "Я ще не знаю"
+        "votes": "0"
+    },
+    "model": "polls.choice",
+    "pk": 3
+},
+{
+    "fields":
+    {
+        "question": 1,
+        "choice_text": "Ні"
+        "votes": "0"
+    },
+    "model": "polls.choice",
+    "pk": 4
+},
+{
+    "fields":
+    {
+        "question": 1,
+        "choice_text": "Мені байдуже"
+        "votes": "0"
+    },
+    "model": "polls.choice",
+    "pk": 5
+},
+]

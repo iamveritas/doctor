@@ -1,8 +1,0 @@
-django==1.7.1
-pillow==2.6.1
-fabric==1.10.0
-python-social-auth
-django-simple-captcha
-easy-thumbnails==2.2
-django-crispy-forms==1.4.0
-sorl-thumbnail==12.2
