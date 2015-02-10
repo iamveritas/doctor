@@ -1,9 +1,7 @@
 #-*-coding:utf8-*-
 from django.contrib import admin
-from apps.internal.models import (Doctor, Region, City,
-                                  Hospital, HospitalType, Speciality, Efficiency,
-                                  Quality, Respect, Bribery, Comment, Like, Recommendation,
-                                  CommentAnswer, )
+from apps.internal.models import (Doctor, Region, City, Hospital, HospitalType, Speciality,
+                                  Comment, Recommendation, CommentAnswer, )
 
 
 def make_active(modeladmin, request, queryset):
@@ -25,9 +23,4 @@ admin.site.register(HospitalType)
 admin.site.register(City)
 admin.site.register(Region)
 admin.site.register(Speciality)
-#admin.site.register(Efficiency)
-#admin.site.register(Quality)
-#admin.site.register(Respect)
-#admin.site.register(Bribery)
-admin.site.register(Like)
 admin.site.register(Recommendation)

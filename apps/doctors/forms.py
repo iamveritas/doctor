@@ -1,20 +1,10 @@
 # -*-coding:utf8-*-
 from django import forms
 from apps.internal.models import (Doctor, Hospital, Comment, CommentAnswer,
-                                  Speciality, HospitalType, City)
+                                  Speciality, HospitalType, City,
+                                  SEX_CHOICES, IS_STATE_CHOICES)
 
 BOOTSTRAP_FORM_INPUT_CLASS = "form-control"
-SEX_CHOICES = (
-    (None, "Оберіть стать"),
-    ("M", "чоловіча"),
-    ("F", "жіноча"),
-)
-
-IS_STATE_CHOICES = (
-    (None, "Обрати"),
-    ("Y", "так"),
-    ("N", "ні"),
-)
 
 
 class DoctorForm(forms.ModelForm):
@@ -31,7 +21,7 @@ class DoctorForm(forms.ModelForm):
                                "placeholder": "Введіть ім’я лікаря"
                            }))
 
-    patronymic = forms.CharField(label="По батькові", required=True,
+    patronymic = forms.CharField(label="По батькові", required=False,
                            widget=forms.TextInput(attrs={
                                "class": BOOTSTRAP_FORM_INPUT_CLASS,
                                "placeholder": "Введіть по батькові лікаря"

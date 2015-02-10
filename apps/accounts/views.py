@@ -200,7 +200,7 @@ def user_settings(request):
             user.save()
             # якщо дані про користувача уже є у таблиці UserSetting, то редагуємо їх, в іншому випадку
             # додаємо новий запис
-            if  UserSetting.objects.filter(user=request.user):
+            if UserSetting.objects.filter(user=request.user):
                 user_setting = UserSetting.objects.get(user=request.user)
                 if form.cleaned_data['photo']:
                     user_setting.photo = form.cleaned_data['photo']
@@ -241,7 +241,7 @@ def user_settings_doctor(request):
             doctor.speciality = form.cleaned_data['speciality']
             doctor.hospitals = form.cleaned_data['hospitals']
             doctor.save()
-            if  UserSetting.objects.filter(user=request.user):
+            if UserSetting.objects.filter(user=request.user):
                 user_setting = UserSetting.objects.get(user=request.user)
                 if form.cleaned_data['image']:
                     user_setting.photo = form.cleaned_data['image']

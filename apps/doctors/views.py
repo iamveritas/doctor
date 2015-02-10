@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.core.urlresolvers import reverse
 
 from django.shortcuts import render_to_response, RequestContext
@@ -98,7 +98,7 @@ class DoctorReviewList(ListView):
         """
         Повертає коментарі заданого лікаря
         """
-        return Comment.objects.filter(doctor=self.kwargs['pk']).order_by('-created')
+        return Comment.objects.filter(doctor=self.kwargs['pk']).filter(is_active=True).order_by('-created')
 
     def get_context_data(self, **kwargs):
         context = super(DoctorReviewList, self).get_context_data(**kwargs)
@@ -199,7 +199,7 @@ class CommentCreate(CreateView):
         form.instance.doctor = Doctor.objects.get(pk=self.get_queryset().id)
         # перезавантажуємо метод form_valid() батьківського класу
         super(CommentCreate, self).form_valid(form)
-        return redirect(reverse("doctors:doctor_profile", args=[self.get_queryset().id]))
+        return render(self.request, 'doctors/comment_add_success.html', {'pk': self.get_queryset().id})
 
     def form_invalid(self, form):
         """
@@ -331,7 +331,7 @@ class CommentUpdate(UpdateView):
         # отримуємо id лікаря, для якоро редагується коментар, щоб після успішного редагування
         # зробити редірект на сторінку лікаря
         doctor = str(Comment.objects.get(pk=self.kwargs['pk']).doctor.id)
-        return redirect(reverse("doctors:doctor_profile", args=[doctor]))
+        return render(self.request, 'doctors/comment_update_success.html', {'pk': doctor})
 
     def get_context_data(self, **kwargs):
         context = super(CommentUpdate, self).get_context_data(**kwargs)

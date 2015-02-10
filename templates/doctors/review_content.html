@@ -13,6 +13,10 @@
 <div class="text-left lykar-review-footer">
     {{ comment.created|date:"d E Y" }} о {{ comment.created|time:"H:i" }}
 
+    {% if user.id == comment.user.id %}
+        | <a href="/doctors/comment/{{ comment.id }}/" > Редагувати </a>
+    {% endif %}
+
     {% if doctor.id == user.userdoctor.doctor.id %}
         | <a href="/doctors/comment/{{ comment.id }}/answer/" > Коментувати </a>
     {% endif %}

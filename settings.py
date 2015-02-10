@@ -161,6 +161,9 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates/'),
 )
 
+FIXTURE_DIRS = (
+    os.path.join(BASE_DIR, 'fictures/'),
+)
 
 AUTH_PROFILE_MODULE = 'apps.accounts.UserProfile'
 
@@ -191,9 +194,6 @@ SOCIAL_AUTH_GOOGLE_EXTRA_DATA = [
     # pattern is (source key, destination key)
     ('email', 'email'),
 ]
-
-#SOCIAL_AUTH_TWITTER_KEY = 'qPa17vMyGZk0MpnjLeFK474pP'
-#SOCIAL_AUTH_TWITTER_SECRET = 'owWb9CFbwoHKU6zc9KWKiPemfSIlfwDs8pwoUFGVwNrXsbJgPk'
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '4619476'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = '55n826lBeD3FLcyBazD8'

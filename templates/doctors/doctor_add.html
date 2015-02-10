@@ -5,7 +5,7 @@
 {%block content%}
     {%if user.is_authenticated%}
         <div class="row">
-            <div class="col-md-7 col-md-offset-3">
+            <div class="col-md-7 col-xs-10 col-md-offset-3 col-xs-offset-1">
 
                 <div class="text-center text-uppercase modal-soc">
                     <h2 class = "red"> {% trans "Введіть дані про лікаря:" %}</h2>
@@ -13,77 +13,75 @@
 
                 <form action="/doctors/add/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
                     {% csrf_token %}
+                    {% comment %}
                     {{ form.non_field_errors }}
                     <input type="hidden" name="next" value="{{request.GET.next}}" />
+                    {% endcomment %}
+                    <div class="form-group">
+                        <div class="dl-horizontal">
+                            <strong>{{ form.last_name.label }}*</strong>
+                            {{ form.last_name }}
+                        </div>
+                        <div class="text-warning">{{ form.last_name.errors }}</div>
+                    </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <div class="dl-horizontal">
-                                    <strong>{{ form.last_name.label }}*</strong>
-                                    {{ form.last_name }}
-                                </div>
-                                <div class="text-warning">{{ form.last_name.errors }}</div>
-                            </div>
+                    <div class="form-group">
+                        <div class="dl-horizontal">
+                            <strong>{{ form.first_name.label }}*</strong>
+                            {{ form.first_name }}
+                        </div>
+                        <div class="text-warning">{{ form.first_name.errors }}</div>
+                    </div>
 
-                            <div class="form-group">
-                                <div class="dl-horizontal">
-                                    <strong>{{ form.first_name.label }}*</strong>
-                                    {{ form.first_name }}
-                                </div>
-                                <div class="text-warning">{{ form.first_name.errors }}</div>
-                            </div>
+                    <div class="form-group">
+                        <div class="dl-horizontal">
+                            <strong>{{ form.patronymic.label }}</strong>
+                            {{ form.patronymic }}
+                        </div>
+                        <div class="text-warning">{{ form.patronymic.errors }}</div>
+                    </div>
 
-                            <div class="form-group">
-                                <div class="dl-horizontal">
-                                    <strong>{{ form.patronymic.label }}*</strong>
-                                    {{ form.patronymic }}
-                                </div>
-                                <div class="text-warning">{{ form.patronymic.errors }}</div>
-                            </div>
+                    <div class="form-group">
+                        <div class="dl-horizontal">
+                            <strong>{{ form.sex.label }}*</strong>
+                            {{ form.sex }}
+                        </div>
+                        <div class="text-warning">{{ form.sex.errors }}</div>
+                    </div>
 
-                            <div class="form-group">
-                                <div class="dl-horizontal">
-                                    <strong>{{ form.sex.label }}*</strong>
-                                    {{ form.sex }}
-                                </div>
-                                <div class="text-warning">{{ form.sex.errors }}</div>
-                            </div>
+                    <div class="form-group">
+                        <div class="dl-horizontal">
+                            <strong>{{ form.speciality.label }}*</strong>
+                            {{ form.speciality }}
+                        </div>
+                        <div class="text-warning">{{ form.speciality.errors }}</div>
+                    </div>
 
-                            <div class="form-group">
-                                <div class="dl-horizontal">
-                                    <strong>{{ form.speciality.label }}*</strong>
-                                    {{ form.speciality }}
-                                </div>
-                                <div class="text-warning">{{ form.speciality.errors }}</div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="dl-horizontal">
-                                    <strong>{{ form.hospitals.label }}*</strong>
-                                    {{ form.hospitals }}
-                                    <div class="text-right">
-                                        <a href="{% url 'doctors:add-hospital' %}?next={{ request.get_full_path }}"> {% trans "Додати клініку" %} </a>
-                                    </div>
-                                </div>
-
-                                <div class="text-warning">{{ form.hospitals.errors }}</div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="dl-horizontal">
-                                    <strong>{{ form.image.label }}</strong>
-                                    {{ form.image }}
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="dl-horizontal">
-                                    <input type="submit" class="btn btn-primary" value="Зберегти" />
-                                </div>
+                    <div class="form-group">
+                        <div class="dl-horizontal">
+                            <strong>{{ form.hospitals.label }}*</strong>
+                            {{ form.hospitals }}
+                            <div class="text-right">
+                                <a href="{% url 'doctors:add-hospital' %}?next={{ request.get_full_path }}"> {% trans "Додати клініку" %} </a>
                             </div>
                         </div>
+
+                        <div class="text-warning">{{ form.hospitals.errors }}</div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="dl-horizontal">
+                            <strong>{{ form.image.label }}</strong>
+                            {{ form.image }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="dl-horizontal">
+                            <input type="submit" class="btn btn-primary" value="Зберегти" />
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>

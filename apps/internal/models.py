@@ -99,7 +99,7 @@ class Doctor(models.Model):
 
     last_name = models.CharField("Прізвище", blank=False, max_length=30)
     first_name = models.CharField("Ім'я", blank=False, max_length=25)
-    patronymic = models.CharField("По батькові", blank=False, max_length=30)
+    patronymic = models.CharField("По батькові", blank=True, max_length=30)
     sex = models.CharField("Стать", blank=False, max_length=1, choices=SEX_CHOICES)
     speciality = models.ForeignKey(Speciality, verbose_name="Спеціальність")
     user = models.ForeignKey(User, verbose_name="Хто створив")
@@ -121,57 +121,6 @@ class Doctor(models.Model):
 
     def __unicode__(self):
         return u"%s %s" % (self.first_name, self.last_name)
-
-
-class Efficiency(models.Model):
-
-    rating = models.IntegerField("Рейтинг", blank=True)
-    doctor = models.ForeignKey(Doctor, verbose_name="Лікар")
-
-    class Meta:
-        verbose_name = "Ефективність"
-        verbose_name_plural = "Ефективності"
-
-    def __unicode__(self):
-        return unicode(self.doctor)
-
-
-class Quality(models.Model):
-
-    rating = models.IntegerField("Рейтинг", blank=True)
-    doctor = models.ForeignKey(Doctor, verbose_name="Лікар")
-
-    class Meta:
-        verbose_name = "Якість"
-        verbose_name_plural = "Якості"
-
-    def __unicode__(self):
-        return unicode(self.doctor)
-
-
-class Respect(models.Model):
-
-    rating = models.IntegerField("Рейтинг", blank=True)
-    doctor = models.ForeignKey(Doctor, verbose_name="Лікар")
-
-    class Meta:
-        verbose_name = "Відношення до людей"
-        verbose_name_plural = "Відношення до людей"
-
-    def __unicode__(self):
-        return unicode(self.doctor)
-
-
-class Bribery(models.Model):
-    rating = models.IntegerField("Рейтинг", blank=True)
-    doctor = models.ForeignKey(Doctor, verbose_name="Лікар")
-
-    class Meta:
-        verbose_name = "Відношення до взяток"
-        verbose_name_plural = "Відношення до взяток"
-
-    def __unicode__(self):
-        return unicode(self.doctor)
 
 
 class Comment(models.Model):
@@ -208,17 +157,6 @@ class CommentAnswer(models.Model):
 
     def __unicode__(self):
         return unicode(self.content)
-
-
-class Like(models.Model):
-
-    rating = models.IntegerField("Рейтинг", blank=True)
-    comment = models.ForeignKey(Comment, verbose_name="Коментар")
-    ip = models.IPAddressField("IP-адрес")
-
-    class Meta:
-        verbose_name = "К-сть лайків"
-        verbose_name_plural = "К-сть лайків"
 
 
 class Recommendation(models.Model):
