@@ -27,9 +27,9 @@ SECRET_KEY = '^c)!y#yitssh7b%4gyge-_l!5py*cc8&tin0$%jx^x1%$36ji='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['lykartest.com']
+#ALLOWED_HOSTS = ['lykartest.com']
 
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -152,8 +152,8 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-MEDIA_ROOT = '/home/lykarcom/domains/lykar.com.ua/public_html/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+#MEDIA_ROOT = '/home/lykarcom/domains/lykar.com.ua/public_html/media/'
 
 MEDIA_URL = '/media/'
 
