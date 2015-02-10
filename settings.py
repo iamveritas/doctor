@@ -25,7 +25,7 @@ FEEDBACK_EMAIL_RECEIVERS = (
 SECRET_KEY = '^c)!y#yitssh7b%4gyge-_l!5py*cc8&tin0$%jx^x1%$36ji='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -118,8 +118,8 @@ DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lykarcom_db',
-        'USER': 'root', #'lykarcom_db',
-        'PASSWORD': '1111', #'qGFODHPJ883',
+        'USER': 'root',
+        'PASSWORD': '1111',
         'HOST': 'localhost',
         'PORT': '',
     }
