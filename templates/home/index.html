@@ -19,8 +19,9 @@
                             {# block discription #}
                             <div class="row">
                                 <div class="col-md-12">
+                                    <div class="block-wrap">
                                     <h2 class="text-uppercase text-center lykar-text-title">{% trans "Про проект" %}</h2>
-
+                                    </div>
                                     <div class="text-justify">
                                         <p>
                                             <strong><span class="c-red">«lykar.com.ua»</span></strong> - це місце, де пацієнти діляться своїм досвідом лікування, хвалять хороших лікарів
@@ -58,9 +59,12 @@
                     <hr />
                     {# block speciality #}
                     <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="block-wrap">
+                                <h2 class="text-uppercase text-center lykar-text-title">{% trans "Знайти лікаря за спеціальністю" %}</h2>
+                            </div>
+                        </div>
                         <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
-                            <h2 class="text-uppercase text-center lykar-text-title">{% trans "Знайти лікаря за спеціальністю" %}</h2>
-
                             <div class="row ">
                                 <ul class="list-unstyled black-list">
                                 {% for speciality in specialities %}
@@ -79,8 +83,8 @@
                     {# block popular doctors #}
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="text-uppercase text-center lykar-text-title">{% trans "Популярні лікарі" %}</h2>
-
+                                <h2 class="text-uppercase text-center lykar-text-title">{% trans "Популярні лікарі" %}</h2>
+                                <br />
                             <div class="row">
                                 {% for doctor in doctors %}
                                     <div class="col-xs-6 col-sm-3 col-md-3">

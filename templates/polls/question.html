@@ -8,7 +8,7 @@
     {% for choice in question.choice_set.all %}
         <ul class="dl-horizontal text-left line-clinics">
             <li><input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-            <label for="choice{{ forloop.counter }}"><strong>{{ choice.choice_text }}</strong></label></li>
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label></li>
         </ul>
     {% endfor %}
     <ul class="dl-horizontal line-clinics">
