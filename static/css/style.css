@@ -68,6 +68,13 @@ h1, .h1 {
 .margin {
     padding-bottom: 35px;
 }
+.block-wrap {
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 5px;
+    position: relative;
+    z-index: 2;
+}
 /**  END new design: base.html **/
 
 /** contacts **/
@@ -128,7 +135,7 @@ div.lykar-discription-block {
     padding: 15px;
 }
 div.lykar-polls-block {
-    padding-top: 25px;
+    padding-top: 15px;
 }
 .black-list {
     line-height: 1.8;
@@ -196,7 +203,7 @@ div.lykar-seach-home-block {
 .boxed {
     background: none repeat scroll 0 0 #f9f9f9;
     padding: 3px 20px 20px;
-    box-shadow: 1px 1px 3px #c4c4c0;
+/**    box-shadow: 1px 1px 3px #c4c4c0; **/
 }
 .home-section {
     display: block;
