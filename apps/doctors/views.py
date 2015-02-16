@@ -6,11 +6,11 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.shortcuts import redirect, render
 from django.core.urlresolvers import reverse
 
-from django.shortcuts import render_to_response, RequestContext
+from django.shortcuts import render_to_response, RequestContext, get_object_or_404
 from apps.internal.models import Doctor, Recommendation, Comment, Hospital, CommentAnswer
 #from django.core.exceptions import ObjectDoesNotExist
 #from django.db import IntegrityError
-#from django.http.response import Http404
+from django.http.response import Http404
 #from django.http import HttpResponse, HttpResponseRedirect
 from apps.doctors.forms import DoctorForm, HospitalForm, CommentForm, CommentAnswerForm
 
@@ -280,6 +280,10 @@ class CommentAnswerUpdate(UpdateView):
     # доступ тільки для зареєстрованих користувачів
     @method_decorator(login_required())
     def dispatch(self, request, *args, **kwargs):
+        # перевіряємо чи користувач має право редагувати коментар
+        doctor = get_object_or_404(CommentAnswer, pk=self.kwargs['pk']).doctor.userdoctor.user.id
+        if not self.request.user.id == doctor:
+            raise Http404
         return super(CommentAnswerUpdate, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -321,6 +325,10 @@ class CommentUpdate(UpdateView):
     # доступ додавати лікаря мають тільки зареєстровані користувачі
     @method_decorator(login_required())
     def dispatch(self, request, *args, **kwargs):
+        # перевіряємо чи користувач має право редагувати відгук
+        creater = get_object_or_404(Comment, pk=self.kwargs['pk']).user_id
+        if not self.request.user.id == creater:
+            raise Http404
         return super(CommentUpdate, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
