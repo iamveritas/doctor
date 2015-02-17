@@ -383,3 +383,27 @@ div.lykar-sidebar-team-padding{
     color: #d9230f;
 }
 /* --- END menu header --- */
+
+
+/* --- regulation --- */
+.lykar-regulation h2{
+    margin-bottom: 20px;
+}
+.lykar-regulation p{
+    text-indent: 20px;
+    margin-bottom: 5px;
+}
+.lykar-regulation ol{
+    padding-left: 15px;
+}
+.lykar-regulation ol ol{
+    padding-left: 25px;
+    list-style-type: disc;
+}
+.lykar-regulation ol ol ol{
+    padding-left: 25px;
+    list-style-type: square;
+}
+/* --- END regulation --- */
+
+
