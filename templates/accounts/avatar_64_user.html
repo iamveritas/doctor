@@ -1,5 +1,6 @@
-{% if  photo %}
+{% if  photo.0 == 'h' %}
     <div class="avatar"><img src="{{ MEDIA_URL }}{{ photo }}" width="64" alt="" class="img-responsive img-circle center-block" /></div>
+{% elif  photo %}
     <div class="avatar"><img src="{{ photo }}" width="64" alt="" class="img-responsive img-circle center-block" /></div>
 {% elif 'sex' == 'F' %}
     <div class="avatar"><img src="{{ MEDIA_URL }}user_photos/anonum_f.png" width="64" alt="" class="img-responsive img-circle center-block" /></div>

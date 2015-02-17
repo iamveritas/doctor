@@ -8,7 +8,7 @@
 {% empty %}
 {% endfor %}
 
-{% if  comment.user.usersetting_set.all and comment.user.profile.all%}
+{% if not comment.user.profile.all and not comment.user.usersetting_set.all %}
         <img src="{{ MEDIA_URL }}user_photos/anonum_m.png" alt="" class="img-circle img-responsive">
 {% endif %}
 
