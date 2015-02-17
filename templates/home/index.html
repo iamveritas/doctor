@@ -4,29 +4,27 @@
 {% load thumbnail %}
 
 {% block content %}
-
     {# block search #}
     {% include "home/searchForm.html" %}
     {# endblock search #}
-
     <section class="color-white margin">
         <div class="container">
             <div class="row lykar-home color-scheme-white">
                 <div class="col-xs-12 col-sm-12 col-md-12">
-
                     <div class="row">
                         <div class="col-md-8 lykar-discription-block">
                             {# block discription #}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="block-wrap">
-                                    <h2 class="text-uppercase text-center lykar-text-title">{% trans "Про проект" %}</h2>
+                                        <h2 class="text-uppercase text-center lykar-text-title">{% trans "Про проект" %}</h2>
                                     </div>
                                     <div class="text-justify">
                                         <p>
-                                            <strong><span class="c-red">«lykar.com.ua»</span></strong> - це місце, де пацієнти діляться своїм досвідом лікування, хвалять хороших лікарів
-                                            і лають поганих, борються за свої права, не дають розводити себе на гроші, вибирають
-                                            найкращих фахівців ... Всього і не перерахуєш!
+                                            <strong><span class="c-red">«lykar.com.ua»</span></strong> - місце, де пацієнти
+                                            діляться своїм досвідом лікування, хвалять хороших лікарів і лають поганих,
+                                            борються за свої права, не дають розводити себе на гроші, вибирають
+                                            найкращих фахівців...
                                         </p>
                                         <p>
                                             Всі ми різні, але всім нам потрібна ефективна система надання медичної допомоги. Хтось
@@ -45,8 +43,6 @@
                             </div>
                             {# endblock discription #}
                         </div>
-
-
                         {# block poll #}
                         <div class="col-md-4 lykar-polls-block">
                             <div class="question boxed">
@@ -61,7 +57,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="block-wrap">
-                                <h2 class="text-uppercase text-center lykar-text-title">{% trans "Знайти лікаря за спеціальністю" %}</h2>
+                                <h2 class="text-uppercase text-center lykar-text-title">{% trans "Пошук лікаря за спеціальністю" %}</h2>
                             </div>
                         </div>
                         <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
@@ -83,8 +79,8 @@
                     {# block popular doctors #}
                     <div class="row">
                         <div class="col-md-12">
-                                <h2 class="text-uppercase text-center lykar-text-title">{% trans "Популярні лікарі" %}</h2>
-                                <br />
+                            <h2 class="text-uppercase text-center lykar-text-title">{% trans "Популярні лікарі" %}</h2>
+                            <br />
                             <div class="row">
                                 {% for doctor in doctors %}
                                     <div class="col-xs-6 col-sm-3 col-md-3">
@@ -92,7 +88,6 @@
                                             <div class="inner text-center">
                                                 <h5><a href="{% url 'doctors:doctor_profile' doctor.id %}">{{ doctor.last_name }} {{ doctor.first_name }}</a></h5>
                                                 <p class="subtitle">{{ doctor.speciality }}</p>
-
                                                 {% if  doctor.userdoctor.user.profile.all %}
                                                     {% for photo in doctor.userdoctor.user.profile.all %}
                                                         <div class="avatar"><img src="{{ photo }}" width="128" alt="" class="img-responsive img-circle center-block" /></div>
@@ -126,10 +121,8 @@
                         </div>
                     </div>
                     {# endblock popular doctors #}
-
                 </div>
             </div>
         </div>
     </section>
-
 {% endblock %}
