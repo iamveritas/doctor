@@ -4,7 +4,7 @@
         {% include 'accounts/review_block.html' %}
         {# endblock review #}
     {% empty %}
-        Про Вас ще ніхто не написав жодного відгук.
+        Ви ще не написали жодного відгуку.
     {% endfor %}
     {# block link_on_all_reviews #}
     {% if user_comments.count == 5 %}
