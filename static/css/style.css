@@ -8,6 +8,7 @@ html {
 }
 body {
     margin-bottom: 124px;
+    background-color: #ffffff;
 }
 /** base.html **/
 .navbar-default .navbar-brand {
