@@ -81,7 +81,7 @@ class DoctorList(ListView):
     context_object_name = 'doctors'
     template_name = 'doctors/doctors.html'
     queryset = Doctor.objects.order_by('-recommend_yes')
-    paginate_by = 4
+    paginate_by = 16
 
 
 class DoctorReviewList(ListView):

@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row">
                     {% for doctor in doctors %}
-                        <div class="col-xs-6 col-sm-3 col-md-3">
+                        <div class="col-xs-12 col-sm-4 col-md-3">
                             <div class="team boxed-grey">
                                 <div class="inner">
                                     <h5><a href="{% url 'doctors:doctor_profile' doctor.id %}">{{ doctor.last_name }} {{ doctor.first_name }}</a></h5>

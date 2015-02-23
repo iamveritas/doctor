@@ -22,9 +22,9 @@
             </div>
             <div class="form-group">
                 <div class="dl-horizontal text-right">
-                    <a href="{% url 'accounts:password_reset' %}">{% trans "Забули пароль?" %}</a>
+                    <a href="{% url 'accounts:registration' %}">{% trans "Реєстрація" %}</a>
+                    | <a href="{% url 'accounts:password_reset' %}">{% trans "Забули пароль?" %}</a>
                 </div>
-                <div class="text-warning">{{ form.password.errors }}</div>
             </div>
             <div class="form-group">
                 <div class="dl-horizontal">

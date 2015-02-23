@@ -2,6 +2,8 @@
     <strong>
         {% if comment.user.userdoctor.doctor.first_name %}
             {{ comment.user.userdoctor.doctor.first_name }} {{ comment.user.userdoctor.doctor.last_name }}
+        {% elif comment.user.first_name %}
+            {{ comment.user.first_name }} {{ comment.user.last_name }}
         {% else %}
             {{ comment.user.username }}
         {% endif %}

@@ -1,3 +1,4 @@
+#-*-coding:utf8-*-
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
@@ -11,18 +12,18 @@ class FeedbackForm(forms.Form):
     name = forms.CharField(label=_("Your Name"), required=True,
                            widget=forms.TextInput(attrs={
                                "class": BOOTSTRAP_FORM_INPUT_CLASS,
-                               "placeholder": _("Your name")
+                               "placeholder": "Ваше ім’я"
                            }))
     email = forms.EmailField(label=_("Email"), required=True,
                              widget=forms.TextInput(attrs={
                                  "class": BOOTSTRAP_FORM_INPUT_CLASS,
-                                 "placeholder": _("Email")
+                                 "placeholder": "Email"
                              }))
     text = forms.CharField(label=_("Message or Question"), required=True,
                            widget=forms.Textarea({
                                "cols": 5,
                                "class": BOOTSTRAP_FORM_INPUT_CLASS,
-                               "placeholder": _("Message")
+                               "placeholder": "Ваше повідомлення"
                            }))
     captcha = CaptchaField()
 
