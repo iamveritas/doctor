@@ -1,21 +1,27 @@
-body {
-  padding-top: 180px;
-  padding-bottom: 40px;
-  background-color: #eee;
+/* login and logout */
+.log-padding {
+    padding-top: 60px;
+    padding-bottom: 80px;
 }
-
-.form-signin {
-  max-width: 400px;
-  padding: 15px;
-  margin: 0 auto;
+.head-padding {
+    padding-bottom: 10px;
 }
-
-.padding {
-    padding: 10px 0px;
+.line-soc {
+    list-style: none outside none;
+    padding: 0;
 }
-
-.logout {
-  max-width: 400px;
-  padding: 15px;
-  margin: 0 auto;
+.line-soc li {
+    display: inline;
+}
+.line-soc li a {
+    margin: 0 5px;
+}
+.log-box {
+    padding-bottom: 10px;
+}
+.red {
+    color: #d9230f;
+}
+.log-soc {
+    margin: 20px 0 20px;
 }

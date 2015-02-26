@@ -1,36 +1,52 @@
 {% load i18n %}
 
-<form action="{% url 'accounts:login' %}" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
-    {% csrf_token %}
     <div class="row">
-        <div class="col-md-12 box">
+        <div class="col-md-12 text-center log-box">
             <div class="red">{{ login_error }}</div>
-            <div class="red"> {{ success_registration }} </div>
-            <div class="form-group">
-                <div class="dl-horizontal">
-                    <strong>{{ form.username.label }}*</strong>
-                    {{ form.username }}
+        </div>
+    </div>
+    <form action="{% url 'accounts:login' %}" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6 log-box">
+                <div class="red"> {{ success_registration }} </div>
+                <div class="form-group">
+                    <div class="dl-horizontal">
+                        <strong>{{ form.username.label }}*</strong>
+                        {{ form.username }}
+                    </div>
+                    <div class="text-warning">{{ form.username.errors }}</div>
                 </div>
-                <div class="text-warning">{{ form.username.errors }}</div>
-            </div>
-            <div class="form-group">
-                <div class="dl-horizontal">
-                    <strong>{{ form.password.label }}*</strong>
-                    {{ form.password }}
-                </div>
-                <div class="text-warning">{{ form.password.errors }}</div>
-            </div>
-            <div class="form-group">
-                <div class="dl-horizontal text-right">
-                    <a href="{% url 'accounts:registration' %}">{% trans "Реєстрація" %}</a>
-                    | <a href="{% url 'accounts:password_reset' %}">{% trans "Забули пароль?" %}</a>
+                <div class="form-group">
+                    <div class="dl-horizontal">
+                        <strong>{{ form.password.label }}*</strong>
+                        {{ form.password }}
+                    </div>
+                    <div class="text-warning">{{ form.password.errors }}</div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="dl-horizontal">
-                    <input type="submit" class="btn btn-primary" value="Увійти" />
+            <div class="col-md-6 log-box">
+                <div class="text-center text-uppercase log-soc">
+                    {% trans "Ввійти через:" %}
+                </div>
+                {% include 'accounts/social.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-block" value="Увійти" />
                 </div>
             </div>
         </div>
-    </div>
-</form>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="dl-horizontal text-right">
+                        <a href="{% url 'accounts:registration' %}">{% trans "Реєстрація" %}</a> |
+                        <a href="{% url 'accounts:password_reset' %}">{% trans "Забули пароль?" %}</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </form>
