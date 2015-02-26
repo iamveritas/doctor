@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% load static %}
 {% load i18n %}
+{% load staticfiles %}
 
 {% block title %}{% trans "Контакти" %}{% endblock %}
 
@@ -8,7 +8,7 @@
     <div class="top-padding padding-contacts">
         <div class="container">
             <div class="row">
-                <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+                <div class="col-sm-6 col-md-5 col-md-offset-1">
                     <h2 class="text-uppercase"><strong>{% trans "Контакти" %}</strong></h2>
                     <p>
                         {% trans "Виникли запитання або пропозиції? Напишіть нам листа." %}
@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-5 col-md-offset-1 margin">
+                <div class="col-sm-6 col-md-5 col-md-offset-1 margin">
                     <form class="form-horizontal" role="form" action="" method="post">
                         {% csrf_token %}
                         {% include "contacts/form_fields.html" %}
@@ -26,8 +26,8 @@
                         </button>
                     </form>
                 </div>
-                <div class="col-md-3 col-md-offset-1">
-                    <img class="center-block hidden-sm hidden-xs" src="{% static "img/about_lykar.png" %}" alt="lykar.com.ua" />
+                <div class="col-sm-3 col-md-3 col-md-offset-1">
+                    <img class="center-block hidden-xs" src="{% static "img/about_lykar.png" %}" alt="lykar.com.ua" />
                 </div>
             </div>
         </div>
