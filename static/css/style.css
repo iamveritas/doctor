@@ -387,22 +387,32 @@ div.lykar-sidebar-team-padding{
 
 
 /* --- regulation --- */
+.reg-section {
+    display: block;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
 .lykar-regulation h2{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 .lykar-regulation p{
-    text-indent: 20px;
-    margin-bottom: 5px;
+    text-indent: 30px;
+    margin-bottom: 15px;
 }
 .lykar-regulation ol{
     padding-left: 15px;
 }
+.lykar-regulation ol.reg-main > li{
+    font-weight: bold;
+}
 .lykar-regulation ol ol{
     padding-left: 25px;
+    padding-bottom: 15px;
     list-style-type: disc;
 }
 .lykar-regulation ol ol ol{
     padding-left: 25px;
     list-style-type: square;
+    padding-top: 10px;
 }
 /* --- END regulation --- */
