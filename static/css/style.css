@@ -71,10 +71,28 @@ h1, .h1 {
 }
 .block-wrap {
     background-color: #f9f9f9;
-    margin-bottom: 10px;
-    padding: 5px;
+    margin-bottom: 18px;
+    padding: 1px;
     position: relative;
     z-index: 2;
+}
+.info-counter {
+    border: 1px solid #f2f3f3;
+    padding: 7px;
+    margin: 18px;
+}
+.info-digits{
+    font-size:25px;
+    font-weight: 700;
+    float: left;
+    overflow: hidden;
+    margin-right: 18px;
+    margin-left: 12px;
+    color: #e66528;
+}
+.info-text{
+    font-size: 22px;
+    line-height: 1.6;
 }
 /**  END new design: base.html **/
 
@@ -133,10 +151,10 @@ h1, .h1 {
 }
 
 div.lykar-discription-block {
-    padding: 15px;
+    padding: 0 18px;
 }
 div.lykar-polls-block {
-    padding-top: 15px;
+    padding: 0 18px;
 }
 .black-list {
     line-height: 1.8;
@@ -203,7 +221,7 @@ div.lykar-seach-home-block {
 /* --- section: popular doctor --- */
 .boxed {
     background: none repeat scroll 0 0 #f9f9f9;
-    padding: 3px 20px 20px;
+    padding: 3px 20px 15px;
 /**    box-shadow: 1px 1px 3px #c4c4c0; **/
 }
 .home-section {

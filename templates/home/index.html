@@ -12,39 +12,74 @@
             <div class="row lykar-home color-scheme-white">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="row">
-                        <div class="col-md-8 lykar-discription-block">
+                        <div class="col-md-9 lykar-discription-block">
                             {# block discription #}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="block-wrap">
                                         <h2 class="text-uppercase text-center lykar-text-title">{% trans "Про проект" %}</h2>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img class="center-block hidden-xs" src="{% static "img/about_project.png" %}" width="123" height="200" alt="відгуки про лікарів - про проект" />
+                                </div>
+                                <div class="col-md-10">
                                     <div class="text-justify">
                                         <p>
-                                            <strong><span class="c-red">«lykar.com.ua»</span></strong> - місце, де пацієнти
-                                            діляться своїм досвідом лікування, хвалять хороших лікарів і лають поганих,
-                                            борються за свої права, не дають розводити себе на гроші, вибирають
-                                            найкращих фахівців...
+                                            <strong><span class="c-red">«lykar.com.ua»</span></strong>
+                                            {% blocktrans %} - місце, де пацієнти діляться своїм досвідом лікування,
+                                            хвалять хороших лікарів і лають поганих, борються за свої права, не дають
+                                            розводити себе на гроші, вибирають найкращих фахівців...{% endblocktrans %}
                                         </p>
                                         <p>
-                                            Всі ми різні, але всім нам потрібна ефективна система надання медичної допомоги. Хтось
-                                            звертається за допомогою до лікаря лише зрідка, а комусь потрібне постійне лікування.
-                                            У будь-якому випадку приходить момент, коли нам потрібен лікар - найкращий лікар. І для
-                                            того, щоб знати, до кого звернутись завтра, ми пропонуємо оцінити свого лікаря сьогодні.
-                                            Давайте надамо собі можливість лікуватися у хороших лікарів!
+                                            {% blocktrans %}Всі ми різні, але всім нам потрібна ефективна система
+                                            надання медичної допомоги. Хтось звертається за допомогою до лікаря лише
+                                            зрідка, а комусь потрібне постійне лікування. У будь-якому випадку приходить
+                                            момент, коли нам потрібен лікар - найкращий лікар. І для того, щоб знати,
+                                            до кого звернутись завтра, ми пропонуємо оцінити свого лікаря сьогодні.
+                                            Давайте надамо собі можливість лікуватися у хороших лікарів!{% endblocktrans %}
                                         </p>
                                         <p>
-                                            Ми розуміємо, що без зацікавленості пацієнтів нічого не вийде. Тому ми робимо все, щоб Вам
-                                            було зручно висловлювати думку і вивчати накопичені відгуки. Очевидно, що тільки спільними
-                                            зусиллями вдасться поліпшити якість вітчизняної охорони здоров'я.
+                                            {% blocktrans %}Ми розуміємо, що без зацікавленості пацієнтів нічого не вийде.
+                                            Тому ми робимо все, щоб Вам було зручно висловлювати думку і вивчати
+                                            накопичені відгуки. Очевидно, що тільки спільними зусиллями вдасться
+                                            поліпшити якість вітчизняної охорони здоров'я.{% endblocktrans %}
                                         </p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6">
+                                            <div class="info-counter">
+                                                <div class="info-digits">
+                                                    {% if doctors %}
+                                                        {{ doctors|length }}
+                                                    {% endif %}
+                                                </div>
+                                                <div class="info-text">
+                                                    {% trans "лікарів на сайті" %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6">
+                                            <div class="info-counter">
+                                                <div class="info-digits">
+                                                    {% if comments %}
+                                                        {{ comments|length }}
+                                                    {% endif %}
+                                                </div>
+                                                <div class="info-text">
+                                                    {% trans "відгуків пацієнтів" %}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             {# endblock discription #}
                         </div>
                         {# block poll #}
-                        <div class="col-md-4 lykar-polls-block">
+                        <div class="col-md-3 lykar-polls-block">
                             <div class="question boxed">
                                 <h2 class="text-uppercase text-center ">{% trans "Опитування" %}</h2>
                                 {% include question_pattern %}
