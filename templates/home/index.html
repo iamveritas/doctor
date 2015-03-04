@@ -52,8 +52,8 @@
                                         <div class="col-xs-12 col-sm-6 col-md-6">
                                             <div class="info-counter">
                                                 <div class="info-digits">
-                                                    {% if doctors %}
-                                                        {{ doctors|length }}
+                                                    {% if doctors_all %}
+                                                        {{ doctors_all|length }}
                                                     {% endif %}
                                                 </div>
                                                 <div class="info-text">
@@ -69,7 +69,7 @@
                                                     {% endif %}
                                                 </div>
                                                 <div class="info-text">
-                                                    {% trans "відгуків пацієнтів" %}
+                                                    {% trans "відгуки пацієнтів" %}
                                                 </div>
                                             </div>
                                         </div>
