@@ -7,25 +7,19 @@
     {# block search #}
     {% include "home/searchForm.html" %}
     {# endblock search #}
-    <section class="color-white margin">
+    <section>
         <div class="container">
-            <div class="row lykar-home color-scheme-white">
+            {# block about_project #}
+            <div class="row lykar-home">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="row">
                         <div class="col-md-9 lykar-discription-block">
-                            {# block discription #}
+                            <h2 class="text-uppercase text-center lykar-text-title">{% trans "Про проект" %}</h2>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="block-wrap">
-                                        <h2 class="text-uppercase text-center lykar-text-title">{% trans "Про проект" %}</h2>
-                                    </div>
+                                <div class="col-sm-3 col-md-2">
+                                    <img class="center-block hidden-xs" src="{% static "img/about_project.png" %}" width="123" height="200" alt="відгуки про лікарів - лікар" />
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img class="center-block hidden-xs" src="{% static "img/about_project.png" %}" width="123" height="200" alt="відгуки про лікарів - про проект" />
-                                </div>
-                                <div class="col-md-10">
+                                <div class="col-sm-9 col-md-10">
                                     <div class="text-justify">
                                         <p>
                                             <strong><span class="c-red">«lykar.com.ua»</span></strong>
@@ -48,7 +42,7 @@
                                             поліпшити якість вітчизняної охорони здоров'я.{% endblocktrans %}
                                         </p>
                                     </div>
-                                    <div class="row">
+                                    <div class="row center-block">
                                         <div class="col-xs-12 col-sm-6 col-md-6">
                                             <div class="info-counter">
                                                 <div class="info-digits">
@@ -76,7 +70,6 @@
                                     </div>
                                 </div>
                             </div>
-                            {# endblock discription #}
                         </div>
                         {# block poll #}
                         <div class="col-md-3 lykar-polls-block">
@@ -87,36 +80,55 @@
                         </div>
                         {# endblock poll #}
                     </div>
-                    <hr />
-                    {# block speciality #}
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="block-wrap">
-                                <h2 class="text-uppercase text-center lykar-text-title">{% trans "Пошук лікаря за спеціальністю" %}</h2>
-                            </div>
-                        </div>
-                        <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
-                            <div class="row ">
-                                <ul class="list-unstyled black-list">
-                                {% for speciality in specialities %}
-                                    <li class="col-md-3 col-xs-6 col-sm-4 text-left"><a href="/search/?name=&speciality={{ speciality.id }}" class="text-lowercase">
+                </div>
+            </div>
+            {# endblock about_project #}
+            {# block speciality #}
+            <div class="row lykar-home">
+                <h2 class="text-uppercase text-center lykar-text-title">{% trans "Пошук лікаря за спеціальністю" %}</h2>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                    <div class="row speciality">
+                        <ul class="list-unstyled black-list">
+                            {% for speciality in specialities %}
+                                <li class="col-md-3 col-xs-6 col-sm-4 text-left">
+                                    <a href="/search/?name=&speciality={{ speciality.id }}" class="text-lowercase">
                                         <span class="c-red"> {{ speciality.name }} </span>
-                                    </a></li>
-                                {% empty %}
-                                    <p class="subtitle">{% trans 'в БД не зареєстровано жодної спеціальності.' %}</p>
-                                {% endfor %}
-                                 </ul>
-                            </div>
-                        </div>
+                                    </a>
+                                </li>
+                            {% empty %}
+                                <p class="subtitle">{% trans 'в БД не зареєстровано жодної спеціальності.' %}</p>
+                            {% endfor %}
+                        </ul>
                     </div>
-                    {# endblock speciality #}
-                    <hr />
-                    {# block popular doctors #}
-                    <div class="row">
+                </div>
+            </div>
+            {# endblock speciality #}
+            {# block city #}
+            <div class="row lykar-home">
+                <h2 class="text-uppercase text-center lykar-text-title">{% trans "Пошук лікаря за містом" %}</h2>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                    <div class="row speciality">
+                        <ul class="list-unstyled black-list">
+                            {% for speciality in specialities %}
+                                <li class="col-md-3 col-xs-6 col-sm-4 text-left">
+                                    <a href="/search/?name=&speciality={{ speciality.id }}" class="text-lowercase">
+                                        <span class="c-red"> {{ speciality.name }} </span>
+                                    </a>
+                                </li>
+                            {% empty %}
+                                <p class="subtitle">{% trans 'в БД не зареєстровано жодного міста.' %}</p>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {# endblock city #}
+            {# block popular doctors #}
+                    <div class="row lykar-popular">
                         <div class="col-md-12">
                             <h2 class="text-uppercase text-center lykar-text-title">{% trans "Популярні лікарі" %}</h2>
                             <br />
-                            <div class="row">
+                            <div class="row popular">
                                 {% for doctor in doctors %}
                                     <div class="col-xs-12 col-sm-4 col-md-3">
                                         <div class="team boxed-grey">
@@ -157,7 +169,7 @@
                     </div>
                     {# endblock popular doctors #}
                 </div>
-            </div>
+
         </div>
     </section>
 {% endblock %}

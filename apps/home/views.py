@@ -1,6 +1,6 @@
 #-*-coding:utf8-*-
 from django.views.generic import TemplateView
-from apps.internal.models import Doctor, Speciality, Comment
+from apps.internal.models import Doctor, Speciality, Comment,City
 from apps.polls.models import Question
 
 class HomeView(TemplateView):
@@ -17,6 +17,7 @@ class HomeView(TemplateView):
         context['doctors_all'] = Doctor.objects.all()
         context['comments'] = Comment.objects.all()
         context['specialities'] = Speciality.objects.all()
+        context['cities'] = City.objects.all()
         context['question'] = Question.objects.get(pk=1)
         # перетворюємо id питання у рядкову змінну, щоб далі її можна було використати
         # для перевірки на входження в self.request.COOKIES

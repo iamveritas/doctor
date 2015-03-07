@@ -113,7 +113,6 @@ class Doctor(models.Model):
     recommend_no = models.IntegerField("Не рекомендують", blank=True, default=0)
     created = models.DateTimeField("Дата створення", auto_now=False, auto_now_add=True)
 
-
     class Meta:
         verbose_name = "Лікар"
         verbose_name_plural = "Лікарі"

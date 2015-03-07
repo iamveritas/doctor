@@ -1,53 +1,57 @@
 {% load i18n %}
 
-<section class="top-section color-grey">
+<section>
     <div class="container">
-        <div class="row">
-
-            {# block title #}
-            <div class="col-md-5 text-center">
-                <h1 class="text-uppercase top-padding">{% trans "Відгуки про лікарів" %}</h1>
-                <h2 class="text-uppercase c-red">{% trans "місто Івано-Франківськ" %}</h2>
-            </div>
-            {# endblock title #}
-
-            <div class="col-md-6">
+        <div class="row search-block">
+            <h1 class="text-center text-uppercase">Відгуки про лікарів</h1>
+            <form action="/search/" method="get" class="form-horizontal">
+                {% csrf_token %}
                 <div class="search">
-
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <form action="/search/" method="get" class="form-horizontal">
-                            {% csrf_token %}
-                                <strong class="text-uppercase c-red">{% trans "Лікар" %}</strong>
-                                <div class="form-group">
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="name" placeholder="Введіть прізвище лікаря">
-                                    </div>
-                                </div>
-                                <strong class="text-uppercase c-red">{% trans "Спеціальність" %}</strong>
-                                <div class="form-group">
-                                    <div class="col-sm-8">
-                                        <select class="form-control" id="select" name="speciality" >
-                                            <option value="0">{% trans "обрати спеціальність" %}</option>
-                                        {% for speciality in specialities %}
-                                            <option value="{{ speciality.id }}">{{ speciality.name }}</option>
-                                        {% endfor %}
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <button class="btn btn-primary" type="submit">
-                                            <span class="glyphicon glyphicon-search"></span>{% trans " Пошук" %}
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                    <div class="col-md-3 col-md-offset-1">
+                        <strong class="text-uppercase c-red">{% trans "Лікар" %}</strong>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="name" placeholder="Введіть прізвище лікаря" />
+                            </div>
                         </div>
                     </div>
-
+                    <div class="col-md-3">
+                        <strong class="text-uppercase c-red">{% trans "Спеціальність" %}</strong>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <select class="form-control" id="select" name="speciality" >
+                                    <option value="0">{% trans "обрати спеціальність" %}</option>
+                                    {% for speciality in specialities %}
+                                        <option value="{{ speciality.id }}">{{ speciality.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="text-uppercase c-red">{% trans "Місто" %}</strong>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <select class="form-control" id="select" name="city" >
+                                    <option value="0">{% trans "обрати місто" %}</option>
+                                    {% for city in cities %}
+                                        <option value="{{ city.id }}">{{ city.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <div class="col-sm-7">
+                                <button class="btn btn-primary btn-block btn-margin" type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>{% trans " Пошук" %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-    <hr class="lykar-search-separator"/>
 </section>

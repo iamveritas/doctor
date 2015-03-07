@@ -3,10 +3,13 @@
 {% load thumbnail %}
 
 {%block content%}
+    {# block search #}
+    {% include "home/searchForm.html" %}
+    {# endblock search #}
         <!-- List Doctor -->
-        <section class="home-section color-scheme-white text-center">
+        <section>
             <div class="container">
-                <div class="row">
+                <div class="row lykar-popular text-center">
                     {% for doctor in doctors %}
                         <div class="col-xs-12 col-sm-4 col-md-3">
                             <div class="team boxed-grey">
@@ -28,7 +31,6 @@
                     {% empty %}
                         <p class="subtitle">{% trans 'Поки що не зареєстровано жодного лікаря. Ви можете це зробити, перейшовши <a href="#">сюди</a>.' %}</p>
                     {% endfor %}
-
                 </div>
 
                 <div class="row">
