@@ -7,9 +7,10 @@
     {# block search #}
     {% include "home/searchForm.html" %}
     {# endblock search #}
-    <section class="color-white margin">
+    <section>
         <div class="container">
-            <div class="row lykar-home color-scheme-white">
+            {# block about_project #}
+            <div class="row lykar-home">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="row">
                         <div class="col-md-9 lykar-discription-block">
@@ -72,7 +73,7 @@
                             {# endblock discription #}
                         </div>
                         {# block poll #}
-                        <div class="col-md-4 lykar-polls-block">
+                        <div class="col-md-3 lykar-polls-block">
                             <div class="question boxed">
                                 <h2 class="text-uppercase text-center ">{% trans "Опитування" %}</h2>
                                 {% include question_pattern %}
@@ -81,6 +82,7 @@
                         {# endblock poll #}
                     </div>
                     <hr />
+                    {# endblock about_project #}
                     {# block speciality #}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">

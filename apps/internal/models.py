@@ -117,7 +117,6 @@ class Doctor(models.Model):
         verbose_name = "Лікар"
         verbose_name_plural = "Лікарі"
 
-
     def __unicode__(self):
         return u"%s %s" % (self.first_name, self.last_name)
 

@@ -32,11 +32,18 @@ class SearchView(ListView):
         name = request.GET.get('name', '')
         speciality = int(request.GET.get('speciality', ''))
         city = int(request.GET.get('city', ''))
+        hospital = [hospital.id for hospital in Hospital.objects.filter(city=city)]
         # вибираємо всі спеціальності лікарів для форми пошуку
         specialities = Speciality.objects.all()
         cities = City.objects.all()
-        doctors = Doctor.objects.filter(Q(last_name=name) | Q(speciality=speciality) | Q(city=city)).order_by('-recommend_yes')
-        return render(request, "search/index.html", {'doctors': doctors, 'specialities': specialities, 'cities': cities})
+        doctors = Doctor.objects.filter(Q(last_name=name) |
+                                        Q(speciality=speciality) |
+                                        Q(hospitals__in=hospital))\
+                                .order_by('-recommend_yes')
+        return render(request, "search/index.html", {'doctors': doctors,
+                                                     'specialities': specialities,
+                                                     'hospital': hospital,
+                                                     'cities': cities})
 
 
 class HomeView(TemplateView):
