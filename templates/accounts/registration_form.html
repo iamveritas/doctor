@@ -4,7 +4,7 @@
     {% csrf_token %}
     {{ form.non_field_errors }}
     <div class="row">
-        <div class="col-md-12 box">
+        <div class="col-md-12 log-box">
             <div class="form-group">
                 <div class="dl-horizontal">
                     <strong>{% trans "Логін" %}*</strong>
@@ -33,18 +33,9 @@
                 </div>
                 <div class="text-warning">{{ form.password2.errors }}</div>
             </div>
-            {% comment %}
             <div class="form-group">
                 <div class="dl-horizontal">
-                    <strong>{{ form.sex.label }}*</strong>
-                    {{ form.sex }}
-                </div>
-                <div class="text-warning">{{ form.sex.errors }}</div>
-            </div>
-            {% endcomment %}
-            <div class="form-group">
-                <div class="dl-horizontal">
-                    {{ form.rules }}  Я погоджуюсь з <a href="#conditions" data-toggle="modal" data-target="#conditions">умовами</a>  використання сайту
+                    {{ form.rules }}{% trans " Я погоджуюсь з " %}<a href="#conditions" data-toggle="modal" data-target="#conditions">{% trans "умовами" %}</a>{% trans "  використання сайту" %}
                 </div>
                 <div class="text-warning">{{ form.rules.errors }}</div>
             </div>
@@ -56,7 +47,7 @@
             </div>
             <div class="form-group">
                 <div class="dl-horizontal">
-                    <input type="submit" class="btn btn-primary" value="Зареєструватися" />
+                    <input type="submit" class="btn btn-primary btn-block" value="Зареєструватися" />
                 </div>
             </div>
         </div>

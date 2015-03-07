@@ -1,41 +1,39 @@
 {%extends 'base.html'%}
 {% load i18n %}
 
-{%block content%}
-    <section class="top-section">
-        <div class="container">
-            {%if not user.is_authenticated%}
-                <div class="container">
-                    <div class="top-padding"><h2 class="text-uppercase text-center">{% trans "Реєстрація" %}</h2></div>
-                    <div class="col-md-5 col-md-offset-2">
-                         {% include 'accounts/registration_form.html' %}
-                    </div>
+{% block title %}{% trans "Вхід" %}{% endblock %}
 
-                    <div class="col-md-3 col-md-offset-1">
-                        <div class="text-center text-uppercase modal-soc">
-                            {% trans "Ввійти через:" %}
-                        </div>
-                        {% include 'accounts/social.html' %}
+{%block content%}
+    {%if not user.is_authenticated%}
+        <div class="container">
+            <div class="log-padding">
+                <h2 class="text-uppercase text-center head-padding">{% trans "Реєстрація" %}</h2>
+                <div class="col-md-3 col-md-offset-2">
+                    <div class="text-center text-uppercase log-soc">
+                        {% trans "Ввійти через:" %}
                     </div>
+                    {% include 'accounts/social.html' %}
                 </div>
-            {%endif%}
+                <div class="col-md-3">
+                    {% include 'accounts/registration_form.html' %}
+                </div>
+            </div>
         </div>
-    </section>
-    <!-- modal conditions -->
-        <div class="modal fade" id="conditions" tabindex="-1" role="dialog" aria-labelledby="Conditions" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h2 class="modal-title text-center">Правила використання сайту</h2>
-                    </div>
-                    <div class="modal-body lykar-regulation">
-                        {% include 'regulations/regulations.html' %}
-                        <div class="text-right">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                        </div>
+    {%endif%}
+    <div class="modal fade" id="conditions" tabindex="-1" role="dialog" aria-labelledby="Conditions" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h2 class="modal-title text-center">{% trans "Правила використання сайту" %}</h2>
+                </div>
+                <div class="modal-body lykar-regulation">
+                    {% include 'regulations/regulations.html' %}
+                    <div class="text-right">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Закрити" %}</button>
                     </div>
                 </div>
             </div>
-        </div> <!-- end modal conditions -->
+        </div>
+    </div>
 {%endblock%}

@@ -1,6 +1,6 @@
 #-*-coding:utf8-*-
 from django.views.generic import TemplateView
-from apps.internal.models import Doctor, Speciality
+from apps.internal.models import Doctor, Speciality, Comment,City
 from apps.polls.models import Question
 
 class HomeView(TemplateView):
@@ -14,7 +14,10 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         # передаємо у context об’єкти Doctor, Specialities, Question
     	context['doctors'] = Doctor.objects.all().order_by('-recommend_yes')[:4]
+        context['doctors_all'] = Doctor.objects.all()
+        context['comments'] = Comment.objects.all()
         context['specialities'] = Speciality.objects.all()
+        context['cities'] = City.objects.all()
         context['question'] = Question.objects.get(pk=1)
         # перетворюємо id питання у рядкову змінну, щоб далі її можна було використати
         # для перевірки на входження в self.request.COOKIES

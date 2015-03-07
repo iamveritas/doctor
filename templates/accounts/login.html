@@ -1,23 +1,17 @@
 {%extends 'base.html'%}
 {% load i18n %}
 
-{%block content%}
-    <section class="top-section">
-    	{%if user.is_authenticated%}
-	    {%else%}
-            <div class="container">
-                <div class="top-padding"><h2 class="text-uppercase text-center">{% trans "Вхід" %}</h2></div>
-                <div class="col-md-5 col-md-offset-2">
-                    {% include 'accounts/login_form.html' %}
-                </div>
+{% block title %}{% trans "Вхід" %}{% endblock %}
 
-                <div class="col-md-3 col-md-offset-1">
-                    <div class="text-center text-uppercase modal-soc">
-                        {% trans "Ввійти через:" %}
+{%block content%}
+    	{%if not user.is_authenticated%}
+            <div class="container">
+                <div class="log-padding">
+                    <h2 class="text-uppercase text-center head-padding">{% trans "Вхід" %}</h2>
+                    <div class="col-md-6 col-md-offset-3">
+                        {% include 'accounts/login_form.html' %}
                     </div>
-                    {% include 'accounts/social.html' %}
                 </div>
             </div>
 	    {%endif%}
-    </section>
 {%endblock%}

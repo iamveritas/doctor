@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render
 from django.core.urlresolvers import reverse
 
 from django.shortcuts import render_to_response, RequestContext
-from apps.internal.models import Doctor, Recommendation, Comment, Hospital, Speciality
+from apps.internal.models import Doctor, Recommendation, Comment, Hospital, Speciality, City
 #from django.core.exceptions import ObjectDoesNotExist
 #from django.db import IntegrityError
 #from django.http.response import Http404
@@ -31,10 +31,12 @@ class SearchView(ListView):
         # опрацьовуємо запити пошуку
         name = request.GET.get('name', '')
         speciality = int(request.GET.get('speciality', ''))
+        city = int(request.GET.get('city', ''))
         # вибираємо всі спеціальності лікарів для форми пошуку
         specialities = Speciality.objects.all()
-        doctors = Doctor.objects.filter(Q(last_name=name) | Q(speciality=speciality)).order_by('-recommend_yes')
-        return render(request, "search/index.html", {'doctors': doctors, 'specialities': specialities})
+        cities = City.objects.all()
+        doctors = Doctor.objects.filter(Q(last_name=name) | Q(speciality=speciality) | Q(city=city)).order_by('-recommend_yes')
+        return render(request, "search/index.html", {'doctors': doctors, 'specialities': specialities, 'cities': cities})
 
 
 class HomeView(TemplateView):
@@ -43,6 +45,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        # передаємо у context об’єкти Specialities
+        # передаємо у context об’єкти Specialities, Cities
         context['specialities'] = Speciality.objects.all()
+        context['cities'] = City.objects.all()
         return context

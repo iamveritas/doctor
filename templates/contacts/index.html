@@ -1,31 +1,33 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load staticfiles %}
+
+{% block title %}{% trans "Контакти" %}{% endblock %}
 
 {% block content %}
     <div class="top-padding padding-contacts">
         <div class="container">
             <div class="row">
-                <h2 class="text-uppercase"><strong>{% trans "Контакти" %}</strong></h2>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <p>
-                            {% trans "Виникли запитання або пропозиції? Напишіть нам листа." %}
-                        </p>
-                    </div>
+                <div class="col-sm-6 col-md-5 col-md-offset-1">
+                    <h2 class="text-uppercase"><strong>{% trans "Контакти" %}</strong></h2>
+                    <p>
+                        {% trans "Виникли запитання або пропозиції? Напишіть нам листа." %}
+                    </p>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 margin">
-                        <form class="form-horizontal" role="form" action="" method="post">{% csrf_token %}
-                            {% include "contacts/form_fields.html" %}
-                            {% include "contacts/captcha_field.html" %}
-                            <button class="btn btn-primary" type="submit">
-                                {% trans "Відправити" %}
-                            </button>
-                        </form>
-                    </div>
-                    <div class="col-md-3 col-md-offset-1">
-
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-5 col-md-offset-1 margin">
+                    <form class="form-horizontal" role="form" action="" method="post">
+                        {% csrf_token %}
+                        {% include "contacts/form_fields.html" %}
+                        {% include "contacts/captcha_field.html" %}
+                        <button class="btn btn-primary btn-block" type="submit">
+                            {% trans "Відправити" %}
+                        </button>
+                    </form>
+                </div>
+                <div class="col-sm-3 col-md-3 col-md-offset-1">
+                    <img class="center-block hidden-xs" src="{% static "img/about_lykar.png" %}" alt="lykar.com.ua" />
                 </div>
             </div>
         </div>
