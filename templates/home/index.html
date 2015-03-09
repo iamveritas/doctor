@@ -92,7 +92,7 @@
                         <ul class="list-unstyled black-list">
                         {% for speciality in specialities %}
                             <li class="col-md-3 col-xs-6 col-sm-4 text-left">
-                                <a href="/search/?name=&city=&speciality={{ speciality.id }}" class="text-lowercase">
+                                <a href="/search/?name=&city=0&speciality={{ speciality.id }}" class="text-lowercase">
                                     <span class="c-red"> {{ speciality.name }} </span>
                                 </a>
                             </li>

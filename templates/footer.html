@@ -50,14 +50,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
         <script type="text/javascript">
-            // Магія розпочнеться лише після повного завантаження сторінки
             $(document).ready(function () {
-                // Посилання з id="test" буде тригером події
-                $("#test").click(function() {
-                    // AJAX-запит на потрібну адресу
-                    $.get("/doctors/ajax_test/", function(data) {
-                        // Замінюємо текст тегу з id="target" на отримані дані
-                        $("#target").html(data.param1+' '+data.param2);
+                $("#id_city").on('change blur', function() {
+                    var city = $("#id_city").val();
+                    var request = "city=" + city;
+                    $.get("/doctors/ajax_test/", request, function(data) {
+                        $("#id_hospitals").html(data.hospitals)
                     });
                 });
             });

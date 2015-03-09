@@ -10,17 +10,6 @@
                 <div class="text-center text-uppercase modal-soc">
                     <h2 class = "red"> {% trans "Введіть дані про лікаря:" %}</h2>
                 </div>
-
-                {# test #}
-
-                <!-- Елемент що активує процес -->
-                <a id="test" href="javascript:">Натисни мене ніжно</a>
-
-                <!-- Елемент, текст якого буде змінено -->
-                <div id="target">Я готовий до змін.</div>
-
-                {# endtest #}
-
                 <form action="/doctors/add/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% comment %}

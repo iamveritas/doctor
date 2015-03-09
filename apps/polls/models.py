@@ -17,3 +17,7 @@ class Choice(models.Model):
 
     def __unicode__(self):
         return self.choice_text
+
+    def sum_of_choices(self):
+        number_of_choices = [choice.votes for choice in Choice.objects.all()]
+        return reduce((lambda a, b: a+b), number_of_choices)

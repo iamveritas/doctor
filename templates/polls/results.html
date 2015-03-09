@@ -8,5 +8,9 @@
                 <li><strong>{{ choice.choice_text }}</strong> --- <strong><span class="c-red">{{ choice.votes }}</span></strong> голосів</li>
             </ul>
         {% endfor %}
+        <hr />
+        <ul class="line-clinics text-left">
+            <li><strong>Всього голосів</strong> --- <strong><span class="c-red">{{ question.choice_set.all.0.sum_of_choices }}</span></strong></li>
+        </ul>
     </div>
 </div>

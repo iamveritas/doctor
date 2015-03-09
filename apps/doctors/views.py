@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render
 from django.core.urlresolvers import reverse
 
 from django.shortcuts import render_to_response, RequestContext, get_object_or_404
-from apps.internal.models import Doctor, Recommendation, Comment, Hospital, CommentAnswer
+from apps.internal.models import Doctor, Recommendation, Comment, Hospital, CommentAnswer, City
 #from django.core.exceptions import ObjectDoesNotExist
 #from django.db import IntegrityError
 from django.http.response import Http404
@@ -21,11 +21,14 @@ import json
 
 def ajax_test(request):
     results = {'success': False}
-
-    # Тут — потрібні нам алгоритми
+    city = int(request.GET['city'])
+    hospitals_of_city = Hospital.objects.filter(city=city)
+    hospitals = ''
+    for hospital in hospitals_of_city:
+        pattern = '<option value="'+'">'+hospital.name+'</option>'
+        hospitals += pattern
     if True:
-        results = {'success': True, 'param1': 'Ти таки', 'param2': 'натиснув його!'}
-
+        results = {'success': True, 'hospitals': hospitals}
     jso = json.dumps(results)
     return HttpResponse(jso, content_type='application/json')
 
