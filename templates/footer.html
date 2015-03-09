@@ -47,6 +47,22 @@
         <script src="{% static "js/jquery.min.js" %}"></script>
         <script src="{% static "js/bootstrap.min.js?new=new" %}"></script>
         <script src="{% static "js/lykar.js" %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            // Магія розпочнеться лише після повного завантаження сторінки
+            $(document).ready(function () {
+                // Посилання з id="test" буде тригером події
+                $("#test").click(function() {
+                    // AJAX-запит на потрібну адресу
+                    $.get("/doctors/ajax_test/", function(data) {
+                        // Замінюємо текст тегу з id="target" на отримані дані
+                        $("#target").html(data.param1+' '+data.param2);
+                    });
+                });
+            });
+        </script>
+
     {% block js %}
         <script type="text/javascript">
             $(document).ready(function(){

@@ -11,6 +11,16 @@
                     <h2 class = "red"> {% trans "Введіть дані про лікаря:" %}</h2>
                 </div>
 
+                {# test #}
+
+                <!-- Елемент що активує процес -->
+                <a id="test" href="javascript:">Натисни мене ніжно</a>
+
+                <!-- Елемент, текст якого буде змінено -->
+                <div id="target">Я готовий до змін.</div>
+
+                {# endtest #}
+
                 <form action="/doctors/add/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% comment %}
@@ -55,6 +65,14 @@
                             {{ form.speciality }}
                         </div>
                         <div class="text-warning">{{ form.speciality.errors }}</div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="dl-horizontal">
+                            <strong>{{ form.city.label }}*</strong>
+                            {{ form.city }}
+                        </div>
+                        <div class="text-warning">{{ form.city.errors }}</div>
                     </div>
 
                     <div class="form-group">

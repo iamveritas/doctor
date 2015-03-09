@@ -11,10 +11,24 @@ from apps.internal.models import Doctor, Recommendation, Comment, Hospital, Comm
 #from django.core.exceptions import ObjectDoesNotExist
 #from django.db import IntegrityError
 from django.http.response import Http404
-#from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse #, HttpResponseRedirect
 from apps.doctors.forms import DoctorForm, HospitalForm, CommentForm, CommentAnswerForm
 
 from apps.accounts.models import UserProfile, UserSetting
+
+import json
+
+
+def ajax_test(request):
+    results = {'success': False}
+
+    # Тут — потрібні нам алгоритми
+    if True:
+        results = {'success': True, 'param1': 'Ти таки', 'param2': 'натиснув його!'}
+
+    jso = json.dumps(results)
+    return HttpResponse(jso, content_type='application/json')
+
 
 class HospitalCreate(CreateView):
     """

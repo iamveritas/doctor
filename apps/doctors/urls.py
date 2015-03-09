@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from apps.doctors.views import (DoctorList, DoctorDetail, DoctorCreate, HospitalCreate,
                                 CommentCreate, CommentUpdate, DoctorReviewList,
-                                CommentAnswerCreate, CommentAnswerUpdate)
+                                CommentAnswerCreate, CommentAnswerUpdate, ajax_test)
 
 urlpatterns = patterns("",
     url(r'^$', DoctorList.as_view(), name="doctors"),
@@ -18,4 +18,5 @@ urlpatterns = patterns("",
     url(r'^comment/(?P<pk>\d+)/answer/$', CommentAnswerCreate.as_view(), name="answer-create"),
     url(r'^comment/answer/(?P<pk>\d+)$', CommentAnswerUpdate.as_view(), name="answer-update"),
     url(r'^(?P<pk>\d+)/(?P<recommend>[a-z]{2,3})/$', DoctorDetail.as_view()),
+    url(r'^ajax_test/$', ajax_test),
 )

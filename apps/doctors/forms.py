@@ -38,6 +38,12 @@ class DoctorForm(forms.ModelForm):
                                "class": BOOTSTRAP_FORM_INPUT_CLASS,
                            }))
 
+    city = forms.ModelChoiceField(queryset=City.objects.all(), label="Місто",
+                           required=True, empty_label="Виберіть місто",
+                           widget=forms.Select(attrs={
+                               "class": BOOTSTRAP_FORM_INPUT_CLASS,
+                           }))
+
     hospitals = forms.ModelMultipleChoiceField(queryset=Hospital.objects.all(),label="Місце роботи", required=True,
                            widget=forms.SelectMultiple(attrs={
                                "class": BOOTSTRAP_FORM_INPUT_CLASS,
