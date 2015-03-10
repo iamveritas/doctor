@@ -25,7 +25,7 @@ def ajax_test(request):
     hospitals_of_city = Hospital.objects.filter(city=city)
     hospitals = ''
     for hospital in hospitals_of_city:
-        pattern = '<option value="'+'">'+hospital.name+'</option>'
+        pattern = '<option value="'+str(hospital.id)+'">'+hospital.name+'</option>'
         hospitals += pattern
     if True:
         results = {'success': True, 'hospitals': hospitals}
