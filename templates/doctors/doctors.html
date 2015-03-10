@@ -31,7 +31,7 @@
                     {% empty %}
                         <p class="subtitle">{% trans 'Поки що не зареєстровано жодного лікаря. Ви можете це зробити, перейшовши <a href="#">сюди</a>.' %}</p>
                     {% endfor %}
-                </div>
+
 
                 <div class="row">
                     {% if is_paginated %}
@@ -84,8 +84,8 @@
                         </div>
                     {% endif %}
                 </div>
-
             </div>
-        </section> <!-- End List Doctor -->
+        </div>
+    </section> <!-- End List Doctor -->
 
 {%endblock%}

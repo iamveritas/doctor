@@ -14,7 +14,7 @@
         <meta name='wmail-verification' content='367d3ecb3ac8e289' />
         <!-- Library css -->
         <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
-        <link href="{% static "css/styles.css" %}" rel="stylesheet">
+        <link href="{% static "css/styl.css" %}" rel="stylesheet">
         <link href="{% static "css/login.css" %}" rel="stylesheet">
         <!-- Favicons -->
         <link rel="shortcut icon" href="{% static "img/ico/favicon.ico" %}">
@@ -57,14 +57,12 @@
                                 <li><a class="active" href="{% url 'home' %}">{% trans "Головна" %}</a></li>
                                 <li><a href="{% url 'doctors:doctors' %}">{% trans "Лікарі" %}</a></li>
                                 <li><a href="{% url 'doctors:add-doctor' %}">{% trans "Додати лікаря" %}</a></li>
-                                <li><a href="{% url 'search:home' %}">{% trans "Знайти лікаря" %}</a></li>
                                 <li><a href="{% url 'accounts:personal_page' user.id %}">{% trans "Моя сторінка" %}</a></li>
                                 <li><a href="{% url 'accounts:logout' %}">{% trans "Вихід" %}</a></li>
                             {% else %}
                                 <li><a href="{% url 'home' %}">{% trans "Головна" %}</a></li>
                                 <li><a href="{% url 'doctors:doctors' %}">{% trans "Лікарі" %}</a></li>
                                 <li><a href="{% url 'doctors:add-doctor' %}">{% trans "Додати лікаря" %}</a></li>
-                                <li><a href="{% url 'search:home' %}">{% trans "Знайти лікаря" %}</a></li>
                                 <li><a href="{% url 'accounts:login' %}">{% trans "Вхід" %}</a></li>
                                 <li><a href="{% url 'accounts:registration' %}">{% trans "Реєстрація" %}</a></li>
                             {% endif %}
